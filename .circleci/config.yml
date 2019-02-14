@@ -29,6 +29,7 @@ android_defaults: &android_defaults
 
 # MACOS
 macos_defaults: &macos_defaults
+  <<: *defaults
   resource_class: "large"
   macos:
     xcode: "10.1.0"
