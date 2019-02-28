@@ -1,4 +1,7 @@
 # @react-native-clipboard
+React Native Clipboard API for both iOS and Android
+
+![alt text](https://github.com/harisbaig100/react-native-clipboard/blob/migrating-Clipboard-from-RN-core-to-community-version/screenshots/Screen%20Shot%202019-02-28%20at%204.32.13%20PM.png)
 
 ## Getting started
 Install the library using either Yarn:
