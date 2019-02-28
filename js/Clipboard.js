@@ -10,7 +10,9 @@
 
 'use strict';
 
-const Clipboard = require('NativeModules').Clipboard;
+import { NativeModules } from 'react-native';
+
+const { Clipboard } = NativeModules;
 
 /**
  * `Clipboard` gives you an interface for setting and getting content from Clipboard on both iOS and Android

@@ -5,7 +5,7 @@ module.exports = {
         "module-resolver",
         {
           alias: {
-            "@react-native-community/viewpager": "./js"
+            "@react-native-community/react-native-clipboard": "./js"
           },
           cwd: "babelrc"
         }
