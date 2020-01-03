@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TextInput, Alert} from 'react-native';
-import Clipboard from '@react-native-community/react-native-clipboard';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import Clipboard from "@react-native-community/react-native-clipboard";
 
 type Props = $ReadOnly<{||}>;
 type State = {|
@@ -21,26 +21,34 @@ export default class App extends React.Component<Props, State> {
 
   writeToClipboard = async () => {
     Clipboard.setString(this.state.text);
-    Alert.alert('Copied to clipboard');
+    alert('Copied to clipboard');
   };
 
   render() {
     return (
       <View style={styles.container}>
+        
         <Text style={styles.boldText}>Clipboard Contents: </Text>
-        <Text style={{marginBottom: 20}}>{this.state.clipboardContent}</Text>
+        <Text style={{ marginBottom: 20 }}>{this.state.clipboardContent}</Text>
         <View style={styles.seperator} />
-        <Button onPress={this.readFromClipboard} title="Read from Clipboard" />
+        <Button
+          onPress={this.readFromClipboard}
+          title="Read from Clipboard"
+        />
 
         <View style={styles.seperator} />
 
         <TextInput
           style={styles.textInput}
-          onChangeText={text => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
           value={this.state.text}
           placeholder="Type here..."
         />
-        <Button onPress={this.writeToClipboard} title="Write to Clipboard" />
+        <Button
+          onPress={this.writeToClipboard}
+          title="Write to Clipboard"
+        />
+
       </View>
     );
   }
@@ -69,5 +77,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '80%',
     paddingHorizontal: 80,
+  
   },
 });
