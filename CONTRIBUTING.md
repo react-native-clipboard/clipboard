@@ -1,7 +1,7 @@
 # Contributing to React Native Clipboard
 
 ## Development Process
-All work on React Native NetInfo happens directly on GitHub. Contributors send pull requests which go through a review process.
+All work on React Native Clipboard happens directly on GitHub. Contributors send pull requests which go through a review process.
 
 > **Working on your first pull request?** You can learn how from this *free* series: [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
@@ -13,13 +13,13 @@ All work on React Native NetInfo happens directly on GitHub. Contributors send p
 Currently we use `flow` for typechecking, `eslint` with `prettier` for linting and formatting the code, and `jest` for unit testing. We also use `detox` for end-to-end testing. All of these are run on CircleCI for all opened pull requests, but you should use them locally when making changes.
 
 * `yarn test`: Run all tests and validations.
-* `yarn validate:eslint`: Run `eslint`.
-* `yarn validate:eslint --fix`: Run `eslint` and automatically fix issues. This is useful for correcting code formatting.
-* `yarn validate:flow`: Run `flow` typechecking.
-* `yarn validate:typescript`: Run `typescript` typechecking.
-* `yarn test:jest`: Run unit tests with `jest`.
-* `yarn test:detox:<android|ios>:build:<debug|release>`: Build the `debug` or `release` app for end-to-end tests with `detox` on either `android` or `ios`. You need to run this before running the test command and whenever you make changes to the native code.
-* `yarn test:detox:<android|ios>:test:<debug|release>`: Run the `debug` or `release` end-to-end tests with `detox` on either `android` or `ios`.
+<!-- * `yarn validate:eslint`: Run `eslint`. -->
+<!-- * `yarn validate:eslint --fix`: Run `eslint` and automatically fix issues. This is useful for correcting code formatting. -->
+* `yarn flow`: Run `flow` typechecking.
+<!-- * `yarn validate:typescript`: Run `typescript` typechecking. -->
+<!-- * `yarn test:jest`: Run unit tests with `jest`. -->
+<!-- * `yarn test:detox:<android|ios>:build:<debug|release>`: Build the `debug` or `release` app for end-to-end tests with `detox` on either `android` or `ios`. You need to run this before running the test command and whenever you make changes to the native code. -->
+<!-- * `yarn test:detox:<android|ios>:test:<debug|release>`: Run the `debug` or `release` end-to-end tests with `detox` on either `android` or `ios`. -->
 
 ## Sending a pull request
 When you're sending a pull request:
@@ -45,7 +45,7 @@ We prefix our commit messages with one of the following to signify the kind of c
 We use [Semantic Release](http://semantic-release.org) to automatically release new versions of the library when changes are merged into master. Using the commit message convention described above, it will detect if we need to release a patch, minor, or major version of the library.
 
 ## Reporting issues
-You can report issues on our [bug tracker](https://github.com/react-native-community/react-native-netinfo/issues). Please search for existing issues and follow the issue template when opening an issue.
+You can report issues on our [bug tracker](https://github.com/react-native-community/react-native-clipboard/issues). Please search for existing issues and follow the issue template when opening an issue.
 
 ## License
-By contributing to React Native NetInfo, you agree that your contributions will be licensed under the **MIT** license.
+By contributing to React Native Clipboard, you agree that your contributions will be licensed under the **MIT** license.

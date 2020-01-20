@@ -65,9 +65,9 @@ aliases:
       yarn install --network-concurrency 1 --non-interactive --cache-folder ~/.cache/yarn & wait
 
   # ANALYSE
-  # - &eslint
-  #   name: ESLint Checks
-  #   command: yarn test:eslint
+  - &eslint
+    name: ESLint Checks
+    command: yarn lint
 
   - &flow
     name: Flow Checks
@@ -96,32 +96,32 @@ jobs:
           root: .
           paths: .
 
-  # eslint:
-  #   <<: *linux_defaults
-  #   steps:
-  #   - attach_workspace:
-  #       at: ~/react-native-viewpager
-  #   - run: *eslint
+  eslint:
+    <<: *linux_defaults
+    steps:
+    - attach_workspace:
+        at: ~/react-native-clipboard
+    - run: *eslint
 
   flow:
     <<: *linux_defaults
     steps:
       - attach_workspace:
-          at: ~/react-native-viewpager
+          at: ~/react-native-clipboard
       - run: *flow
 
   # jest:
   #   <<: *linux_defaults
   #   steps:
   #   - attach_workspace:
-  #       at: ~/react-native-viewpager
+  #       at: ~/react-native-clipboard
   #   - run: *jest
 
   android-compile:
     <<: *android_defaults
     steps:
       - attach_workspace:
-          at: ~/react-native-viewpager
+          at: ~/react-native-clipboard
       - restore-cache: *restore-gradle-cache
       - run:
           name: Accept Android licences
@@ -152,7 +152,7 @@ jobs:
     <<: *macos_defaults
     steps:
       - attach_workspace:
-          at: ~/react-native-viewpager
+          at: ~/react-native-clipboard
       - run:
           name: Build example app
           command: |-
@@ -166,9 +166,9 @@ workflows:
   Test:
     jobs:
       - linux-checkout
-      # - eslint:
-      #     requires:
-      #     - linux-checkout
+      - eslint:
+          requires:
+          - linux-checkout
       - flow:
           requires:
             - linux-checkout
