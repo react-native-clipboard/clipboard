@@ -1,4 +1,7 @@
 # @react-native-clipboard
+
+[![Lean Core Extracted][lean-core-badge]][lean-core-issue]
+
 React Native Clipboard API for both iOS and Android
 
 ![alt text](https://github.com/harisbaig100/react-native-clipboard/blob/migrating-Clipboard-from-RN-core-to-community-version/screenshots/Screen%20Shot%202019-02-28%20at%204.32.13%20PM.png)
@@ -68,3 +71,6 @@ Please see the [`contributing guide`](/CONTRIBUTING.md).
 ## License
 
 The library is released under the MIT licence. For more information see [`LICENSE`](/LICENSE).
+
+[lean-core-badge]: https://img.shields.io/badge/Lean%20Core-Extracted-brightgreen.svg?style=flat-square
+[lean-core-issue]: https://github.com/facebook/react-native/issues/23313

@@ -10,9 +10,9 @@
 
 "use strict";
 
-import { NativeModules } from "react-native";
+import {NativeModules} from 'react-native';
 
-const { RNCClipboard } = NativeModules;
+const {RNCClipboard} = NativeModules;
 /**
  * `Clipboard` gives you an interface for setting and getting content from Clipboard on both iOS and Android
  */
