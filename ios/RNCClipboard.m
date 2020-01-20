@@ -1,16 +1,19 @@
-#import "RCTClipboard.h"
+#import "RNCClipboard.h"
+
 
 #import <UIKit/UIKit.h>
+#import <React/RCTBridge.h>
+#import <React/RCTEventDispatcher.h>
 
-@implementation RCTClipboard
 
-RCT_EXPORT_MODULE()
+@implementation RNCClipboard
+
+RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue
 {
   return dispatch_get_main_queue();
 }
-
 
 RCT_EXPORT_METHOD(setString:(NSString *)content)
 {
@@ -19,7 +22,7 @@ RCT_EXPORT_METHOD(setString:(NSString *)content)
 }
 
 RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
-                  rejecter:(__unused RCTPromiseRejectBlock)reject)
+                  reject:(__unused RCTPromiseRejectBlock)reject)
 {
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
   resolve((clipboard.string ? : @""));
