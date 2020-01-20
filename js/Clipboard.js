@@ -8,7 +8,7 @@
  * @flow strict-local
  */
 
-"use strict";
+'use strict';
 
 import {NativeModules} from 'react-native';
 
@@ -39,5 +39,5 @@ module.exports = {
    */
   setString(content: string) {
     RNCClipboard.setString(content);
-  }
+  },
 };
