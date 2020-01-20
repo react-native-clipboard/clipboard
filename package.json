@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harisbaig100/react-native-clipboard.git"
+    "url": "git+https://github.com/react-native-community/react-native-clipboard.git"
   },
   "peerDependencies": {
-    "react": "^16.0",
-    "react-native": "^0.57.0"
+    "react": ">=^16.0",
+    "react-native": ">=^0.57.0"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
@@ -46,7 +46,7 @@
   "author": "M.Haris Baig <harisbaig100@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/harisbaig100/react-native-clipboard/issues"
+    "url": "https://github.com/react-native-community/react-native-clipboard/issues"
   },
-  "homepage": "https://github.com/harisbaig100/react-native-clipboard#readme"
+  "homepage": "https://github.com/react-native-community/react-native-clipboard#readme"
 }
