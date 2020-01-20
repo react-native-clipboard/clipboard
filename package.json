@@ -8,7 +8,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "flow": "flow",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "type-check":"tsc --noEmit"
   },
   "repository": {
     "type": "git",
