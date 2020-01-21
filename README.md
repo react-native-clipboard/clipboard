@@ -4,7 +4,7 @@
 
 React Native Clipboard API for both iOS and Android
 
-![alt text](https://github.com/harisbaig100/react-native-clipboard/blob/migrating-Clipboard-from-RN-core-to-community-version/screenshots/Screen%20Shot%202019-02-28%20at%204.32.13%20PM.png)
+![Screenshot](https://github.com/harisbaig100/react-native-clipboard/blob/migrating-Clipboard-from-RN-core-to-community-version/screenshots/Screen%20Shot%202019-02-28%20at%204.32.13%20PM.png)
 
 ## Getting started
 Install the library using either Yarn:
@@ -17,6 +17,38 @@ or npm:
 
 ```
 npm install --save @react-native-community/react-native-clipboard
+```
+
+## Link
+
+- React Native v0.60+
+
+For iOS, use `cocoapods` to link the package.
+
+run the following command:
+
+```
+$ cd ios && pod install
+```
+
+For android, the package will be linked automatically on build.
+
+- React Native <= 0.59
+
+run the following command to link the package:
+
+```
+$ react-native link @react-native-community/react-native-clipboard
+```
+
+or you could follow the instructions to [manually link the project](https://facebook.github.io/react-native/docs/linking-libraries-ios#manual-linking)
+
+## Upgrading to React Native 0.60+
+
+New React Native comes with `autolinking` feature, which automatically links Native Modules in your project. In order to get it to work, make sure you unlink `Clipboard` first:
+
+```
+$ react-native unlink @react-native-community/react-native-clipboard
 ```
 
 ## Migrating from the core `react-native` module
