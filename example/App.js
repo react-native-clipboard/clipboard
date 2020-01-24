@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {StyleSheet, Text, View, Button, TextInput, Alert} from 'react-native';
 import Clipboard from '@react-native-community/react-native-clipboard';
 
 type Props = $ReadOnly<{||}>;
@@ -21,7 +21,7 @@ export default class App extends React.Component<Props, State> {
 
   writeToClipboard = async () => {
     Clipboard.setString(this.state.text);
-    alert('Copied to clipboard');
+    Alert.alert('Copied to clipboard');
   };
 
   render() {
