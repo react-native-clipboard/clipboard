@@ -97,7 +97,9 @@ jobs:
     - run:
         name: Build Android Example App and Library
         command: |-
-          cd example/android
+          cd example
+          yarn install
+          cd android
           ./gradlew clean assembleDebug
     - save_cache: *save-gradle-cache
 
@@ -140,10 +142,9 @@ workflows:
       # - jest:
       #     requires:
       #     - linux-checkout
-      # Disabled until we have a example folder using RN instead of Expo
-      # - android-compile:
-      #     requires:
-      #       - linux-checkout
+      - android-compile:
+          requires:
+            - linux-checkout
 # Disabled until we have macOS containers enabled
 #     - ios-checkout
 #     - ios-compile:
