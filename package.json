@@ -2,22 +2,40 @@
   "name": "@react-native-community/react-native-clipboard",
   "version": "1.0.1",
   "description": "React Native Clipboard API for both iOS and Android",
-  "main": "js/Clipboard.js",
-  "typings": "index.d.ts",
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "flow": "flow",
-    "lint": "eslint .",
-    "type-check":"tsc --noEmit"
+  "keywords": [
+    "Clipboard",
+    "getString",
+    "react-native",
+    "setString"
+  ],
+  "homepage": "https://github.com/react-native-community/react-native-clipboard#readme",
+  "bugs": {
+    "url": "https://github.com/react-native-community/react-native-clipboard/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/react-native-community/react-native-clipboard.git"
   },
-  "peerDependencies": {
-    "react": ">=^16.0",
-    "react-native": ">=^0.57.0"
+  "license": "MIT",
+  "author": "M.Haris Baig <harisbaig100@gmail.com>",
+  "files": [
+    "index.d.ts",
+    "RNCClipboard.podspec",
+    "js",
+    "ios",
+    "android"
+  ],
+  "main": "js/Clipboard.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "flow": "flow",
+    "lint": "eslint .",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
@@ -35,19 +53,11 @@
     "react-test-renderer": "16.9.0",
     "typescript": "^3.7.4"
   },
-  "jest": {
-    "preset": "react-native"
+  "peerDependencies": {
+    "react": ">=^16.0",
+    "react-native": ">=^0.57.0"
   },
-  "keywords": [
-    "react-native",
-    "Clipboard",
-    "getString",
-    "setString"
-  ],
-  "author": "M.Haris Baig <harisbaig100@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-native-community/react-native-clipboard/issues"
-  },
-  "homepage": "https://github.com/react-native-community/react-native-clipboard#readme"
+  "publishConfig": {
+    "access": "public"
+  }
 }
