@@ -10,10 +10,9 @@
 
 'use strict';
 
-import { NativeModules } from 'react-native';
+import {NativeModules} from 'react-native';
 
-const { Clipboard } = NativeModules;
-
+const {RNCClipboard} = NativeModules;
 /**
  * `Clipboard` gives you an interface for setting and getting content from Clipboard on both iOS and Android
  */
@@ -27,7 +26,7 @@ module.exports = {
    * ```
    */
   getString(): Promise<string> {
-    return Clipboard.getString();
+    return RNCClipboard.getString();
   },
   /**
    * Set content of string type. You can use following code to set clipboard content
@@ -39,6 +38,6 @@ module.exports = {
    * @param the content to be stored in the clipboard.
    */
   setString(content: string) {
-    Clipboard.setString(content);
+    RNCClipboard.setString(content);
   },
 };

@@ -28,7 +28,9 @@ export default class App extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <Text style={styles.boldText}>Clipboard Contents: </Text>
-        <Text style={{marginBottom: 20}}>{this.state.clipboardContent}</Text>
+        <Text style={styles.clipboardContent}>
+          {this.state.clipboardContent}
+        </Text>
         <View style={styles.seperator} />
         <Button onPress={this.readFromClipboard} title="Read from Clipboard" />
 
@@ -69,5 +71,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '80%',
     paddingHorizontal: 80,
+  },
+  clipboardContent: {
+    marginBottom: 20,
   },
 });
