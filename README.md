@@ -1,10 +1,19 @@
 # @react-native-clipboard
 
-[![Lean Core Extracted][lean-core-badge]][lean-core-issue]
+[![Build Status][build-badge]][build]
+[![Version][version-badge]][package]
+![Supports iOS and Android][support-badge]
+[![MIT License][license-badge]][license]
+[![Lean Core Badge][lean-core-badge]][lean-core-issue]
+
 
 React Native Clipboard API for both iOS and Android
 
-![Screenshot](https://github.com/harisbaig100/react-native-clipboard/blob/migrating-Clipboard-from-RN-core-to-community-version/screenshots/Screen%20Shot%202019-02-28%20at%204.32.13%20PM.png)
+| iOS | Android |
+| --- | --- |
+| <img src ="https://user-images.githubusercontent.com/6936373/73284520-0ce29880-4238-11ea-9d0e-2061b2d6f17a.png" width="320"/> | <img src ="https://user-images.githubusercontent.com/6936373/73284517-0ce29880-4238-11ea-96c7-5a6337c43da5.png" width="320"/> |
+
+
 
 ## Getting started
 Install the library using either Yarn:
@@ -104,5 +113,12 @@ Please see the [`contributing guide`](/CONTRIBUTING.md).
 
 The library is released under the MIT licence. For more information see [`LICENSE`](/LICENSE).
 
+[build-badge]: https://img.shields.io/circleci/project/github/react-native-community/react-native-clipboard/master.svg?style=flat-square
+[build]: https://circleci.com/gh/react-native-community/react-native-clipboard
+[version-badge]: https://img.shields.io/npm/v/@react-native-community/react-native-clipboard.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@react-native-community/react-native-clipboard
+[support-badge]:https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/@react-native-community/react-native-clipboard.svg?style=flat-square
+[license]: https://opensource.org/licenses/MIT
 [lean-core-badge]: https://img.shields.io/badge/Lean%20Core-Extracted-brightgreen.svg?style=flat-square
 [lean-core-issue]: https://github.com/facebook/react-native/issues/23313
