@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.react.modules.clipboard;
+package com.reactnativecommunity.clipboard;
 
 import android.content.ClipboardManager;
 import android.content.ClipData;
@@ -26,7 +26,7 @@ public class ClipboardModule extends ContextBaseJavaModule {
     super(context);
   }
 
-  public static final String NAME = "Clipboard";
+  public static final String NAME = "RNCClipboard";
 
   @Override
   public String getName() {
@@ -42,9 +42,7 @@ public class ClipboardModule extends ContextBaseJavaModule {
     try {
       ClipboardManager clipboard = getClipboardService();
       ClipData clipData = clipboard.getPrimaryClip();
-      if (clipData == null) {
-        promise.resolve("");
-      } else if (clipData.getItemCount() >= 1) {
+      if (clipData != null && clipData.getItemCount() >= 1) {
         ClipData.Item firstItem = clipboard.getPrimaryClip().getItemAt(0);
         promise.resolve("" + firstItem.getText());
       } else {
