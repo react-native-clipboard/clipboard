@@ -948,7 +948,7 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
-"@react-native-community/react-native-clipboard@file:..":
+"@react-native-community/clipboard@file:..":
   version "1.0.1"
 
 "@types/babel__core@^7.1.0":

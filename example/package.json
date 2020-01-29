@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "@react-native-community/react-native-clipboard": "file:../"
+    "@react-native-community/clipboard": "file:../"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
