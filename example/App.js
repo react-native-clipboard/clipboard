@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, TextInput, Alert} from 'react-native';
-import Clipboard from '@react-native-community/react-native-clipboard';
+import Clipboard from '@react-native-community/clipboard';
 
 type Props = $ReadOnly<{||}>;
 type State = {|

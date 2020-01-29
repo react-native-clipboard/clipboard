@@ -1,4 +1,4 @@
-# @react-native-clipboard
+# @react-native-community/clipboard
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
@@ -19,13 +19,13 @@ React Native Clipboard API for both iOS and Android
 Install the library using either Yarn:
 
 ```
-yarn add @react-native-community/react-native-clipboard
+yarn add @react-native-community/clipboard
 ```
 
 or npm:
 
 ```
-npm install --save @react-native-community/react-native-clipboard
+npm install --save @react-native-community/clipboard
 ```
 
 ## Link
@@ -47,7 +47,7 @@ For android, the package will be linked automatically on build.
 run the following command to link the package:
 
 ```
-$ react-native link @react-native-community/react-native-clipboard
+$ react-native link @react-native-community/clipboard
 ```
 
 or you could follow the instructions to [manually link the project](https://facebook.github.io/react-native/docs/linking-libraries-ios#manual-linking)
@@ -57,7 +57,7 @@ or you could follow the instructions to [manually link the project](https://face
 New React Native comes with `autolinking` feature, which automatically links Native Modules in your project. In order to get it to work, make sure you unlink `Clipboard` first:
 
 ```
-$ react-native unlink @react-native-community/react-native-clipboard
+$ react-native unlink @react-native-community/clipboard
 ```
 
 ## Migrating from the core `react-native` module
@@ -70,14 +70,14 @@ import { Clipboard } from "react-native";
 to:
 
 ```javascript
-import Clipboard from "@react-native-community/react-native-clipboard";
+import Clipboard from "@react-native-community/clipboard";
 ```
 
 ## Usage
 Start by importing the library:
 
 ```javascript
-import Clipboard from "@react-native-community/react-native-clipboard";
+import Clipboard from "@react-native-community/clipboard";
 
 type Props = $ReadOnly<{||}>;
 type State = {|
@@ -104,6 +104,7 @@ export default class App extends React.Component<Props, State> {
 ## Maintainers
 
 * [M.Haris Baig](https://github.com/harisbaig100)
+* [Jesse Katsumata](https://github.com/Naturalclar)
 
 ## Contributing
 
@@ -113,12 +114,12 @@ Please see the [`contributing guide`](/CONTRIBUTING.md).
 
 The library is released under the MIT licence. For more information see [`LICENSE`](/LICENSE).
 
-[build-badge]: https://img.shields.io/circleci/project/github/react-native-community/react-native-clipboard/master.svg?style=flat-square
+[build-badge]: https://img.shields.io/circleci/project/github/react-native-community/clipboard/master.svg?style=flat-square
 [build]: https://circleci.com/gh/react-native-community/react-native-clipboard
-[version-badge]: https://img.shields.io/npm/v/@react-native-community/react-native-clipboard.svg?style=flat-square
-[package]: https://www.npmjs.com/package/@react-native-community/react-native-clipboard
+[version-badge]: https://img.shields.io/npm/v/@react-native-community/clipboard.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@react-native-community/clipboard
 [support-badge]:https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square
-[license-badge]: https://img.shields.io/npm/l/@react-native-community/react-native-clipboard.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/@react-native-community/clipboard.svg?style=flat-square
 [license]: https://opensource.org/licenses/MIT
 [lean-core-badge]: https://img.shields.io/badge/Lean%20Core-Extracted-brightgreen.svg?style=flat-square
 [lean-core-issue]: https://github.com/facebook/react-native/issues/23313
