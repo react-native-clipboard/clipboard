@@ -1,4 +1,4 @@
-# @react-native-clipboard
+# @react-native-community/clipboard
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
