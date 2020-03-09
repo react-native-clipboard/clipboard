@@ -2,11 +2,11 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, TextInput, Alert} from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 
-type Props = $ReadOnly<{||}>;
-type State = {|
-  text: string,
-  clipboardContent: string,
-|};
+type Props = {};
+type State = {
+  text: string;
+  clipboardContent: string;
+};
 
 export default class App extends React.Component<Props, State> {
   state = {
