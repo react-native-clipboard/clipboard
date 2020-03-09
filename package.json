@@ -18,18 +18,19 @@
   },
   "license": "MIT",
   "author": "M.Haris Baig <harisbaig100@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.d.ts",
+    "dist",
     "RNCClipboard.podspec",
-    "js",
     "ios",
     "android"
   ],
-  "main": "js/Clipboard.js",
-  "types": "index.d.ts",
   "scripts": {
+    "build": "tsc",
     "flow": "flow",
-    "lint": "eslint .",
+    "lint": "eslint src --ext .ts,.tsx --cache",
+    "prepare": "yarn build",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit"
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
+    "@types/react-native": "0.61.20",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
     "babel-plugin-module-resolver": "^3.1.3",
