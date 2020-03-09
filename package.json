@@ -31,7 +31,6 @@
     "flow": "flow",
     "lint": "eslint src --ext .ts,.tsx --cache",
     "prepare": "yarn build",
-    "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit"
   },
