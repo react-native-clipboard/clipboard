@@ -119,7 +119,7 @@ The library is released under the MIT licence. For more information see [`LICENS
 [version-badge]: https://img.shields.io/npm/v/@react-native-community/clipboard.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@react-native-community/clipboard
 [support-badge]:https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square
-[license-badge]: https://img.shields.io/npm/l/@react-native-community/clipboard.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/@react-native-community/react-native-clipboard.svg?style=flat-square
 [license]: https://opensource.org/licenses/MIT
 [lean-core-badge]: https://img.shields.io/badge/Lean%20Core-Extracted-brightgreen.svg?style=flat-square
 [lean-core-issue]: https://github.com/facebook/react-native/issues/23313
