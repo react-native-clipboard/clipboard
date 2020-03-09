@@ -57,3 +57,6 @@ buck-out/
 
 # typescript build file
 dist
+
+# eslint cache
+.eslintcache
