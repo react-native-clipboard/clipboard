@@ -50,7 +50,7 @@ run the following command to link the package:
 $ react-native link @react-native-community/clipboard
 ```
 
-or you could follow the instructions to [manually link the project](https://facebook.github.io/react-native/docs/linking-libraries-ios#manual-linking)
+or you could follow the instructions to [manually link the project](https://reactnative.dev/docs/linking-libraries-ios#manual-linking)
 
 ## Upgrading to React Native 0.60+
 
@@ -73,33 +73,97 @@ to:
 import Clipboard from "@react-native-community/clipboard";
 ```
 
-## Usage
-Start by importing the library:
+## Example
 
-```javascript
-import Clipboard from "@react-native-community/clipboard";
+```jsx
+import React, { useState } from 'react'
+import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import Clipboard from '@react-native-community/clipboard'
 
-type Props = $ReadOnly<{||}>;
-type State = {|
-  clipboardContent: string,
-|};
+const App = () => {
+  const [copiedText, setCopiedText] = useState('')
 
-export default class App extends React.Component<Props, State> {
-  state = {
-    clipboardContent: 'The state variable which contains Clipboard Content',
-  };
+  const copyToClipboard = () => {
+    Clipboard.setString('hello world')
+  }
 
-  readFromClipboard = async () => {
-    const content = await Clipboard.getString();
-    this.setState({clipboardContent: content});
-  };
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getString()
+    setCopiedText(text)
+  }
 
-  writeToClipboard = async () => {
-    Clipboard.setString(this.state.text);
-    alert('Copied to clipboard');
-  };
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => copyToClipboard()}>
+          <Text>Click here to copy to Clipboard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => fetchCopiedText()}>
+          <Text>View copied text</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.copiedText}>{copiedText}</Text>
+      </View>
+
+    </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  copiedText: {
+    marginTop: 10,
+    color: 'red'
+  }
+})
+
+export default App
+```
+
+## Reference
+
+### Methods
+
+#### `getString()`
+
+```jsx
+static getString()
+```
+
+Get content of string type, this method returns a `Promise`, so you can use following code to get clipboard content
+
+```jsx
+async _getContent() {
+  var content = await Clipboard.getString();
 }
 ```
+
+---
+
+#### `setString()`
+
+```jsx
+static setString(content)
+```
+
+Set content of string type. You can use following code to set clipboard content
+
+```jsx
+_setContent() {
+  Clipboard.setString('hello world');
+}
+```
+
+**Parameters:**
+
+| Name    | Type   | Required | Description                               |
+| ------- | ------ | -------- | ----------------------------------------- |
+| content | string | Yes      | The content to be stored in the clipboard |
+
 
 ## Maintainers
 
