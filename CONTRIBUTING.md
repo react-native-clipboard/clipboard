@@ -45,7 +45,7 @@ We prefix our commit messages with one of the following to signify the kind of c
 We use [Semantic Release](http://semantic-release.org) to automatically release new versions of the library when changes are merged into master. Using the commit message convention described above, it will detect if we need to release a patch, minor, or major version of the library.
 
 ## Reporting issues
-You can report issues on our [bug tracker](https://github.com/react-native-community/react-native-clipboard/issues). Please search for existing issues and follow the issue template when opening an issue.
+You can report issues on our [bug tracker](https://github.com/react-native-community/clipboard/issues). Please search for existing issues and follow the issue template when opening an issue.
 
 ## License
 By contributing to React Native Clipboard, you agree that your contributions will be licensed under the **MIT** license.
