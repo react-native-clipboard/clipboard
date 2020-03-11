@@ -8,13 +8,13 @@
     "react-native",
     "setString"
   ],
-  "homepage": "https://github.com/react-native-community/react-native-clipboard#readme",
+  "homepage": "https://github.com/react-native-community/clipboard#readme",
   "bugs": {
-    "url": "https://github.com/react-native-community/react-native-clipboard/issues"
+    "url": "https://github.com/react-native-community/clipboard/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-community/react-native-clipboard.git"
+    "url": "git+https://github.com/react-native-community/clipboard.git"
   },
   "license": "MIT",
   "author": "M.Haris Baig <harisbaig100@gmail.com>",
