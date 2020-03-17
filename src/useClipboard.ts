@@ -16,7 +16,7 @@ function setString(content: string) {
   listeners.forEach(listener => listener(content));
 }
 
-export const useClipboard = () => {
+export const useClipboard = (): [string, (content: string) => void] => {
   const [data, updateClipboardData] = useState('');
 
   useEffect(() => {
