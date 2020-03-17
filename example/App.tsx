@@ -1,59 +1,58 @@
-import React from 'react';
-import {StyleSheet, Text, View, Button, TextInput, Alert} from 'react-native';
-import Clipboard from '@react-native-community/clipboard';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  Alert,
+  SafeAreaView,
+} from 'react-native';
+import {useClipboard} from '@react-native-community/clipboard';
 
-type Props = {};
-type State = {
-  text: string;
-  clipboardContent: string;
-};
+export const App: React.FC = () => {
+  const [text, setText] = useState('');
+  const [data, setString] = useClipboard();
 
-export default class App extends React.Component<Props, State> {
-  state = {
-    text: '',
-    clipboardContent: 'Click down to see whats in Clipboard',
+  const writeToClipboard = () => {
+    setString(text);
+    Alert.alert(`Copied to clipboard: ${text}`);
   };
 
-  readFromClipboard = async () => {
-    const content = await Clipboard.getString();
-    this.setState({clipboardContent: content});
-  };
-
-  writeToClipboard = async () => {
-    Clipboard.setString(this.state.text);
-    Alert.alert('Copied to clipboard');
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.header}>Clipboard Module</Text>
+      <View style={styles.main}>
         <Text style={styles.boldText}>Clipboard Contents: </Text>
-        <Text style={styles.clipboardContent}>
-          {this.state.clipboardContent}
-        </Text>
+        <Text style={styles.clipboardContent}>{data}</Text>
         <View style={styles.seperator} />
-        <Button onPress={this.readFromClipboard} title="Read from Clipboard" />
-
-        <View style={styles.seperator} />
-
         <TextInput
           style={styles.textInput}
-          onChangeText={text => this.setState({text})}
-          value={this.state.text}
+          onChangeText={input => setText(input)}
+          value={text}
           placeholder="Type here..."
         />
-        <Button onPress={this.writeToClipboard} title="Write to Clipboard" />
+        <Button onPress={writeToClipboard} title="Write to Clipboard" />
       </View>
-    );
-  }
-}
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#eef',
+    alignItems: 'center',
+  },
+  main: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  header: {
+    fontWeight: '700',
+    fontSize: 30,
+    marginBottom: 10,
   },
   boldText: {
     fontWeight: '600',
@@ -66,11 +65,12 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   textInput: {
-    height: 30,
     borderColor: 'gray',
     borderWidth: 1,
     width: '80%',
     paddingHorizontal: 80,
+    paddingVertical: 8,
+    marginBottom: 16,
   },
   clipboardContent: {
     marginBottom: 20,

@@ -124,9 +124,11 @@ const styles = StyleSheet.create({
 export default App
 ```
 
-## Reference
+# Reference
 
-### Methods
+## Methods
+
+### Clipboard
 
 #### `getString()`
 
@@ -156,6 +158,27 @@ Set content of string type. You can use following code to set clipboard content
 _setContent() {
   Clipboard.setString('hello world');
 }
+```
+
+### useClipboard
+
+`useClipboard` is a utility hooks for the `Clipboard` module. `data` contains the content stored in the clipboard.
+
+```jsx
+import React, { useEffect } from 'react'
+import { Text } from 'react-native'
+import { useClipboard } from '@react-native-community/clipboard'
+
+export const HooksSample = () => {
+  const [data, setString] = useClipboard();
+
+  useEffect(() => {
+    setString('hello world');
+  }, [])
+
+  return (<Text>{data}</Text>)
+}
+
 ```
 
 **Parameters:**
