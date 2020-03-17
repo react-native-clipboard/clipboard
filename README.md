@@ -160,6 +160,13 @@ _setContent() {
 }
 ```
 
+#### Parameters
+
+| Name    | Type   | Required | Description                               |
+| ------- | ------ | -------- | ----------------------------------------- |
+| content | string | Yes      | The content to be stored in the clipboard |
+
+
 ### useClipboard
 
 `useClipboard` is a utility hooks for the `Clipboard` module. `data` contains the content stored in the clipboard.
@@ -180,13 +187,6 @@ export const HooksSample = () => {
 }
 
 ```
-
-**Parameters:**
-
-| Name    | Type   | Required | Description                               |
-| ------- | ------ | -------- | ----------------------------------------- |
-| content | string | Yes      | The content to be stored in the clipboard |
-
 
 ## Maintainers
 
