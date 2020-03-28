@@ -6,15 +6,20 @@
  */
 
 package com.reactnativecommunity.clipboard;
-
-import android.content.ClipboardManager;
 import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 /**
  * A module that allows JS to get/set clipboard contents.
@@ -22,8 +27,12 @@ import com.facebook.react.module.annotations.ReactModule;
 @ReactModule(name = ClipboardModule.NAME)
 public class ClipboardModule extends ContextBaseJavaModule {
 
+  private ReactContext reactContext;
+
   public ClipboardModule(Context context) {
     super(context);
+    reactContext = (ReactContext) context;
+    this.attachOnClipboardChangeEvent();
   }
 
   public static final String NAME = "RNCClipboard";
@@ -58,5 +67,18 @@ public class ClipboardModule extends ContextBaseJavaModule {
     ClipData clipdata = ClipData.newPlainText(null, text);
     ClipboardManager clipboard = getClipboardService();
     clipboard.setPrimaryClip(clipdata);
+  }
+
+  private void attachOnClipboardChangeEvent() {
+    getClipboardService().addPrimaryClipChangedListener(new ClipboardManager.OnPrimaryClipChangedListener() {
+        @Override
+        public void onPrimaryClipChanged() {
+            sendEvent(reactContext, "changedContent", null);
+        }
+    });
+  }
+
+  private void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params) {
+    reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
   }
 }

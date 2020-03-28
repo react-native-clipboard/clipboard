@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import {useClipboard} from '@react-native-community/clipboard';
+import Clipboard, {useClipboard} from '@react-native-community/clipboard';
 
 export const App: React.FC = () => {
   const [text, setText] = useState('');
@@ -18,6 +18,13 @@ export const App: React.FC = () => {
     setString(text);
     Alert.alert(`Copied to clipboard: ${text}`);
   };
+
+  useEffect(() => {
+    const clipboardListener = Clipboard.addOnContentChangedListener(() => {
+      console.log('Clipboard content changed');
+    });
+    return () => clipboardListener.remove();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>

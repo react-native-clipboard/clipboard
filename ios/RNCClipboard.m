@@ -15,6 +15,16 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;  // only do this if your module initialization relies on calling UIKit!
+}
+
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"changedContent"];
+}
+
 RCT_EXPORT_METHOD(setString:(NSString *)content)
 {
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
@@ -26,6 +36,25 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
 {
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
   resolve((clipboard.string ? : @""));
+}
+
+- (void)startObserving
+{
+     [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleClipboardChangedNotification:)
+                                                     name:UIPasteboardChangedNotification
+                                                   object:nil];
+}
+
+- (void)stopObserving
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)handleClipboardChangedNotification:(NSNotification *)notification
+{
+  [self sendEventWithName:@"changedContent" body:notification.userInfo];
 }
 
 @end
