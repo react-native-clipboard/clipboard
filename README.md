@@ -61,7 +61,7 @@ $ react-native unlink @react-native-community/clipboard
 ```
 
 ## Migrating from the core `react-native` module
-This module was created when the NetInfo was split out from the core of React Native. To migrate to this module you need to follow the installation instructions above and then change you imports from:
+This module was created when the Clipboard API was split out from the core of React Native. To migrate to this module you need to follow the installation instructions above and then change you imports from:
 
 ```javascript
 import { Clipboard } from "react-native";
