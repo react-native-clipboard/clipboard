@@ -46,6 +46,7 @@ jobs:
   # Set up a Linux environment for downstream jobs
   linux-checkout:
     executor: rn/linux_js
+    node_version: '10'
     steps:
       - attach_workspace:
           at: .
@@ -57,6 +58,7 @@ jobs:
 
   eslint:
     executor: rn/linux_js
+    node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -64,6 +66,7 @@ jobs:
 
   type-check:
     executor: rn/linux_js
+    node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -71,6 +74,7 @@ jobs:
 
   flow:
     executor: rn/linux_js
+    node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -78,6 +82,7 @@ jobs:
 
   jest:
     executor: rn/linux_js
+    node_version: '10'
     steps:
     - attach_workspace:
         at: .
