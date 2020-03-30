@@ -45,7 +45,9 @@ orbs:
 jobs:
   # Set up a Linux environment for downstream jobs
   linux-checkout:
-    executor: rn/linux_js
+    executor: 
+      name: rn/linux_js
+      node_version: '10'
     steps:
       - attach_workspace:
           at: .
@@ -56,28 +58,36 @@ jobs:
           paths: .
 
   eslint:
-    executor: rn/linux_js
+    executor: 
+      name: rn/linux_js
+      node_version: '10'
     steps:
     - attach_workspace:
         at: .
     - run: *eslint
 
   type-check:
-    executor: rn/linux_js
+    executor: 
+      name: rn/linux_js
+      node_version: '10'
     steps:
     - attach_workspace:
         at: .
     - run: *type-check
 
   flow:
-    executor: rn/linux_js
+    executor: 
+      name: rn/linux_js
+      node_version: '10'
     steps:
     - attach_workspace:
         at: .
     - run: *flow
 
   jest:
-    executor: rn/linux_js
+    executor: 
+      name: rn/linux_js
+      node_version: '10'
     steps:
     - attach_workspace:
         at: .

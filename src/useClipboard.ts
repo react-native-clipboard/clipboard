@@ -13,7 +13,7 @@ const listeners = new Set<Listener>();
 
 function setString(content: string) {
   Clipboard.setString(content);
-  listeners.forEach(listener => listener(content));
+  listeners.forEach((listener) => listener(content));
 }
 
 export const useClipboard = (): [string, (content: string) => void] => {
