@@ -40,14 +40,13 @@ aliases:
 # -------------------------
 version: 2.1
 orbs:
-  rn: react-native-community/react-native@2.0.1
+  rn: react-native-community/react-native@4.2.2
 
 jobs:
   # Set up a Linux environment for downstream jobs
   linux-checkout:
     executor: 
       name: rn/linux_js
-      node_version: '10'
     steps:
       - attach_workspace:
           at: .
@@ -60,7 +59,6 @@ jobs:
   eslint:
     executor: 
       name: rn/linux_js
-      node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -69,7 +67,6 @@ jobs:
   type-check:
     executor: 
       name: rn/linux_js
-      node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -78,7 +75,6 @@ jobs:
   flow:
     executor: 
       name: rn/linux_js
-      node_version: '10'
     steps:
     - attach_workspace:
         at: .
@@ -87,7 +83,6 @@ jobs:
   jest:
     executor: 
       name: rn/linux_js
-      node_version: '10'
     steps:
     - attach_workspace:
         at: .
