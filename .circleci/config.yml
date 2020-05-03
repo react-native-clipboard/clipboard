@@ -12,12 +12,6 @@ aliases:
       - ~/.gradle
     key: gradle-cache-{{ checksum "android/build.gradle" }}-{{ checksum "example/android/build.gradle" }}-{{ checksum "example/android/app/build.gradle" }}
 
-  # INSTALLATION
-  - &yarn
-    name: Yarn Install
-    command: |
-      yarn install --network-concurrency 1 --non-interactive --cache-folder ~/.cache/yarn & wait
-
   # ANALYSE
   - &eslint
     name: ESLint Checks
