@@ -37,7 +37,7 @@ For iOS, use `cocoapods` to link the package.
 run the following command:
 
 ```
-$ cd ios && pod install
+$ npx pod-install
 ```
 
 For android, the package will be linked automatically on build.
