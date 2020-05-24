@@ -50,6 +50,12 @@ run the following command to link the package:
 $ react-native link @react-native-community/clipboard
 ```
 
+For iOS, make sure you install the pod file.
+
+```
+cd ios && pod install && cd ..
+```
+
 or you could follow the instructions to [manually link the project](https://reactnative.dev/docs/linking-libraries-ios#manual-linking)
 
 ## Upgrading to React Native 0.60+
