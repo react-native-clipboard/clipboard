@@ -1,7 +1,7 @@
+--- # -------------------------
+
 # -------------------------
 #         ALIASES
-# -------------------------
-
 aliases:
   # CACHE
   - &restore-gradle-cache
@@ -39,7 +39,7 @@ orbs:
 jobs:
   # Set up a Linux environment for downstream jobs
   linux-checkout:
-    executor: 
+    executor:
       name: rn/linux_js
     steps:
       - attach_workspace:
@@ -51,75 +51,73 @@ jobs:
           paths: .
 
   eslint:
-    executor: 
+    executor:
       name: rn/linux_js
     steps:
-    - attach_workspace:
-        at: .
-    - run: *eslint
+      - attach_workspace:
+          at: .
+      - run: *eslint
 
   type-check:
-    executor: 
+    executor:
       name: rn/linux_js
     steps:
-    - attach_workspace:
-        at: .
-    - run: *type-check
+      - attach_workspace:
+          at: .
+      - run: *type-check
 
   flow:
-    executor: 
+    executor:
       name: rn/linux_js
     steps:
-    - attach_workspace:
-        at: .
-    - run: *flow
+      - attach_workspace:
+          at: .
+      - run: *flow
 
   jest:
-    executor: 
+    executor:
       name: rn/linux_js
     steps:
-    - attach_workspace:
-        at: .
-    - run: *jest
+      - attach_workspace:
+          at: .
+      - run: *jest
 
   android-compile:
     executor: rn/linux_android
     steps:
-    - attach_workspace:
-        at: .
-    - restore_cache: *restore-gradle-cache
-    - run:
-        name: Accept Android licences
-        command: |-
-          yes | sdkmanager --licenses || exit 0
-          yes | sdkmanager --update || exit 0
-    - run:
-        name: Build Android Example App and Library
-        command: |-
-          cd example
-          yarn install
-          cd android
-          ./gradlew clean assembleDebug
-    - save_cache: *save-gradle-cache
+      - attach_workspace:
+          at: .
+      - restore_cache: *restore-gradle-cache
+      - run:
+          name: Accept Android licences
+          command: |-
+            yes | sdkmanager --licenses || exit 0
+            yes | sdkmanager --update || exit 0
+      - run:
+          name: Build Android Example App and Library
+          command: |-
+            cd example/android
+            ./gradlew clean assembleDebug
+      - save_cache: *save-gradle-cache
 
   ios-checkout:
     executor: rn/macos
     steps:
-    - checkout
-    - rn/yarn_install
-    - persist_to_workspace:
-        root: .
-        paths: .
+      - checkout
+      - rn/yarn_install
+      - persist_to_workspace:
+          root: .
+          paths: .
 
   ios-compile:
     executor: rn/macos
     steps:
-    - attach_workspace:
-        at: .
-    - run:
-        name: Build example app
-        command: |-
-          react-native run-ios --project-path example/ios
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build example app
+          command: |-
+            react-native run-ios --project-path example/ios
 
 # -------------------------
 #        WORKFLOWS
@@ -131,7 +129,7 @@ workflows:
       - linux-checkout
       - eslint:
           requires:
-          - linux-checkout
+            - linux-checkout
       - type-check:
           requires:
             - linux-checkout
