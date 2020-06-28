@@ -8,7 +8,7 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import {useClipboard} from '@react-native-community/clipboard';
+import {useClipboard} from '../src';
 
 export const App: React.FC = () => {
   const [text, setText] = useState('');
@@ -28,7 +28,7 @@ export const App: React.FC = () => {
         <View style={styles.seperator} />
         <TextInput
           style={styles.textInput}
-          onChangeText={input => setText(input)}
+          onChangeText={(input) => setText(input)}
           value={text}
           placeholder="Type here..."
         />
