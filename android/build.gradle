@@ -38,5 +38,4 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
-    implementation 'org.conscrypt:conscrypt-android:2.0.0'
 }
