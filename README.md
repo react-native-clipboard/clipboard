@@ -30,7 +30,7 @@ npm install --save @react-native-community/clipboard
 
 ## Link
 
-- React Native v0.60+
+### React Native v0.60+
 
 For iOS, use `cocoapods` to link the package.
 
@@ -42,7 +42,10 @@ $ npx pod-install
 
 For android, the package will be linked automatically on build.
 
-- React Native <= 0.59
+<details>
+  <summary>For React Native version 0.59 or older</summary>
+
+### React Native <= 0.59
 
 run the following command to link the package:
 
@@ -65,6 +68,8 @@ New React Native comes with `autolinking` feature, which automatically links Nat
 ```
 $ react-native unlink @react-native-community/clipboard
 ```
+
+</details>
 
 ## Migrating from the core `react-native` module
 This module was created when the Clipboard API was split out from the core of React Native. To migrate to this module you need to follow the installation instructions above and then change you imports from:
