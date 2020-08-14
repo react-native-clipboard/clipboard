@@ -1,7 +1,7 @@
 {
   "name": "@react-native-community/clipboard",
   "version": "1.2.3",
-  "description": "React Native Clipboard API for both iOS and Android",
+  "description": "React Native Clipboard API for macOS, iOS, and Android",
   "keywords": [
     "Clipboard",
     "getString",
@@ -24,6 +24,7 @@
     "dist",
     "RNCClipboard.podspec",
     "ios",
+    "macos",
     "android"
   ],
   "scripts": {
