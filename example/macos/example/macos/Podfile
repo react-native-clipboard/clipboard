@@ -41,10 +41,4 @@ abstract_target 'Shared' do
     use_native_modules!
     # Pods specifically for macOS target
   end
-
-  target 'example-iOS' do
-    platform :ios, '9'
-    use_native_modules!
-    # Pods specifically for iOS target
-  end
 end
