@@ -38,7 +38,7 @@ abstract_target 'Shared' do
 
   target 'example-macOS' do
     platform :macos, '10.14'
-    use_native_modules!
+    # use_native_modules!
     # Pods specifically for macOS target
   end
 end
