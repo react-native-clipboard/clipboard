@@ -38,6 +38,9 @@ abstract_target 'Shared' do
 
   target 'example-macOS' do
     platform :macos, '10.14'
+    # In this example project use_native_modules! gives a rather cryptic error.
+    # We believe this is caused by the lack of an iOS target in this project.
+    # The simplest workaround is to just leave this line out.
     # use_native_modules!
     # Pods specifically for macOS target
   end
