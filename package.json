@@ -30,6 +30,7 @@
     "ios": "react-native run-ios --project-path \"./example/ios\"",
     "android": "react-native run-android --root example",
     "start": "react-native start",
+    "start:windows": "react-native start --use-react-native-windows",
     "build": "tsc",
     "flow": "flow",
     "lint": "eslint src --ext .ts,.tsx --cache",
@@ -52,7 +53,8 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.2",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.62",
+    "react-native-windows": "0.62",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.8.3"
   },
@@ -62,5 +64,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2"
   }
 }
