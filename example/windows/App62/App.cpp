@@ -16,14 +16,14 @@ using namespace winrt::App62::implementation;
 /// </summary>
 App::App() noexcept
 {
-    MainComponentName(L"App62");
+    MainComponentName(L"App");
 
 #if BUNDLE
-    JavaScriptBundleFile(L"index.windows");
+    JavaScriptBundleFile(L"example/App");
     InstanceSettings().UseWebDebugger(false);
     InstanceSettings().UseFastRefresh(false);
 #else
-    JavaScriptMainModuleName(L"index");
+    JavaScriptMainModuleName(L"App");
     InstanceSettings().UseWebDebugger(true);
     InstanceSettings().UseFastRefresh(true);
 #endif
@@ -37,6 +37,7 @@ App::App() noexcept
     RegisterAutolinkedNativeModulePackages(PackageProviders()); // Includes any autolinked modules
 
     PackageProviders().Append(make<ReactPackageProvider>()); // Includes all modules in this project
+    PackageProviders().Append(winrt::Clipboard::ReactPackageProvider());
 
     InitializeComponent();
 }
