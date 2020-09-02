@@ -16,14 +16,14 @@ using namespace winrt::App62::implementation;
 /// </summary>
 App::App() noexcept
 {
-    MainComponentName(L"App");
+    MainComponentName(L"example");
 
 #if BUNDLE
     JavaScriptBundleFile(L"example/App");
     InstanceSettings().UseWebDebugger(false);
     InstanceSettings().UseFastRefresh(false);
 #else
-    JavaScriptMainModuleName(L"App");
+    JavaScriptMainModuleName(L"index");
     InstanceSettings().UseWebDebugger(true);
     InstanceSettings().UseFastRefresh(true);
 #endif
