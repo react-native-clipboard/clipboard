@@ -8,7 +8,7 @@
     <MinimalCoreWin>true</MinimalCoreWin>
     <ProjectGuid>{99a938fa-9ff3-47a0-9256-195a06e7fdd1}</ProjectGuid>
     <ProjectName>Clipboard</ProjectName>
-    <RootNamespace>Clipboard</RootNamespace>
+    <RootNamespace>NativeClipboard</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>

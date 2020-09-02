@@ -8,7 +8,7 @@
 // order for the AddAttributedModules call below to find them.
 #include "Clipboard.h"
 
-namespace winrt::Clipboard::implementation
+namespace winrt::NativeClipboard::implementation
 {
     void ReactPackageProvider::CreatePackage(IReactPackageBuilder const& packageBuilder) noexcept
     {

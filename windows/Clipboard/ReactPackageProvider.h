@@ -4,7 +4,7 @@
 
 using namespace winrt::Microsoft::ReactNative;
 
-namespace winrt::Clipboard::implementation
+namespace winrt::NativeClipboard::implementation
 {
     struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider>
     {
@@ -14,7 +14,7 @@ namespace winrt::Clipboard::implementation
     };
 }
 
-namespace winrt::Clipboard::factory_implementation
+namespace winrt::NativeClipboard::factory_implementation
 {
     struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider, implementation::ReactPackageProvider> {};
 }

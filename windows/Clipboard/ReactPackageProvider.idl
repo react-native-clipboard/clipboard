@@ -1,5 +1,5 @@
 
-namespace Clipboard
+namespace NativeClipboard
 {
     [webhosthidden]
     [default_interface]

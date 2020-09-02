@@ -25,4 +25,4 @@
 #include <winrt/Microsoft.UI.Xaml.Media.h>
 #include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>
 
-#include <winrt/Clipboard.h>
+#include <winrt/NativeClipboard.h>

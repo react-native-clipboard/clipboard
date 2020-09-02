@@ -37,7 +37,7 @@ App::App() noexcept
     RegisterAutolinkedNativeModulePackages(PackageProviders()); // Includes any autolinked modules
 
     PackageProviders().Append(make<ReactPackageProvider>()); // Includes all modules in this project
-    PackageProviders().Append(winrt::Clipboard::ReactPackageProvider());
+    PackageProviders().Append(winrt::NativeClipboard::ReactPackageProvider());
 
     InitializeComponent();
 }
