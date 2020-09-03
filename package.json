@@ -30,7 +30,7 @@
   "scripts": {
     "ios": "react-native run-ios --project-path \"./example/ios\"",
     "android": "react-native run-android --root example",
-    "windows": "react-native run-windows --sln ./example/windows/ClipboardExample.sln",
+    "windows": "cd example && react-native run-windows",
     "start": "react-native start",
     "build": "tsc",
     "flow": "flow",
