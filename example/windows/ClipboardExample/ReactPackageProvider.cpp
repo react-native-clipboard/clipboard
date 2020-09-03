@@ -5,7 +5,7 @@
 
 using namespace winrt::Microsoft::ReactNative;
 
-namespace winrt::App62::implementation
+namespace winrt::ClipboardExample::implementation
 {
 
 void ReactPackageProvider::CreatePackage(IReactPackageBuilder const &packageBuilder) noexcept
@@ -13,6 +13,6 @@ void ReactPackageProvider::CreatePackage(IReactPackageBuilder const &packageBuil
     AddAttributedModules(packageBuilder);
 }
 
-} // namespace winrt::App62::implementation
+} // namespace winrt::ClipboardExample::implementation
 
 

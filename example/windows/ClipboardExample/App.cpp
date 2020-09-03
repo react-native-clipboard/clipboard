@@ -6,8 +6,8 @@
 #include "ReactPackageProvider.h"
 
 
-using namespace winrt::App62;
-using namespace winrt::App62::implementation;
+using namespace winrt::ClipboardExample;
+using namespace winrt::ClipboardExample::implementation;
 
 /// <summary>
 /// Initializes the singleton application object.  This is the first line of

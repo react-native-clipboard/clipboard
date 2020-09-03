@@ -14,8 +14,8 @@
   <mp:PhoneIdentity PhoneProductId="5b719d1c-45cd-42e5-a15b-6e23d9c64bc3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>App62</DisplayName>
-    <PublisherDisplayName>asklar</PublisherDisplayName>
+    <DisplayName>ClipboardExample</DisplayName>
+    <PublisherDisplayName>Microsoft</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="App62.App">
+      EntryPoint="ClipboardExample.App">
       <uap:VisualElements
-        DisplayName="App62"
+        DisplayName="ClipboardExample"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="App62"
+        Description="React Native Windows app Clipboard module example"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

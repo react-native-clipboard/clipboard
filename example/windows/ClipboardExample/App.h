@@ -2,12 +2,12 @@
 
 #include "App.xaml.g.h"
 
-namespace winrt::App62::implementation
+namespace winrt::ClipboardExample::implementation
 {
     struct App : AppT<App>
     {
         App() noexcept;
     };
-} // namespace winrt::App62::implementation
+} // namespace winrt::ClipboardExample::implementation
 
 
