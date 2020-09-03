@@ -30,7 +30,6 @@
     "ios": "react-native run-ios --project-path \"./example/ios\"",
     "android": "react-native run-android --root example",
     "start": "react-native start",
-    "start:windows": "react-native start --use-react-native-windows",
     "build": "tsc",
     "flow": "flow",
     "lint": "eslint src --ext .ts,.tsx --cache",
