@@ -4,7 +4,6 @@
 #include <functional>
 #include <string>
 #include <NativeModules.h>
-#include <../include/ReactWindowsCore/cdebug.h>
 #include <../Common/unicode.h>
 
 #include <winrt/Windows.Foundation.h>

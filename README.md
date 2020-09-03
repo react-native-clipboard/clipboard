@@ -2,12 +2,12 @@
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
-![Supports iOS and Android][support-badge]
+![Supports iOS, Android and Windows][support-badge]
 [![MIT License][license-badge]][license]
 [![Lean Core Badge][lean-core-badge]][lean-core-issue]
 
 
-React Native Clipboard API for both iOS and Android
+React Native Clipboard API for iOS, Android and Windows.
 
 | iOS | Android | Windows |
 | --- | --- |
