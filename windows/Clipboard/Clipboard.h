@@ -39,7 +39,7 @@ namespace NativeClipboard {
 					});
 					return;
 				}
-				result.Reject("Failure");
+				result.Resolve("");
 			}
 		}
 
