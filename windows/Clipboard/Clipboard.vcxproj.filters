@@ -14,11 +14,14 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Clipboard.cpp" />
     <ClCompile Include="ReactPackageProvider.cpp" />
+    <ClCompile Include="Unicode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Clipboard.h" />
     <ClInclude Include="ReactPackageProvider.h" />
+    <ClInclude Include="Unicode.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Clipboard.def" />
