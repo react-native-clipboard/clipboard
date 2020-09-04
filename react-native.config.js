@@ -2,6 +2,12 @@ module.exports = {
   project: {
     android: {sourceDir: './example/android'},
     ios: {project: './example/ios/example.xcworkspace'},
-    windows: {project: './example/windows/ClipboardExample.sln'},
+    windows: {
+      sourceDir: './example/windows',
+      solutionFile: 'ClipboardExample.sln',
+      project: {
+        projectFile: 'ClipboardExample/ClipboardExample.vcxproj',
+      },
+    },
   },
 };

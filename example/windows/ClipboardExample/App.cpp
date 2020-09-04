@@ -19,7 +19,7 @@ App::App() noexcept
     MainComponentName(L"example");
 
 #if BUNDLE
-    JavaScriptBundleFile(L"example/App");
+    JavaScriptBundleFile(L"index");
     InstanceSettings().UseWebDebugger(false);
     InstanceSettings().UseFastRefresh(false);
 #else
