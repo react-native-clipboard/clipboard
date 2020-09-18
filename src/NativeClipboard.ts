@@ -8,6 +8,7 @@ import {NativeModules} from 'react-native';
 //   +getConstants: () => {||};
 //   +getString: () => Promise<string>;
 //   +setString: (content: string) => void;
+//   +hasString: () => Promise<boolean>;
 // }
 
 export default NativeModules.RNCClipboard;
