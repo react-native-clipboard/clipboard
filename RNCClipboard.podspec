@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/react-native-community/clipboard", :tag => "v#{s.version}" }
   s.source_files  = "ios/**/*.{h,m,mm}"
 
-  s.dependency 'React'
+  s.dependency 'React-Core'
 end
