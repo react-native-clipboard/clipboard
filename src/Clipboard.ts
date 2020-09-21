@@ -28,7 +28,7 @@ export const Clipboard = {
     NativeClipboard.setString(content);
   },
   /**
-   * Returns whether the clipborad has content or is empty. 
+   * Returns whether the clipboard has content or is empty.
    * This method returns a `Promise`, so you can use following code to get clipboard content
    * ```javascript
    * async _hasContent() {
@@ -38,5 +38,5 @@ export const Clipboard = {
    */
   hasString() {
     return NativeClipboard.hasString();
-  }
+  },
 };
