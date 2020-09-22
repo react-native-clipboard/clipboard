@@ -31,13 +31,13 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
 RCT_EXPORT_METHOD(hasString:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-  bool stringPresent = false;
+  BOOL stringPresent = YES;
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
   if (@available(iOS 10, *)) {
     stringPresent = clipboard.hasStrings;
   } else {
     NSString* stringInPasteboard = clipboard.string;
-    stringPresent = stringInPasteboard != nil;
+    stringPresent = [stringInPasteboard length] == 0;
   }
 
   resolve([NSNumber numberWithBool: stringPresent]);
