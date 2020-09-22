@@ -18,7 +18,7 @@ namespace NativeClipboard {
   {
 
     REACT_METHOD(GetString, L"getString");
-    void GetString(bool error, React::ReactPromise<React::JSValue>&& result) noexcept;
+    void GetString(React::ReactPromise<std::string>&& result) noexcept;
 
     REACT_METHOD(SetString, L"setString");
     void SetString(std::string const& str) noexcept;
