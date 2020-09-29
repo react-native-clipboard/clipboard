@@ -2,16 +2,16 @@
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
-![Supports iOS and Android][support-badge]
+![Supports iOS, Android and Windows][support-badge]
 [![MIT License][license-badge]][license]
 [![Lean Core Badge][lean-core-badge]][lean-core-issue]
 
 
-React Native Clipboard API for both iOS and Android
+React Native Clipboard API for iOS, Android and Windows.
 
-| iOS | Android |
+| iOS | Android | Windows |
 | --- | --- |
-| <img src ="https://user-images.githubusercontent.com/6936373/73284520-0ce29880-4238-11ea-9d0e-2061b2d6f17a.png" width="320"/> | <img src ="https://user-images.githubusercontent.com/6936373/73284517-0ce29880-4238-11ea-96c7-5a6337c43da5.png" width="320"/> |
+| <img src ="https://user-images.githubusercontent.com/6936373/73284520-0ce29880-4238-11ea-9d0e-2061b2d6f17a.png" width="320"/> | <img src ="https://user-images.githubusercontent.com/6936373/73284517-0ce29880-4238-11ea-96c7-5a6337c43da5.png" width="320"/> | <img src="https://user-images.githubusercontent.com/22989529/92150676-9bbe2180-edd4-11ea-8ef7-513451a00594.png" width="320" /> |
 
 
 
@@ -216,7 +216,7 @@ The library is released under the MIT licence. For more information see [`LICENS
 [build]: https://circleci.com/gh/react-native-community/clipboard
 [version-badge]: https://img.shields.io/npm/v/@react-native-community/clipboard.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@react-native-community/clipboard
-[support-badge]:https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square
+[support-badge]:https://img.shields.io/badge/platforms-android%20|%20ios%20|windows-lightgrey.svg?style=flat-square
 [license-badge]: https://img.shields.io/npm/l/@react-native-community/clipboard.svg?style=flat-square
 [license]: https://opensource.org/licenses/MIT
 [lean-core-badge]: https://img.shields.io/badge/Lean%20Core-Extracted-brightgreen.svg?style=flat-square
