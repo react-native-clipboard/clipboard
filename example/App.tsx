@@ -7,6 +7,7 @@ import {
   TextInput,
   Alert,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import {useClipboard} from '../src';
 
@@ -27,7 +28,7 @@ export const App: React.FC = () => {
         <Text style={styles.clipboardContent}>{data}</Text>
         <View style={styles.seperator} />
         <TextInput
-          style={styles.textInput}
+          style={Platform.OS === 'macos' ? styles.textInputMacOS : styles.textInput}
           onChangeText={(input) => setText(input)}
           value={text}
           placeholder="Type here..."
@@ -70,6 +71,13 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingHorizontal: 80,
     paddingVertical: 8,
+    marginBottom: 16,
+  },
+  textInputMacOS: {
+    borderColor: 'gray',
+    borderWidth: StyleSheet.hairlineWidth,
+    width: 300,
+    padding: 4,
     marginBottom: 16,
   },
   clipboardContent: {
