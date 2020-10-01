@@ -2,7 +2,7 @@
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
-![Supports macOS, iOS, Android and Windows][support-badge]
+![Supports macOS, iOS, Android, and Windows][support-badge]
 [![MIT License][license-badge]][license]
 [![Lean Core Badge][lean-core-badge]][lean-core-issue]
 
@@ -10,7 +10,7 @@
 React Native Clipboard API for macOS, iOS, Android, and Windows.
 
 | macOS | iOS | Android | Windows |
-| --- | --- | --- | -- |
+| --- | --- | --- | --- |
 | <img src ="https://user-images.githubusercontent.com/717674/90572309-8a381100-e168-11ea-92cb-ecad8e333d8f.png" width="320"/> | <img src ="https://user-images.githubusercontent.com/6936373/73284520-0ce29880-4238-11ea-9d0e-2061b2d6f17a.png" width="320"/> | <img src ="https://user-images.githubusercontent.com/6936373/73284517-0ce29880-4238-11ea-96c7-5a6337c43da5.png" width="320"/> | <img src="https://user-images.githubusercontent.com/22989529/92150676-9bbe2180-edd4-11ea-8ef7-513451a00594.png" width="320" /> |
 
 
