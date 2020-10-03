@@ -1,0 +1,188 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0948FC9C24DCC218003F28CC /* RNCClipboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 0948FC9B24DCC218003F28CC /* RNCClipboard.h */; };
+		0948FC9E24DCC218003F28CC /* RNCClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948FC9D24DCC218003F28CC /* RNCClipboard.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0948FC9824DCC218003F28CC /* libRNCClipboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCClipboard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0948FC9B24DCC218003F28CC /* RNCClipboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCClipboard.h; sourceTree = "<group>"; };
+		0948FC9D24DCC218003F28CC /* RNCClipboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCClipboard.m; sourceTree = "<group>"; };
+		09E83AD424EDCEB900627E7F /* RNCClipboard.shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = RNCClipboard.shared.xcconfig; sourceTree = "<group>"; };
+		09E83AD524EDD01200627E7F /* RNCClipboard.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = RNCClipboard.release.xcconfig; sourceTree = "<group>"; };
+		09E83AD624EDD01300627E7F /* RNCClipboard.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = RNCClipboard.debug.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0948FC9624DCC218003F28CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0948FC8F24DCC218003F28CC = {
+			isa = PBXGroup;
+			children = (
+				09E83AD324EDCEB900627E7F /* config */,
+				0948FC9924DCC218003F28CC /* Products */,
+				0948FC9B24DCC218003F28CC /* RNCClipboard.h */,
+				0948FC9D24DCC218003F28CC /* RNCClipboard.m */,
+			);
+			sourceTree = "<group>";
+		};
+		0948FC9924DCC218003F28CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0948FC9824DCC218003F28CC /* libRNCClipboard.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		09E83AD324EDCEB900627E7F /* config */ = {
+			isa = PBXGroup;
+			children = (
+				09E83AD624EDD01300627E7F /* RNCClipboard.debug.xcconfig */,
+				09E83AD524EDD01200627E7F /* RNCClipboard.release.xcconfig */,
+				09E83AD424EDCEB900627E7F /* RNCClipboard.shared.xcconfig */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0948FC9424DCC218003F28CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0948FC9C24DCC218003F28CC /* RNCClipboard.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0948FC9724DCC218003F28CC /* RNCClipboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0948FCA124DCC218003F28CC /* Build configuration list for PBXNativeTarget "RNCClipboard" */;
+			buildPhases = (
+				0948FC9424DCC218003F28CC /* Headers */,
+				0948FC9524DCC218003F28CC /* Sources */,
+				0948FC9624DCC218003F28CC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNCClipboard;
+			productName = RNCClipboard;
+			productReference = 0948FC9824DCC218003F28CC /* libRNCClipboard.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0948FC9024DCC218003F28CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				TargetAttributes = {
+					0948FC9724DCC218003F28CC = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 0948FC9324DCC218003F28CC /* Build configuration list for PBXProject "RNCClipboard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0948FC8F24DCC218003F28CC;
+			productRefGroup = 0948FC9924DCC218003F28CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0948FC9724DCC218003F28CC /* RNCClipboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0948FC9524DCC218003F28CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0948FC9E24DCC218003F28CC /* RNCClipboard.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0948FC9F24DCC218003F28CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E83AD624EDD01300627E7F /* RNCClipboard.debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		0948FCA024DCC218003F28CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E83AD524EDD01200627E7F /* RNCClipboard.release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		0948FCA224DCC218003F28CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E83AD424EDCEB900627E7F /* RNCClipboard.shared.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		0948FCA324DCC218003F28CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E83AD424EDCEB900627E7F /* RNCClipboard.shared.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0948FC9324DCC218003F28CC /* Build configuration list for PBXProject "RNCClipboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0948FC9F24DCC218003F28CC /* Debug */,
+				0948FCA024DCC218003F28CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0948FCA124DCC218003F28CC /* Build configuration list for PBXNativeTarget "RNCClipboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0948FCA224DCC218003F28CC /* Debug */,
+				0948FCA324DCC218003F28CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0948FC9024DCC218003F28CC /* Project object */;
+}

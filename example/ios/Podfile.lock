@@ -217,7 +217,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - RNCClipboard (1.2.2):
+  - RNCClipboard (1.2.3):
     - React
   - Yoga (1.14.0)
 
@@ -336,9 +336,9 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNCClipboard: d10207262ce4c225bc296480e13af129670a5d4c
+  RNCClipboard: 4e1a5335d050517045357843897d30e5734e29c1
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: 290981131dec28df38ae4d74e4d43ce9a15270ad
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
