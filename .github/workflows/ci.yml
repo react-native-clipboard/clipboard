@@ -107,7 +107,5 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn
-      - name: Install Podfiles
-        run: cd example && npx pod-install
       - name: Build example app
         run: yarn windows
