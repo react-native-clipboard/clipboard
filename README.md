@@ -212,8 +212,8 @@ Please see the [`contributing guide`](/CONTRIBUTING.md).
 
 The library is released under the MIT licence. For more information see [`LICENSE`](/LICENSE).
 
-[build-badge]: https://img.shields.io/circleci/project/github/react-native-community/clipboard/master.svg?style=flat-square
-[build]: https://circleci.com/gh/react-native-community/clipboard
+[build-badge]: https://github.com/react-native-community/clipboard/workflows/Build/badge.svg
+[build]: https://github.com/react-native-community/clipboard/actions
 [version-badge]: https://img.shields.io/npm/v/@react-native-community/clipboard.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@react-native-community/clipboard
 [support-badge]: https://img.shields.io/badge/platforms-android%20|%20ios%20|%20macos%20|%20windows-lightgrey.svg?style=flat-square
