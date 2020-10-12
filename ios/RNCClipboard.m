@@ -28,4 +28,19 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
   resolve((clipboard.string ? : @""));
 }
 
+RCT_EXPORT_METHOD(hasString:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  BOOL stringPresent = YES;
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  if (@available(iOS 10, *)) {
+    stringPresent = clipboard.hasStrings;
+  } else {
+    NSString* stringInPasteboard = clipboard.string;
+    stringPresent = [stringInPasteboard length] == 0;
+  }
+
+  resolve([NSNumber numberWithBool: stringPresent]);
+}
+
 @end
