@@ -196,6 +196,7 @@ Can check if there is a content in clipboard without triggering PasteBoard notif
 static hasURL()
 ```
 
+(iOS only)
 Returns whether the clipboard has a URL content.
 Can check if there is a URL content in clipboard without triggering PasteBoard notification for iOS 14+
 
