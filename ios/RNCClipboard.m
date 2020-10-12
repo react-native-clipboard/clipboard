@@ -43,4 +43,15 @@ RCT_EXPORT_METHOD(hasString:(RCTPromiseResolveBlock)resolve
   resolve([NSNumber numberWithBool: stringPresent]);
 }
 
+RCT_EXPORT_METHOD(hasURL:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  BOOL urlPresent = NO;
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  if (@available(iOS 10, *)) {
+    urlPresent = clipboard.hasURLs;
+  }
+  resolve([NSNumber numberWithBool: urlPresent]);
+}
+
 @end
