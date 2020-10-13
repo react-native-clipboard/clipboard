@@ -5,13 +5,13 @@
     "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
     "rootDir": "src",
     "outDir": "dist",
-    "lib": ["es2016", "dom"],
+    "lib": ["es2016"],
     "jsx": "react",
     "declaration": true,
     /* Strict Type-Checking Options */
     "strict": true /* Enable all strict type-checking options. */,
     "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
   },
-  "exclude": ["example","dist"],
+  "exclude": ["example", "dist"],
   "include": ["src"]
 }
