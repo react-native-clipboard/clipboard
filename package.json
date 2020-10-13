@@ -1,7 +1,7 @@
 {
   "name": "@react-native-community/clipboard",
-  "version": "1.2.2",
-  "description": "React Native Clipboard API for both iOS and Android",
+  "version": "1.5.0",
+  "description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
   "keywords": [
     "Clipboard",
     "getString",
@@ -24,14 +24,16 @@
     "dist",
     "RNCClipboard.podspec",
     "ios",
-    "android"
+    "macos",
+    "android",
+    "windows"
   ],
   "scripts": {
     "ios": "react-native run-ios --project-path \"./example/ios\"",
     "android": "react-native run-android --root example",
+    "windows": "cd example && react-native run-windows",
     "start": "react-native start",
     "build": "tsc",
-    "flow": "flow",
     "lint": "eslint src --ext .ts,.tsx --cache",
     "prepare": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -41,19 +43,18 @@
     "preset": "react-native"
   },
   "devDependencies": {
-    "@react-native-community/eslint-config": "^1.0.0",
-    "@types/react-native": "^0.62.0",
     "@babel/core": "^7.7.5",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.9.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/react-native": "^0.62.0",
+    "babel-jest": "^26.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "flow-bin": "0.105.2",
-    "jest": "^24.9.0",
+    "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-macos": "^0.62.0-0",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.8.3"
   },

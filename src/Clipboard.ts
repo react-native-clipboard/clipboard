@@ -27,4 +27,29 @@ export const Clipboard = {
   setString(content: string) {
     NativeClipboard.setString(content);
   },
+  /**
+   * Returns whether the clipboard has content or is empty.
+   * This method returns a `Promise`, so you can use following code to get clipboard content
+   * ```javascript
+   * async _hasContent() {
+   *   var hasContent = await Clipboard.hasString();
+   * }
+   * ```
+   */
+  hasString() {
+    return NativeClipboard.hasString();
+  },
+  /**
+   * (IOS Only)
+   * Returns whether the clipboard has content or is empty.
+   * This method returns a `Promise`, so you can use following code to get clipboard content
+   * ```javascript
+   * async _hasContent() {
+   *   var hasContent = await Clipboard.hasString();
+   * }
+   * ```
+   */
+  hasURL() {
+    return NativeClipboard.hasURL();
+  },
 };

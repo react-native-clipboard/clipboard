@@ -217,8 +217,8 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - RNCClipboard (1.2.2):
-    - React
+  - RNCClipboard (1.4.0):
+    - React-Core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -306,7 +306,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../../node_modules/react-native/ReactCommon"
   RNCClipboard:
-    :podspec: "../../"
+    :path: "../../"
   Yoga:
     :path: "../../node_modules/react-native/ReactCommon/yoga"
 
@@ -336,9 +336,9 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNCClipboard: d10207262ce4c225bc296480e13af129670a5d4c
+  RNCClipboard: a1dd5a278566666ac8f9c9b517b7922c801bcd98
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 290981131dec28df38ae4d74e4d43ce9a15270ad
+PODFILE CHECKSUM: 380d43675a8777a20f8b9fb9129133bc74f2ef51
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

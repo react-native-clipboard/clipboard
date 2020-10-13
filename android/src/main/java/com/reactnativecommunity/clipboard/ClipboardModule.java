@@ -59,4 +59,15 @@ public class ClipboardModule extends ContextBaseJavaModule {
     ClipboardManager clipboard = getClipboardService();
     clipboard.setPrimaryClip(clipdata);
   }
+
+  @ReactMethod
+  public void hasString(Promise promise) {
+    try {
+      ClipboardManager clipboard = getClipboardService();
+      ClipData clipData = clipboard.getPrimaryClip();
+      promise.resolve(clipData != null && clipData.getItemCount() >= 1);
+    } catch (Exception e) {
+      promise.reject(e);
+    }
+  }
 }

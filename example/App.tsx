@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,14 +7,24 @@ import {
   TextInput,
   Alert,
   SafeAreaView,
+  Platform,
 } from 'react-native';
-import {useClipboard} from '../src';
+import Clipboard, {useClipboard} from '../src';
 
 export const App: React.FC = () => {
   const [text, setText] = useState('');
+  const [isURL, setIsURL] = useState(false);
   const [data, setString] = useClipboard();
 
-  const writeToClipboard = () => {
+  const checkStringType = async () => {
+    const checkClipboard = await Clipboard.hasURL();
+    setIsURL(checkClipboard);
+  };
+  useEffect(() => {
+    checkStringType();
+  }, [data]);
+
+  const writeToClipboard = async () => {
     setString(text);
     Alert.alert(`Copied to clipboard: ${text}`);
   };
@@ -25,9 +35,13 @@ export const App: React.FC = () => {
       <View style={styles.main}>
         <Text style={styles.boldText}>Clipboard Contents: </Text>
         <Text style={styles.clipboardContent}>{data}</Text>
+        <Text style={styles.boldText}>Content is URL: </Text>
+        <Text style={styles.clipboardContent}>{JSON.stringify(isURL)}</Text>
         <View style={styles.seperator} />
         <TextInput
-          style={styles.textInput}
+          style={
+            Platform.OS === 'macos' ? styles.textInputMacOS : styles.textInput
+          }
           onChangeText={(input) => setText(input)}
           value={text}
           placeholder="Type here..."
@@ -41,7 +55,6 @@ export const App: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eef',
     alignItems: 'center',
   },
   main: {
@@ -70,6 +83,13 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingHorizontal: 80,
     paddingVertical: 8,
+    marginBottom: 16,
+  },
+  textInputMacOS: {
+    borderColor: 'gray',
+    borderWidth: StyleSheet.hairlineWidth,
+    width: 300,
+    padding: 4,
     marginBottom: 16,
   },
   clipboardContent: {
