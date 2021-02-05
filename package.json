@@ -1,5 +1,5 @@
 {
-  "name": "@react-native-community/clipboard",
+  "name": "@react-native-clipboard/clipboard",
   "version": "1.5.1",
   "description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
   "keywords": [
@@ -8,13 +8,13 @@
     "react-native",
     "setString"
   ],
-  "homepage": "https://github.com/react-native-community/clipboard#readme",
+  "homepage": "https://github.com/react-native-clipboard/clipboard#readme",
   "bugs": {
-    "url": "https://github.com/react-native-community/clipboard/issues"
+    "url": "https://github.com/react-native-clipboard/clipboard/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-community/clipboard.git"
+    "url": "git+https://github.com/react-native-clipboard/clipboard.git"
   },
   "license": "MIT",
   "author": "M.Haris Baig <harisbaig100@gmail.com>",
