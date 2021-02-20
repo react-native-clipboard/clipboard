@@ -9,7 +9,7 @@ declare var document: any;
 
 export const Clipboard = {
   getString(): Promise<string> {
-    if (navigator && navigator.clipboard){
+    if (navigator && navigator.clipboard) {
       return navigator.clipboard.readText();
     } else {
       const el = document.createElement('textarea');
@@ -23,7 +23,7 @@ export const Clipboard = {
   },
 
   setString(content: string) {
-    if (navigator && navigator.clipboard){
+    if (navigator && navigator.clipboard) {
       navigator.clipboard.writeText(content);
     } else {
       const el = document.createElement('textarea');
