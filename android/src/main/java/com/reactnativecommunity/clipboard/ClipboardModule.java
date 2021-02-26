@@ -55,9 +55,13 @@ public class ClipboardModule extends ContextBaseJavaModule {
 
   @ReactMethod
   public void setString(String text) {
-    ClipData clipdata = ClipData.newPlainText(null, text);
-    ClipboardManager clipboard = getClipboardService();
-    clipboard.setPrimaryClip(clipdata);
+    try {
+      ClipData clipdata = ClipData.newPlainText(null, text);
+      ClipboardManager clipboard = getClipboardService();
+      clipboard.setPrimaryClip(clipdata);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @ReactMethod
