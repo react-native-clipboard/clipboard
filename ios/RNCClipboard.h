@@ -2,8 +2,9 @@
 #define RNCClipboard_h
 
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface RNCClipboard : NSObject <RCTBridgeModule>
+@interface RNCClipboard : RCTEventEmitter <RCTBridgeModule>
 
 @end
 
