@@ -31,10 +31,10 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
-      Clipboard.addListener(changeListener);
+      const listener = Clipboard.addListener(changeListener);
 
       return () => {
-        Clipboard.removeListener(changeListener);
+        listener.remove();
       };
     }
   }, []);
