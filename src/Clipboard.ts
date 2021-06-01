@@ -1,6 +1,6 @@
+import {EmitterSubscription, Platform} from 'react-native';
 import NativeClipboard, {
   addListener,
-  removeListener,
   removeAllListeners,
 } from './NativeClipboard';
 
@@ -88,33 +88,25 @@ export const Clipboard = {
    * ```
    */
   hasURL() {
+    if (Platform.OS !== 'ios') {
+      return;
+    }
     return NativeClipboard.hasURL();
   },
   /**
    * (iOS and Android Only)
    * Adds a listener to get notifications when the clipboard has changed.
    * If this is the first listener, turns on clipboard notifications on the native side.
+   * It returns EmitterSubscription where you can call "remove" to remove listener
    * ```javascript
    * const listener = () => console.log("changed!");
    * Clipboard.addListener(listener);
    * ```
    */
-  addListener(callback: () => void) {
-    addListener(callback);
+  addListener(callback: () => void): EmitterSubscription {
+    return addListener(callback);
   },
-  /**
-   * (iOS and Android Only)
-   * Removes a previously added listener.
-   * If this is the last listener, turns off clipboard notifications on the native side.
-   * ```javascript
-   * const listener = () => console.log("changed!");
-   * Clipboard.addListener(listener);
-   * Clipboard.removeListener(listener);
-   * ```
-   */
-  removeListener(callback: () => void) {
-    removeListener(callback);
-  },
+
   /**
    * (iOS and Android Only)
    * Removes all previously registered listeners and turns off notifications on the native side.

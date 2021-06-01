@@ -11,14 +11,14 @@ module.exports = {
     blacklistRE: blacklist([
       // This prevents "react-native run-windows" from hitting: EBUSY: resource busy or locked, open msbuild.ProjectImports.zip
       // https://github.com/dotnet/msbuild/issues/5383
-      /.*\.ProjectImports\.zip/
+      /.*\.ProjectImports\.zip/,
     ]),
   },
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
   },
