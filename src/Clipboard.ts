@@ -26,7 +26,7 @@ export const Clipboard = {
   getImagePNG(): Promise<string> {
     return NativeClipboard.getImagePNG();
   },
-    /**
+  /**
    * Get clipboard image as JPG in base64, this method returns a `Promise`, so you can use following code to get clipboard content
    * ```javascript
    * async _getContent() {
