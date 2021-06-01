@@ -1,4 +1,8 @@
-import NativeClipboard from './NativeClipboard';
+import NativeClipboard, {
+  addListener,
+  removeListener,
+  removeAllListeners,
+} from './NativeClipboard';
 
 /**
  * `Clipboard` gives you an interface for setting and getting content from Clipboard on both iOS and Android
@@ -85,5 +89,40 @@ export const Clipboard = {
    */
   hasURL() {
     return NativeClipboard.hasURL();
+  },
+  /**
+   * (iOS and Android Only)
+   * Adds a listener to get notifications when the clipboard has changed.
+   * If this is the first listener, turns on clipboard notifications on the native side.
+   * ```javascript
+   * const listener = () => console.log("changed!");
+   * Clipboard.addListener(listener);
+   * ```
+   */
+  addListener(callback: () => void) {
+    addListener(callback);
+  },
+  /**
+   * (iOS and Android Only)
+   * Removes a previously added listener.
+   * If this is the last listener, turns off clipboard notifications on the native side.
+   * ```javascript
+   * const listener = () => console.log("changed!");
+   * Clipboard.addListener(listener);
+   * Clipboard.removeListener(listener);
+   * ```
+   */
+  removeListener(callback: () => void) {
+    removeListener(callback);
+  },
+  /**
+   * (iOS and Android Only)
+   * Removes all previously registered listeners and turns off notifications on the native side.
+   * ```javascript
+   * Clipboard.removeAllListeners();
+   * ```
+   */
+  removeAllListeners() {
+    removeAllListeners();
   },
 };

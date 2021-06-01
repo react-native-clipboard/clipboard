@@ -6,13 +6,58 @@
 #import <React/RCTEventDispatcher.h>
 
 
-@implementation RNCClipboard
+@implementation RNCClipboard {
+    BOOL isObserving;
+}
 
 RCT_EXPORT_MODULE();
+
+NSString *const CLIPBOARD_TEXT_CHANGED = @"RNCClipboard_TEXT_CHANGED";
+
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
+-(id) init {
+    if (self = [super init]) {
+       isObserving = NO;
+   }
+   return self;
+}
 
 - (dispatch_queue_t)methodQueue
 {
   return dispatch_get_main_queue();
+}
+
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[CLIPBOARD_TEXT_CHANGED];
+}
+
+- (void)startObserving {
+    isObserving = YES;
+}
+
+-(void)stopObserving {
+    isObserving = NO;
+}
+
+- (void) listener:(NSNotification *) notification
+{
+    if (isObserving) {
+        [self sendEventWithName:CLIPBOARD_TEXT_CHANGED body:nil];
+    }
+}
+
+RCT_EXPORT_METHOD(setListener)
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listener:) name:UIPasteboardChangedNotification object:nil];
+}
+
+RCT_EXPORT_METHOD(removeListener)
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 RCT_EXPORT_METHOD(setString:(NSString *)content)

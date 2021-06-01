@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 import Clipboard, {useClipboard} from '../src';
 
+const changeListener = () => {
+  console.warn('Clipboard changed!');
+};
+
 export const App: React.FC = () => {
   const [text, setText] = useState('');
   const [isURL, setIsURL] = useState(false);
@@ -20,9 +24,20 @@ export const App: React.FC = () => {
     const checkClipboard = await Clipboard.hasURL();
     setIsURL(checkClipboard);
   };
+
   useEffect(() => {
     checkStringType();
   }, [data]);
+
+  useEffect(() => {
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      Clipboard.addListener(changeListener);
+
+      return () => {
+        Clipboard.removeListener(changeListener);
+      };
+    }
+  }, []);
 
   const writeToClipboard = async () => {
     setString(text);
