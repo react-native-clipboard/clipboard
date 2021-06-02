@@ -79,11 +79,12 @@ export const Clipboard = {
   },
   /**
    * (IOS Only)
-   * Returns whether the clipboard has content or is empty.
-   * This method returns a `Promise`, so you can use following code to get clipboard content
+   * Returns whether the clipboard has a URL content. Can check
+   * if there is a URL content in clipboard without triggering PasteBoard notification for iOS 14+
+   * This method returns a `Promise`, so you can use following code to check for url content in clipboard.
    * ```javascript
-   * async _hasContent() {
-   *   var hasContent = await Clipboard.hasString();
+   * async _hasURL() {
+   *   var hasURL = await Clipboard.hasURL();
    * }
    * ```
    */
