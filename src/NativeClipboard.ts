@@ -20,8 +20,19 @@ export default NativeModules.RNCClipboard;
 const EVENT_NAME = 'RNCClipboard_TEXT_CHANGED';
 const eventEmitter = new NativeEventEmitter(NativeModules.RNCClipboard);
 
+let listenerCount = eventEmitter.listenerCount;
+
+// listenerCount is only available from RN 0.64
+// Older versions only have `listeners`
+if (!listenerCount) {
+  listenerCount = (eventType: string) => {
+    // @ts-ignore
+    return eventEmitter.listeners(eventType).length;
+  };
+}
+
 const addListener = (callback: () => void): EmitterSubscription => {
-  if (eventEmitter.listenerCount(EVENT_NAME) === 0) {
+  if (listenerCount(EVENT_NAME) === 0) {
     NativeModules.RNCClipboard.setListener();
   }
 
