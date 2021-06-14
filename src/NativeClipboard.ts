@@ -36,7 +36,21 @@ const addListener = (callback: () => void): EmitterSubscription => {
     NativeModules.RNCClipboard.setListener();
   }
 
-  return eventEmitter.addListener(EVENT_NAME, callback);
+  let res = eventEmitter.addListener(EVENT_NAME, callback);
+
+  // Path the remove call to also remove the native listener
+  // if we no longer have listeners
+  // @ts-ignore
+  res._remove = res.remove;
+  res.remove = function () {
+    // @ts-ignore
+    this._remove();
+    if (listenerCount(EVENT_NAME) === 0) {
+      NativeModules.RNCClipboard.removeListener();
+    }
+  };
+
+  return res;
 };
 
 const removeAllListeners = () => {
