@@ -29,6 +29,8 @@ if (!listenerCount) {
     // @ts-ignore
     return eventEmitter.listeners(eventType).length;
   };
+} else {
+  listenerCount = eventEmitter.listenerCount.bind(eventEmitter);
 }
 
 const addListener = (callback: () => void): EmitterSubscription => {
