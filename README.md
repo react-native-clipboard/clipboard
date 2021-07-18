@@ -220,6 +220,18 @@ export const HooksSample = () => {
 };
 ```
 
+## Mocking Clipboard
+
+If you're using `jest` as a test runner, you will need to setup a mock for clipboard, as NativeModules will be undefined when testing with Jest.
+
+Create a `jest.setup.js` in your project root,and set up the following to have Clipboard mocked:
+
+```js
+import mockClipboard from '@react-native-clipboard/clipboard/jest/clipboard-mock.js';
+
+jest.mock('@react-native-clipboard/clipboard', () => mockClipboard);
+```
+
 ## Maintainers
 
 - [M.Haris Baig](https://github.com/harisbaig100)
