@@ -73,6 +73,22 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
   resolve((clipboard.string ? : @""));
 }
 
+RCT_EXPORT_METHOD(setImage:(NSString *)content
+    resolve:(RCTPromiseResolveBlock) resolve
+    reject:(RCTPromiseRejectBlock) reject
+) {
+  @try {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    [pasteboard setImage:[UIImage imageWithData:imageData]];
+    resolve(nil);
+  }
+  @catch (NSException *exception) {
+    reject(@"Clipboard:setImage", exception.reason, nil);
+  }
+}
+
+
 RCT_EXPORT_METHOD(getImagePNG:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {

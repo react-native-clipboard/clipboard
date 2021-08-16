@@ -42,6 +42,24 @@ export const Clipboard = {
     return NativeClipboard.getImageJPG();
   },
   /**
+   * Set content of base64 image type. You can use following code to set clipboard content
+   * ```javascript
+   * _setContent() {
+   *   Clipboard.setImage(...);
+   * }
+   *
+   * iOS only
+   * ```
+   * @param the content to be stored in the clipboard.
+   */
+  setImage(content: string) {
+    if (Platform.OS !== 'ios') {
+      return;
+    }
+
+    NativeClipboard.setImage(content);
+  },
+  /**
    * Set content of string type. You can use following code to set clipboard content
    * ```javascript
    * _setContent() {
