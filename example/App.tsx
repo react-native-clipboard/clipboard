@@ -57,13 +57,10 @@ export const App: React.FC = () => {
 
   const getImage = async () => {
     if (await Clipboard.hasImage()) {
-       const imagejpg = await Clipboard.getImageJPG()
-        console.log('image jpg', imagejpg)
      const image = await Clipboard.getImagePNG()
-    console.log('image png', image)
-        setImage(image)
+     setImage(image)
     } else {
-      console.log('no image')
+      console.warn('No image in clipboard')
     }
   }
 
@@ -76,7 +73,8 @@ export const App: React.FC = () => {
         <Text style={styles.clipboardContent}>{data}</Text>
         <Text style={styles.boldText}>Content is URL: </Text>
         <Text style={styles.clipboardContent}>{JSON.stringify(isURL)}</Text>
-        {image && <Image source={{uri: image}} style={styles.clipboardContent} />}
+        <Text style={styles.boldText}>Content is IMAGE: </Text>
+        {image && <Image source={{uri: image}} style={styles.imageContent} />}
         <View style={styles.separator} />
         <TextInput
         selectTextOnFocus={true}
@@ -138,4 +136,8 @@ const styles = StyleSheet.create({
   clipboardContent: {
     marginBottom: 20,
   },
+  imageContent: {
+    width: 40,
+    height: 40
+  }
 });
