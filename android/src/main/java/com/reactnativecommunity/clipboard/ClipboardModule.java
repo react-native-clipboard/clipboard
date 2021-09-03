@@ -102,7 +102,7 @@ public class ClipboardModule extends ContextBaseJavaModule {
   }
 
   @ReactMethod
-  void removeListener() {
+  public void removeListener() {
     if(listener != null){
       try{
         ClipboardManager clipboard = getClipboardService();
@@ -111,5 +111,15 @@ public class ClipboardModule extends ContextBaseJavaModule {
         e.printStackTrace();
       }
     }
+  }
+  
+  @ReactMethod
+  public void addListener(String eventName) {
+    // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
+  public void removeListeners(Integer count) {
+    // Keep: Required for RN built in Event Emitter Calls.
   }
 }
