@@ -8,6 +8,8 @@ import {
   Alert,
   SafeAreaView,
   Platform,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import Clipboard, {useClipboard} from '../src';
 
@@ -19,10 +21,16 @@ export const App: React.FC = () => {
   const [text, setText] = useState('');
   const [isURL, setIsURL] = useState(false);
   const [data, setString] = useClipboard();
+  const [imageString, setImageString] = useState<string>('');
 
   const checkStringType = async () => {
     const checkClipboard = await Clipboard.hasURL();
     setIsURL(checkClipboard);
+  };
+
+  const pasteImageAndroid = async () => {
+    const base64 = await Clipboard.getImage();
+    setImageString(base64);
   };
 
   useEffect(() => {
@@ -62,7 +70,18 @@ export const App: React.FC = () => {
           placeholder="Type here..."
         />
         <Button onPress={writeToClipboard} title="Write to Clipboard" />
+        {Platform.OS === 'android' && (
+          <View style={styles.imageButtonAndroid}>
+            <Button
+              onPress={pasteImageAndroid}
+              title="Paste image from Android Clipboard"
+            />
+          </View>
+        )}
       </View>
+      {imageString === '' ? null : (
+        <Image style={styles.imageAndroid} source={{uri: imageString}} />
+      )}
     </SafeAreaView>
   );
 };
@@ -109,5 +128,12 @@ const styles = StyleSheet.create({
   },
   clipboardContent: {
     marginBottom: 20,
+  },
+  imageAndroid: {
+    height: 160,
+    width: 160,
+  },
+  imageButtonAndroid: {
+    marginTop: 10,
   },
 });
