@@ -9,7 +9,6 @@ import {
   SafeAreaView,
   Platform,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import Clipboard, {useClipboard} from '../src';
 
