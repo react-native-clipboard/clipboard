@@ -111,7 +111,6 @@ public class ClipboardModule extends ContextBaseJavaModule {
           ContentResolver cr = reactContext.getContentResolver();
           String mimeType = cr.getType(pasteUri);
           if (mimeType != null){
-            Log.i(reactContext.getApplicationInfo().packageName, "mimetype is " + mimeType);
             if (mimeType.equals("image/jpeg") || mimeType.equals("image/png") || mimeType.equals("image/jpg")){
               String imgPath = pasteUri.getPath();
               try {
@@ -127,15 +126,11 @@ public class ClipboardModule extends ContextBaseJavaModule {
                 String encodedString = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 StringBuilder builder = new StringBuilder("data:" + mimeType + ";base64,").append(encodedString);
                 promise.resolve(builder.toString());
-                Log.i(reactContext.getApplicationInfo().packageName, "the image string " + encodedString);
               } catch (IOException e) {
                 promise.reject(e);
                 e.printStackTrace();
-                Log.e(reactContext.getApplicationInfo().packageName, e.getLocalizedMessage());
               }
-              Log.i(reactContext.getApplicationInfo().packageName, "the paste is path " + imgPath);
             }
-
           }
         }
       }
