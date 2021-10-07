@@ -27,7 +27,8 @@
     "macos",
     "android",
     "windows",
-    "jest"
+    "jest",
+    "!android/**/build/*"
   ],
   "scripts": {
     "ios": "react-native run-ios --project-path \"./example/ios\"",
