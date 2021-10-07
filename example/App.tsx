@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   imageContent: {
     width: 40,
     height: 40
-  }
+  },
   imageAndroid: {
     height: 160,
     width: 160,
