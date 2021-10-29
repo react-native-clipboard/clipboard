@@ -172,10 +172,11 @@ RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
                 numberPresent = YES;
             }
         }
-        
+        resolve([NSNumber numberWithBool: numberPresent]);
     }];
+  } else {
+    resolve([NSNumber numberWithBool: numberPresent]);
   }
-  resolve([NSNumber numberWithBool: numberPresent]);
 }
 
 RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
@@ -191,10 +192,12 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
                 webURLPresent = YES;
             }
         }
-        
+        resolve([NSNumber numberWithBool: webURLPresent]);
     }];
+  } else {
+    resolve([NSNumber numberWithBool: webURLPresent]);
   }
-  resolve([NSNumber numberWithBool: webURLPresent]);
+  
 }
 
 
