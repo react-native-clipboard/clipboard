@@ -162,11 +162,11 @@ RCT_EXPORT_METHOD(hasURL:(RCTPromiseResolveBlock)resolve
 RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-  static BOOL numberPresent = NO;
   if (@available(iOS 14, *)) {
     UIPasteboard *board = [UIPasteboard generalPasteboard];
     [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
                     completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL numberPresent = NO;
         for (NSString *type in set) {
             if ([type isEqualToString:UIPasteboardDetectionPatternNumber]) {
                 numberPresent = YES;
@@ -175,18 +175,18 @@ RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
         resolve([NSNumber numberWithBool: numberPresent]);
     }];
   } else {
-    resolve([NSNumber numberWithBool: numberPresent]);
+    resolve([NSNumber numberWithBool: NO]);
   }
 }
 
 RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-  static BOOL webURLPresent = NO;
   if (@available(iOS 14, *)) {
     UIPasteboard *board = [UIPasteboard generalPasteboard];
     [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
                     completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL webURLPresent = NO;
         for (NSString *type in set) {
             if ([type isEqualToString:UIPasteboardDetectionPatternProbableWebURL]) {
                 webURLPresent = YES;
@@ -195,7 +195,7 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
         resolve([NSNumber numberWithBool: webURLPresent]);
     }];
   } else {
-    resolve([NSNumber numberWithBool: webURLPresent]);
+    resolve([NSNumber numberWithBool: NO]);
   }
   
 }
