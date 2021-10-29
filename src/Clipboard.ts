@@ -157,7 +157,7 @@ export const Clipboard = {
       return;
     }
     return NativeClipboard.hasWebURL();
-    
+  }, 
   /**
    * (iOS and Android Only)
    * Adds a listener to get notifications when the clipboard has changed.
