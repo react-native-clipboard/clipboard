@@ -84,6 +84,30 @@ export const Clipboard = {
     NativeClipboard.setString(content);
   },
   /**
+   * Set content of HTML type. You can use following code to set clipboard content
+   * ```javascript
+   * _setContent() {
+   *   Clipboard.setHTML('<b>hello world</b>', 'hello world');
+   * }
+   * ```
+   * @param {string} content the HTML to be stored in the clipboard.
+   * @param {string} text text to be used inplace of HTML be stored in the clipboard.
+   */
+  setHTML(content: string, text: string) {
+    NativeClipboard.setHTML(content, text);
+  },
+  /**
+   * Get content of HTML type, this method returns a `Promise`, so you can use following code to get clipboard content
+   * ```javascript
+   * async _getContent() {
+   *   var content = await Clipboard.getHTML();
+   * }
+   * ```
+   */
+  getHTML(): Promise<string> {
+    return NativeClipboard.getHTML();
+  },
+  /**
    * Returns whether the clipboard has content or is empty.
    * This method returns a `Promise`, so you can use following code to get clipboard content
    * ```javascript

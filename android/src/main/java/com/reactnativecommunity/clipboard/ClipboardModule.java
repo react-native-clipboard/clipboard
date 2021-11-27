@@ -83,6 +83,37 @@ public class ClipboardModule extends ContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void setHTML(String html, String text) {
+    try {
+      ClipData clipdata = ClipData.newHtmlText(null, text, html);
+      ClipboardManager clipboard = getClipboardService();
+      clipboard.setPrimaryClip(clipdata);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @ReactMethod
+  public void getHTML(Promise promise) {
+    try {
+      ClipboardManager clipboard = getClipboardService();
+      ClipData clipData = clipboard.getPrimaryClip();
+
+      if (clipData == null
+              || clipboard.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML)
+              || clipData.getItemCount() < 1) {
+        promise.resolve("");
+        return;
+      }
+      ClipData.Item item = clipData.getItemAt(0);
+      promise.resolve(item.getHtmlText());
+
+    } catch (Exception e) {
+      promise.reject(e);
+    }
+  }
+
+  @ReactMethod
   public void hasString(Promise promise) {
     try {
       ClipboardManager clipboard = getClipboardService();
@@ -96,15 +127,13 @@ public class ClipboardModule extends ContextBaseJavaModule {
   @ReactMethod
   public void getImage(Promise promise){
     ClipboardManager clipboardManager = getClipboardService();
-    if (!(clipboardManager.hasPrimaryClip())){
+    if (!(clipboardManager.hasPrimaryClip())) {
       promise.resolve("");
-    }
-    else if (clipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)){
+    } else if (clipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
       promise.resolve("");
-    }
-    else {
+    } else {
       ClipData clipData = clipboardManager.getPrimaryClip();
-      if(clipData != null){
+      if (clipData != null) {
         ClipData.Item item = clipData.getItemAt(0);
         Uri pasteUri = item.getUri();
         if (pasteUri != null){
@@ -167,7 +196,7 @@ public class ClipboardModule extends ContextBaseJavaModule {
       }
     }
   }
-  
+
   @ReactMethod
   public void addListener(String eventName) {
     // Keep: Required for RN built in Event Emitter Calls.
