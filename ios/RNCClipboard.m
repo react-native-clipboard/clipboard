@@ -4,6 +4,7 @@
 #import <UIKit/UIKit.h>
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
 
 @implementation RNCClipboard {
@@ -71,6 +72,23 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
 {
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
   resolve((clipboard.string ? : @""));
+}
+
+RCT_EXPORT_METHOD(setHTML:(NSString *)content
+    text:(NSString*)text
+) {
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+    NSDictionary *htmlDict = [NSDictionary dictionaryWithObjectsAndKeys:content, (NSString*)kUTTypeHTML, nil];
+    NSDictionary *textDict = [NSDictionary dictionaryWithObjectsAndKeys:text, (NSString*)kUTTypePlainText, nil];
+    clipboard.items = [NSArray arrayWithObjects:htmlDict, textDict, nil];
+}
+
+RCT_EXPORT_METHOD(getHTML:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  NSString *html = [clipboard valueForPasteboardType:(NSString*)kUTTypeHTML];
+  resolve((html ? : @""));
 }
 
 RCT_EXPORT_METHOD(setImage:(NSString *)content
