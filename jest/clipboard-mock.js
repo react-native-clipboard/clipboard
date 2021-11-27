@@ -9,6 +9,8 @@ const ClipboardMock = {
   getImageJPG: jest.fn(),
   setImage: jest.fn(),
   setString: jest.fn(),
+  setHTML: jest.fn(),
+  getHTML: jest.fn().mockResolvedValue('<b>bold mock string</b>'),
   hasString: jest.fn().mockResolvedValue(true),
   hasImage: jest.fn().mockResolvedValue(true),
   hasURL: jest.fn().mockResolvedValue(true),
