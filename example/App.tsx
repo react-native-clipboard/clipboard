@@ -70,6 +70,11 @@ export const App: React.FC = () => {
     }
   };
 
+  const setHTML = async () => {
+    Clipboard.setHTML('<b> Bold Text</b> <em> Italic Text</em>', 'text');
+    Alert.alert('Copied to clipboard: <b> Bold Text</b> <em> Italic Text</em>');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Clipboard Module</Text>
@@ -91,6 +96,7 @@ export const App: React.FC = () => {
           placeholder="Type here..."
         />
         <Button onPress={writeToClipboard} title="Write to Clipboard" />
+        <Button onPress={setHTML} title="Write HTML to Clipboard" />
         <Button
           onPress={writeImageToClipboard}
           title="Write Image to Clipboard"
