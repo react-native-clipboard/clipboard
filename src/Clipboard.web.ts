@@ -40,8 +40,9 @@ function copyContent(type: ContentType, content: string) {
   const range = document.createRange();
   range.selectNodeContents(node);
   selection.addRange(range);
-
-  document.execCommand('copy');
+  try {
+    document.execCommand('copy');
+  } catch {}
   // remove selection and node
   selection.removeAllRanges();
   document.body.removeChild(node);
