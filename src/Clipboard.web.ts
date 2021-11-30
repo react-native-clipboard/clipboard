@@ -6,6 +6,7 @@ declare var navigator: {
 };
 
 declare var document: any;
+declare var window: any;
 
 type ContentType = 'text' | 'html';
 
