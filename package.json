@@ -37,7 +37,7 @@
     "start": "react-native start",
     "build": "tsc",
     "lint": "eslint src --ext .ts,.tsx --cache",
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "test": "jest",
     "type-check": "tsc --noEmit"
   },
