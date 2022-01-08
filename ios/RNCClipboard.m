@@ -159,4 +159,48 @@ RCT_EXPORT_METHOD(hasURL:(RCTPromiseResolveBlock)resolve
   resolve([NSNumber numberWithBool: urlPresent]);
 }
 
+RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  if (@available(iOS 14, *)) {
+    UIPasteboard *board = [UIPasteboard generalPasteboard];
+    [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL numberPresent = NO;
+        for (NSString *type in set) {
+            if ([type isEqualToString:UIPasteboardDetectionPatternNumber]) {
+                numberPresent = YES;
+            }
+        }
+        resolve([NSNumber numberWithBool: numberPresent]);
+    }];
+  } else {
+    resolve([NSNumber numberWithBool: NO]);
+  }
+}
+
+RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  if (@available(iOS 14, *)) {
+    UIPasteboard *board = [UIPasteboard generalPasteboard];
+    [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL webURLPresent = NO;
+        for (NSString *type in set) {
+            if ([type isEqualToString:UIPasteboardDetectionPatternProbableWebURL]) {
+                webURLPresent = YES;
+            }
+        }
+        resolve([NSNumber numberWithBool: webURLPresent]);
+    }];
+  } else {
+    resolve([NSNumber numberWithBool: NO]);
+  }
+  
+}
+
+
+
+
 @end

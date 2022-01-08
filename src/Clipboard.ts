@@ -125,6 +125,40 @@ export const Clipboard = {
     return NativeClipboard.hasURL();
   },
   /**
+   * (IOS 14+ Only)
+   * Returns whether the clipboard has a Number(UIPasteboardDetectionPatternNumber) content. Can check
+   * if there is a Number content in clipboard without triggering PasteBoard notification for iOS 14+
+   * This method returns a `Promise`, so you can use following code to check for Number content in clipboard.
+   * ```javascript
+   * async _hasNumber() {
+   *   var hasNumber = await Clipboard.hasNumber();
+   * }
+   * ```
+   */
+    hasNumber() {
+    if (Platform.OS !== 'ios') {
+      return;
+    }
+    return NativeClipboard.hasNumber();
+  },
+  /**
+   * (IOS 14+ Only)
+   * Returns whether the clipboard has a WebURL(UIPasteboardDetectionPatternProbableWebURL) content. Can check
+   * if there is a WebURL content in clipboard without triggering PasteBoard notification for iOS 14+
+   * This method returns a `Promise`, so you can use following code to check for WebURL content in clipboard.
+   * ```javascript
+   * async _hasWebURL() {
+   *   var hasWebURL = await Clipboard.hasWebURL();
+   * }
+   * ```
+   */
+  hasWebURL() {
+    if (Platform.OS !== 'ios') {
+      return;
+    }
+    return NativeClipboard.hasWebURL();
+  }, 
+  /**
    * (iOS and Android Only)
    * Adds a listener to get notifications when the clipboard has changed.
    * If this is the first listener, turns on clipboard notifications on the native side.
