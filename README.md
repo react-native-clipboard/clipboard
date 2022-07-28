@@ -159,7 +159,20 @@ async _getContent() {
 }
 ```
 
----
+#### `getStrings()`
+
+```jsx
+static getStrings()
+```
+
+(iOS only)
+Get contents of string array type, this method returns a `Promise`, so you can use following code to get clipboard content
+
+```jsx
+async _getContent() {
+  var content = await Clipboard.getStrings();
+}
+```
 
 #### `setString()`
 
@@ -180,6 +193,28 @@ _setContent() {
 | Name    | Type   | Required | Description                               |
 | ------- | ------ | -------- | ----------------------------------------- |
 | content | string | Yes      | The content to be stored in the clipboard |
+
+#### `setStrings()`
+
+```jsx
+static setStrings(content)
+```
+
+(iOS only)
+Set content of string array type. You can use following code to set clipboard content
+
+```jsx
+_setContent() {
+  Clipboard.setStrings(['hello world', 'second string']);
+}
+```
+
+#### Parameters
+
+| Name    | Type     | Required | Description                               |
+| ------- | -------- | -------- | ----------------------------------------- |
+| content | string[] | Yes      | The content to be stored in the clipboard |
+
 
 #### `hasString()`
 
