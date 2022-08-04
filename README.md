@@ -200,6 +200,28 @@ static hasURL()
 Returns whether the clipboard has a URL content.
 Can check if there is a URL content in clipboard without triggering PasteBoard notification for iOS 14+
 
+#### `hasNumber()`
+
+```jsx
+static hasNumber()
+```
+
+(iOS 14+ only)
+Returns whether the clipboard has a Number(UIPasteboardDetectionPatternNumber) content.
+Can check if there is a Number content in clipboard without triggering PasteBoard notification for iOS 14+
+
+#### `hasWebURL()`
+
+```jsx
+static hasWebURL()
+```
+
+(iOS 14+ only)
+Returns whether the clipboard has a WebURL(UIPasteboardDetectionPatternProbableWebURL) content.
+Can check if there is a WebURL content in clipboard without triggering PasteBoard notification for iOS 14+
+
+
+
 ### useClipboard
 
 `useClipboard` is a utility hooks for the `Clipboard` module. `data` contains the content stored in the clipboard.

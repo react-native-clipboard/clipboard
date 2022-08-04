@@ -73,6 +73,22 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
   resolve((clipboard.string ? : @""));
 }
 
+RCT_EXPORT_METHOD(setImage:(NSString *)content
+    resolve:(RCTPromiseResolveBlock) resolve
+    reject:(RCTPromiseRejectBlock) reject
+) {
+  @try {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    [pasteboard setImage:[UIImage imageWithData:imageData]];
+    resolve(nil);
+  }
+  @catch (NSException *exception) {
+    reject(@"Clipboard:setImage", exception.reason, nil);
+  }
+}
+
+
 RCT_EXPORT_METHOD(getImagePNG:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
@@ -142,5 +158,49 @@ RCT_EXPORT_METHOD(hasURL:(RCTPromiseResolveBlock)resolve
   }
   resolve([NSNumber numberWithBool: urlPresent]);
 }
+
+RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  if (@available(iOS 14, *)) {
+    UIPasteboard *board = [UIPasteboard generalPasteboard];
+    [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL numberPresent = NO;
+        for (NSString *type in set) {
+            if ([type isEqualToString:UIPasteboardDetectionPatternNumber]) {
+                numberPresent = YES;
+            }
+        }
+        resolve([NSNumber numberWithBool: numberPresent]);
+    }];
+  } else {
+    resolve([NSNumber numberWithBool: NO]);
+  }
+}
+
+RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  if (@available(iOS 14, *)) {
+    UIPasteboard *board = [UIPasteboard generalPasteboard];
+    [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+        BOOL webURLPresent = NO;
+        for (NSString *type in set) {
+            if ([type isEqualToString:UIPasteboardDetectionPatternProbableWebURL]) {
+                webURLPresent = YES;
+            }
+        }
+        resolve([NSNumber numberWithBool: webURLPresent]);
+    }];
+  } else {
+    resolve([NSNumber numberWithBool: NO]);
+  }
+  
+}
+
+
+
 
 @end
