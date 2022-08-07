@@ -242,6 +242,20 @@ export const HooksSample = () => {
 };
 ```
 
+### `getImage()`
+
+```jsx
+static getImage()
+```
+
+Get content of image in base64 string type, this method returns a `Promise`, so you can use following code to get clipboard content (ANDROID only)
+
+```jsx
+async _getContent() {
+  var content = await Clipboard.getImage();
+}
+```
+
 ## Mocking Clipboard
 
 If you're using `jest` as a test runner, you will need to setup a mock for clipboard, as NativeModules will be undefined when testing with Jest.
