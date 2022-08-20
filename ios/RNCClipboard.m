@@ -73,6 +73,19 @@ RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
   resolve((clipboard.string ? : @""));
 }
 
+RCT_EXPORT_METHOD(setStrings:(NSArray<NSString *> *)array)
+{
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  clipboard.strings = (array ? : @[]);
+}
+
+RCT_EXPORT_METHOD(getStrings:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  resolve((clipboard.strings ? : @[]));
+}
+
 RCT_EXPORT_METHOD(setImage:(NSString *)content
     resolve:(RCTPromiseResolveBlock) resolve
     reject:(RCTPromiseRejectBlock) reject
