@@ -7,6 +7,7 @@
 
 package com.reactnativecommunity.clipboard;
 
+import android.annotation.TargetApi;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.ClipData;
@@ -14,13 +15,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.module.annotations.ReactModule;
@@ -28,12 +29,13 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * A module that allows JS to get/set clipboard contents.
  */
 @ReactModule(name = ClipboardModule.NAME)
-public class ClipboardModule extends ContextBaseJavaModule {
+public class ClipboardModule extends ReactContextBaseJavaModule {
 
   public static final String CLIPBOARD_TEXT_CHANGED = "RNCClipboard_TEXT_CHANGED";
   private ReactApplicationContext reactContext;
@@ -45,6 +47,12 @@ public class ClipboardModule extends ContextBaseJavaModule {
   }
 
   public static final String NAME = "RNCClipboard";
+  public static final String MIMETYPE_JPEG = "image/jpeg";
+  public static final String MIMETYPE_JPG = "image/jpg";
+  public static final String MIMETYPE_PNG = "image/png";
+  public static final String MIMETYPE_WEBP = "image/webp";
+  public static final String MIMETYPE_HEIC = "image/heic";
+  public static final String MIMETYPE_HEIF = "image/heif";
 
   @Override
   public String getName() {
@@ -52,7 +60,7 @@ public class ClipboardModule extends ContextBaseJavaModule {
   }
 
   private ClipboardManager getClipboardService() {
-    return (ClipboardManager) getContext().getSystemService(getContext().CLIPBOARD_SERVICE);
+    return (ClipboardManager) reactContext.getSystemService(Context.CLIPBOARD_SERVICE);
   }
 
   @ReactMethod
@@ -111,25 +119,35 @@ public class ClipboardModule extends ContextBaseJavaModule {
           ContentResolver cr = reactContext.getContentResolver();
           String mimeType = cr.getType(pasteUri);
           if (mimeType != null){
-            if (mimeType.equals("image/jpeg") || mimeType.equals("image/png") || mimeType.equals("image/jpg")){
-              String imgPath = pasteUri.getPath();
-              try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, pasteUri);
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                if (mimeType.equals("image/jpeg") || mimeType.equals("image/jpg")){
+            try {
+              Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, pasteUri);
+              ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+              switch(mimeType){
+                case MIMETYPE_JPEG:
+                case MIMETYPE_JPG:
                   bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                }
-                if (mimeType.equals("image/png")){
+                  break;
+                case MIMETYPE_PNG:
+                case MIMETYPE_HEIC:
+                case MIMETYPE_HEIF:
                   bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                }
-                byte[] byteArray = outputStream.toByteArray();
-                String encodedString = Base64.encodeToString(byteArray, Base64.DEFAULT);
-                StringBuilder builder = new StringBuilder("data:" + mimeType + ";base64,").append(encodedString);
-                promise.resolve(builder.toString());
-              } catch (IOException e) {
-                promise.reject(e);
-                e.printStackTrace();
+                  break;
+                case MIMETYPE_WEBP:
+                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                    bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, outputStream);
+                    break;
+                  }
+                  bitmap.compress(Bitmap.CompressFormat.WEBP, 100, outputStream);
+                  break;
+                default:
+                  return;
               }
+              byte[] byteArray = outputStream.toByteArray();
+              String encodedString = Base64.encodeToString(byteArray, Base64.DEFAULT);
+              promise.resolve("data:" + mimeType + ";base64," + encodedString);
+            } catch (IOException e) {
+              promise.reject(e);
+              e.printStackTrace();
             }
           }
         }
