@@ -133,7 +133,7 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
                   bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                   break;
                 case MIMETYPE_WEBP:
-                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                  if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q){
                     bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, outputStream);
                     break;
                   }
