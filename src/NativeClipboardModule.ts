@@ -1,4 +1,4 @@
-import { TurboModuleRegistry, TurboModule } from 'react-native';
+import { TurboModuleRegistry, TurboModule, EmitterSubscription, NativeEventEmitter } from 'react-native';
 
 export interface Spec extends TurboModule {
   /**
@@ -135,6 +135,55 @@ export interface Spec extends TurboModule {
    * ```
    */
   hasWebURL(): boolean;
+  setListener(): void;
+  removeListener(): void;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('RNCClipboard');
+const ClipboardTurboModule = TurboModuleRegistry.getEnforcing<Spec>('RNCClipboard');
+
+export default ClipboardTurboModule;
+
+const EVENT_NAME = 'RNCClipboard_TEXT_CHANGED';
+const eventEmitter = new NativeEventEmitter(ClipboardTurboModule);
+
+let listenerCount = eventEmitter.listenerCount;
+
+// listenerCount is only available from RN 0.64
+// Older versions only have `listeners`
+if (!listenerCount) {
+  listenerCount = (eventType: string) => {
+    // @ts-ignore
+    return eventEmitter.listeners(eventType).length;
+  };
+} else {
+  listenerCount = eventEmitter.listenerCount.bind(eventEmitter);
+}
+
+const addListener = (callback: () => void): EmitterSubscription => {
+  if (listenerCount(EVENT_NAME) === 0) {
+    ClipboardTurboModule.setListener();
+  }
+
+  let res = eventEmitter.addListener(EVENT_NAME, callback);
+
+  // Path the remove call to also remove the native listener
+  // if we no longer have listeners
+  // @ts-ignore
+  res._remove = res.remove;
+  res.remove = function () {
+    // @ts-ignore
+    this._remove();
+    if (listenerCount(EVENT_NAME) === 0) {
+      ClipboardTurboModule.removeListener();
+    }
+  };
+
+  return res;
+};
+
+const removeAllListeners = () => {
+  eventEmitter.removeAllListeners(EVENT_NAME);
+  ClipboardTurboModule.removeListener();
+};
+
+export {addListener, removeAllListeners};
