@@ -1,118 +1,169 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
+  Button,
+  TextInput,
+  Alert,
+  SafeAreaView,
+  Platform,
+  Image,
 } from 'react-native';
+import Clipboard, {useClipboard} from '@react-native-clipboard/clipboard';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// Small icon of a plus for demo purposes
+const TEST_IMAGE =
+  'iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const changeListener = () => {
+  console.warn('Clipboard changed!');
+};
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+export const App: React.FC = () => {
+  const [text, setText] = useState('');
+  const [isURL, setIsURL] = useState(false);
+  const [data, setString] = useClipboard();
+  const [image, setImage] = useState(null);
+  const [imageString, setImageString] = useState<string>('');
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const checkStringType = async () => {
+    const checkClipboard = await Clipboard.hasURL();
+    setIsURL(checkClipboard);
+  };
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const pasteImageAndroid = async () => {
+    const base64 = await Clipboard.getImage();
+    setImageString(base64);
+  };
+
+  useEffect(() => {
+    checkStringType();
+  }, [data]);
+
+  useEffect(() => {
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      const listener = Clipboard.addListener(changeListener);
+
+      return () => {
+        listener.remove();
+      };
+    }
+  }, []);
+
+  const writeToClipboard = async () => {
+    setString(text);
+    Alert.alert(`Copied to clipboard: ${text}`);
+  };
+
+  const writeImageToClipboard = async () => {
+    Clipboard.setImage(TEST_IMAGE);
+    Alert.alert(`Copied Image to clipboard`);
+  };
+
+  const getImage = async () => {
+    if (await Clipboard.hasImage()) {
+      const image = await Clipboard.getImagePNG();
+      setImage(image);
+    } else {
+      console.warn('No image in clipboard');
+    }
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.header}>Clipboard Module</Text>
+      <View style={styles.main}>
+        <Text style={styles.boldText}>Clipboard Contents: </Text>
+        <Text style={styles.clipboardContent}>{data}</Text>
+        <Text style={styles.boldText}>Content is URL: </Text>
+        <Text style={styles.clipboardContent}>{JSON.stringify(isURL)}</Text>
+        <Text style={styles.boldText}>Content is IMAGE: </Text>
+        {image && <Image source={{uri: image}} style={styles.imageContent} />}
+        <View style={styles.separator} />
+        <TextInput
+          selectTextOnFocus={true}
+          style={
+            Platform.OS === 'macos' ? styles.textInputMacOS : styles.textInput
+          }
+          onChangeText={input => setText(input)}
+          value={text}
+          placeholder="Type here..."
+        />
+        <Button onPress={writeToClipboard} title="Write to Clipboard" />
+        <Button
+          onPress={writeImageToClipboard}
+          title="Write Image to Clipboard"
+        />
+        <Button onPress={getImage} title="Get Image from clipboard" />
+        {Platform.OS === 'android' && (
+          <View style={styles.imageButtonAndroid}>
+            <Button
+              onPress={pasteImageAndroid}
+              title="Paste image from Android Clipboard"
+            />
+          </View>
+        )}
+      </View>
+      {imageString === '' ? null : (
+        <Image style={styles.imageAndroid} source={{uri: imageString}} />
+      )}
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  main: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
+  header: {
     fontWeight: '700',
+    fontSize: 30,
+    marginBottom: 10,
+  },
+  boldText: {
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  separator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'gray',
+    width: '80%',
+    marginVertical: 20,
+  },
+  textInput: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: '80%',
+    paddingHorizontal: 80,
+    paddingVertical: 8,
+    marginBottom: 16,
+  },
+  textInputMacOS: {
+    borderColor: 'gray',
+    borderWidth: StyleSheet.hairlineWidth,
+    width: 300,
+    padding: 4,
+    marginBottom: 16,
+  },
+  clipboardContent: {
+    marginBottom: 20,
+  },
+  imageContent: {
+    width: 40,
+    height: 40,
+  },
+  imageAndroid: {
+    height: 160,
+    width: 160,
+  },
+  imageButtonAndroid: {
+    marginTop: 10,
   },
 });
-
-export default App;
