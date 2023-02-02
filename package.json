@@ -28,6 +28,7 @@
     "android",
     "windows",
     "jest",
+    "src",
     "!android/**/build/*"
   ],
   "scripts": {
