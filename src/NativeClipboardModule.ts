@@ -1,9 +1,12 @@
 import {
+  // @ts-ignore - remove this comment when RN in the repo & example app is upgraded
   TurboModuleRegistry,
+  // @ts-ignore - remove this comment when RN in the repo & example app is upgraded
   TurboModule,
   EmitterSubscription,
   NativeEventEmitter,
 } from 'react-native';
+// @ts-ignore - remove this comment when RN in the repo & example app is upgraded
 import type {Int32} from 'react-native/Libraries/Types/CodegenTypes';
 
 export interface Spec extends TurboModule {
