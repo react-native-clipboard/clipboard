@@ -54,7 +54,7 @@ export interface Spec extends TurboModule {
    * ```
    * @param the content to be stored in the clipboard.
    */
-  setImage(content: string): void;
+  setImage(content: string): Promise<void>;
   /**
    * (Android Only)
    * Get clipboard image in base64, this method returns a `Promise`, so you can use following code to get clipboard content
@@ -94,7 +94,7 @@ export interface Spec extends TurboModule {
    * }
    * ```
    */
-  hasString(): boolean;
+  hasString(): Promise<boolean>;
   /**
    * Returns whether the clipboard has an image or is empty.
    * This method returns a `Promise`, so you can use following code to check clipboard content
@@ -104,7 +104,7 @@ export interface Spec extends TurboModule {
    * }
    * ```
    */
-  hasImage(): boolean;
+  hasImage(): Promise<boolean>;
   /**
    * (iOS Only)
    * Returns whether the clipboard has a URL content. Can check
@@ -116,7 +116,7 @@ export interface Spec extends TurboModule {
    * }
    * ```
    */
-  hasURL(): boolean;
+  hasURL(): Promise<boolean>;
   /**
    * (iOS 14+ Only)
    * Returns whether the clipboard has a Number(UIPasteboardDetectionPatternNumber) content. Can check
@@ -128,7 +128,7 @@ export interface Spec extends TurboModule {
    * }
    * ```
    */
-  hasNumber(): boolean;
+  hasNumber(): Promise<boolean>;
   /**
    * (iOS 14+ Only)
    * Returns whether the clipboard has a WebURL(UIPasteboardDetectionPatternProbableWebURL) content. Can check
@@ -140,14 +140,15 @@ export interface Spec extends TurboModule {
    * }
    * ```
    */
-  hasWebURL(): boolean;
+  hasWebURL(): Promise<boolean>;
   setListener(): void;
   removeListener(): void;
   addListener(eventName: string): void;
   removeListeners(count: Int32): void;
 }
 
-const ClipboardTurboModule = TurboModuleRegistry.getEnforcing<Spec>('RNCClipboard');
+const ClipboardTurboModule =
+  TurboModuleRegistry.getEnforcing<Spec>('RNCClipboard');
 
 export default ClipboardTurboModule;
 
