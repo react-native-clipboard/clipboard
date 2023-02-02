@@ -82,22 +82,22 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
 
   @Override
   public void getStrings(Promise promise) {
-
+    promise.reject("Clipboard:getStrings", "getStrings is not supported on Android");
   }
 
   @Override
   public void getImagePNG(Promise promise) {
-
+    promise.reject("Clipboard:getImagePNG", "getImagePNG is not supported on Android");
   }
 
   @Override
   public void getImageJPG(Promise promise) {
-
+    promise.reject("Clipboard:getImageJPG", "getImageJPG is not supported on Android");
   }
 
   @Override
   public void setImage(String content, Promise promise) {
-
+    promise.reject("Clipboard:setImage", "setImage is not supported on Android");
   }
 
   @ReactMethod
@@ -129,22 +129,22 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
 
   @Override
   public void hasImage(Promise promise) {
-
+    promise.reject("Clipboard:hasImage", "hasImage is not supported on Android");
   }
 
   @Override
   public void hasURL(Promise promise) {
-
+    promise.reject("Clipboard:hasURL", "hasURL is not supported on Android");
   }
 
   @Override
   public void hasNumber(Promise promise) {
-
+    promise.reject("Clipboard:hasNumber", "hasNumber is not supported on Android");
   }
 
   @Override
   public void hasWebURL(Promise promise) {
-
+    promise.reject("Clipboard:hasWebURL", "hasWebURL is not supported on Android");
   }
 
   @ReactMethod
