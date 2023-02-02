@@ -214,7 +214,9 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
 }
 
 RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
-                  reject:(__unused RCTPromiseRejectBlock)reject){}
+                  reject:(__unused RCTPromiseRejectBlock)reject){
+  reject(@"Clipboard:getImage", @"getImage is not supported on iOS", nil);
+}
 
 #if RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
