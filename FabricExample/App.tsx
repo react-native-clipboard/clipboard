@@ -20,7 +20,7 @@ const changeListener = () => {
   console.warn('Clipboard changed!');
 };
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   const [text, setText] = useState('');
   const [isURL, setIsURL] = useState(false);
   const [data, setString] = useClipboard();
@@ -167,3 +167,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+export default App;
