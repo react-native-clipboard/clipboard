@@ -95,7 +95,7 @@ public class ClipboardPackage extends TurboReactPackage implements ViewManagerOn
       };
     } catch (InstantiationException | IllegalAccessException e) {
       throw new RuntimeException(
-              "No ReactModuleInfoProvider for MyPackage$$ReactModuleInfoProvider", e);
+              "No ReactModuleInfoProvider for com.reactnativecommunity.clipboard.ClipboardPackage$$ReactModuleInfoProvider", e);
     }
   }
   @Override
