@@ -1,4 +1,10 @@
-import { TurboModuleRegistry, TurboModule, EmitterSubscription, NativeEventEmitter } from 'react-native';
+import {
+  TurboModuleRegistry,
+  TurboModule,
+  EmitterSubscription,
+  NativeEventEmitter,
+} from 'react-native';
+import type {Int32} from 'react-native/Libraries/Types/CodegenTypes';
 
 export interface Spec extends TurboModule {
   /**
@@ -137,6 +143,8 @@ export interface Spec extends TurboModule {
   hasWebURL(): boolean;
   setListener(): void;
   removeListener(): void;
+  addListener(eventName: string): void;
+  removeListeners(count: Int32): void;
 }
 
 const ClipboardTurboModule = TurboModuleRegistry.getEnforcing<Spec>('RNCClipboard');
