@@ -213,6 +213,9 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
   
 }
 
+RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject){}
+
 #if RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
