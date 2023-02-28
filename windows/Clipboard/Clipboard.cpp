@@ -22,8 +22,10 @@ namespace NativeClipboard {
 
   void ClipboardModule::SetString(std::string const& str) noexcept
   {
-    datatransfer::DataPackage dataPackage{};
-    dataPackage.SetText(Microsoft::Common::Unicode::Utf8ToUtf16(str));
-    datatransfer::Clipboard::SetContent(dataPackage);
+    _context.UIDispatcher().Post([str](){
+      datatransfer::DataPackage dataPackage{};
+      dataPackage.SetText(Microsoft::Common::Unicode::Utf8ToUtf16(str));
+      datatransfer::Clipboard::SetContent(dataPackage);
+    });
   }
 }
