@@ -22,5 +22,14 @@ namespace NativeClipboard {
 
     REACT_METHOD(SetString, L"setString");
     void SetString(std::string const& str) noexcept;
+
+    REACT_METHOD(AddListener, L"addListener");
+    void AddListener(std::string const& event) noexcept;
+
+    REACT_METHOD(RemoveListeners, L"removeListeners");
+    void RemoveListeners(int count) noexcept;
+
+  private:
+    int _listenerCount = 0;
   };
 }
