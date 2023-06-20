@@ -4,18 +4,20 @@ import {
   NativeModules,
   NativeEventEmitter,
   EmitterSubscription,
+  TurboModuleRegistry,
 } from 'react-native';
+import type { TurboModule } from 'react-native/Libraries/TurboModule/RCTExport';
 
-// Separated file for Native Clipboard to be ready to switch to Turbo Module when it becomes public
-// TODO: uncomment when Turbo module is available
-// export interface Spec extends TurboModule {
-//   +getConstants: () => {||};
-//   +getString: () => Promise<string>;
-//   +setString: (content: string) => void;
-//   +hasString: () => Promise<boolean>;
-// }
+export interface Spec extends TurboModule {
+  getConstants: () => {};
+  getString: () => Promise<string>;
+  setString: (content: string) => void;
+  hasString: () => Promise<boolean>;
+}
 
-export default NativeModules.RNCClipboard;
+export default TurboModuleRegistry.get<Spec>(
+  'RNCClipboard'
+) as Spec | null;
 
 const EVENT_NAME = 'RNCClipboard_TEXT_CHANGED';
 const eventEmitter = new NativeEventEmitter(NativeModules.RNCClipboard);
