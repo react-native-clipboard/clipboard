@@ -6,18 +6,26 @@ import {
   EmitterSubscription,
   TurboModuleRegistry,
 } from 'react-native';
-import type { TurboModule } from 'react-native/Libraries/TurboModule/RCTExport';
+import type {TurboModule} from 'react-native';
 
 export interface Spec extends TurboModule {
   getConstants: () => {};
   getString: () => Promise<string>;
+  getStrings: () => Promise<string[]>;
   setString: (content: string) => void;
   hasString: () => Promise<boolean>;
+  hasNumber: () => Promise<boolean>;
+  getImagePNG: () => Promise<string>;
+  getImageJPG: () => Promise<string>;
+  setImage: (content: string) => void;
+  getImage: () => Promise<string>;
+  setStrings: (content: string[]) => void;
+  hasImage: () => Promise<boolean>;
+  hasURL: () => Promise<boolean>;
+  hasWebURL: () => Promise<boolean>;
 }
 
-export default TurboModuleRegistry.get<Spec>(
-  'RNCClipboard'
-) as Spec | null;
+export default TurboModuleRegistry.get<Spec>('RNCClipboard') as Spec;
 
 const EVENT_NAME = 'RNCClipboard_TEXT_CHANGED';
 const eventEmitter = new NativeEventEmitter(NativeModules.RNCClipboard);
