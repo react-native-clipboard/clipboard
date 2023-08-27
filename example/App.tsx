@@ -56,6 +56,14 @@ export const App: React.FC = () => {
     Alert.alert(`Copied to clipboard: ${text}`);
   };
 
+  const clearClipboardText = async () => {
+    if (await Clipboard.clearClip()) {
+      Alert.alert(`Clipboard Cleared Success`);
+      return;
+    }
+    Alert.alert(`Clipboard Cleared Failed`);
+  };
+
   const writeImageToClipboard = async () => {
     Clipboard.setImage(TEST_IMAGE);
     Alert.alert(`Copied Image to clipboard`);
@@ -91,6 +99,7 @@ export const App: React.FC = () => {
           placeholder="Type here..."
         />
         <Button onPress={writeToClipboard} title="Write to Clipboard" />
+        <Button onPress={clearClipboardText} title="Clear Clipboard" />
         <Button
           onPress={writeImageToClipboard}
           title="Write Image to Clipboard"

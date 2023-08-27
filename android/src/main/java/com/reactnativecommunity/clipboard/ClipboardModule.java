@@ -91,6 +91,21 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void clearClip(Promise promise) {
+    try {
+      ClipboardManager clipboard = getClipboardService();
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        clipboard.clearPrimaryClip();
+        promise.resolve(true);
+      }
+      promise.resolve(false);
+    } catch (Exception e) {
+      promise.reject(e);
+      e.printStackTrace();
+    }
+  }
+
+  @ReactMethod
   public void hasString(Promise promise) {
     try {
       ClipboardManager clipboard = getClipboardService();
