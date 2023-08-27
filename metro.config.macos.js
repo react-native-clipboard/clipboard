@@ -4,7 +4,7 @@
  */
 
 const path = require('path');
-const blacklist = require('metro-config/src/defaults/blacklist');
+const blacklist = require('metro-config/src/defaults/exclusionList');
 
 const rnmPath = path.resolve(__dirname, 'node_modules/react-native-macos');
 
