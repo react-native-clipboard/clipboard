@@ -22,6 +22,11 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
+    def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger()
+    if (agpVersion >= 7) {
+      namespace 'com.reactnativecommunity.clipboard'
+    }
+
     defaultConfig {
         minSdkVersion getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
