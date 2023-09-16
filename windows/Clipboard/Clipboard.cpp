@@ -28,4 +28,17 @@ namespace NativeClipboard {
       datatransfer::Clipboard::SetContent(dataPackage);
     });
   }
+
+  void ClipboardModule::AddListener(std::string const& event) noexcept
+  {
+    _listenerCount++;
+  }
+
+  void ClipboardModule::RemoveListeners(int count) noexcept
+  {
+    _listenerCount--;
+    if (_listenerCount == 0) {
+      // Disconnect any native eventing here
+    }
+  }
 }
