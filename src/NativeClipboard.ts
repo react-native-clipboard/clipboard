@@ -23,6 +23,7 @@ export interface Spec extends TurboModule {
   hasImage: () => Promise<boolean>;
   hasURL: () => Promise<boolean>;
   hasWebURL: () => Promise<boolean>;
+  clearClip: () => Promise<boolean>;
 }
 
 export default TurboModuleRegistry.get<Spec>('RNCClipboard') as Spec;
