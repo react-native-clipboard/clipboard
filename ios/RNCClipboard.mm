@@ -218,6 +218,14 @@ RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
   reject(@"Clipboard:getImage", @"getImage is not supported on iOS", nil);
 }
 
+RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {
+  // Keep: Required for RN built in Event Emitter Calls.
+}
+
+RCT_EXPORT_METHOD(removeListeners : (NSInteger)count) {
+  // Keep: Required for RN built in Event Emitter Calls.
+}
+
 #if RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
