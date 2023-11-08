@@ -213,6 +213,11 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
   
 }
 
+RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject){
+  reject(@"Clipboard:getImage", @"getImage is not supported on iOS", nil);
+}
+
 RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {
   // Keep: Required for RN built in Event Emitter Calls.
 }
@@ -221,6 +226,13 @@ RCT_EXPORT_METHOD(removeListeners : (NSInteger)count) {
   // Keep: Required for RN built in Event Emitter Calls.
 }
 
+#if RCT_NEW_ARCH_ENABLED
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
+{
+  return std::make_shared<facebook::react::NativeClipboardModuleSpecJSI>(params);
+}
+#endif
 
 
 @end

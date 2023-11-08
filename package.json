@@ -28,6 +28,7 @@
     "android",
     "windows",
     "jest",
+    "src",
     "!android/**/build/*"
   ],
   "scripts": {
@@ -69,9 +70,9 @@
     "access": "public"
   },
   "codegenConfig": {
-    "name": "RNCClipboard",
-    "type": "all",
-    "jsSrcsDir": ".",
+    "name": "rnclipboard",
+    "type": "modules",
+    "jsSrcsDir": "./src",
     "android": {
       "javaPackageName": "com.reactnativecommunity.clipboard"
     }

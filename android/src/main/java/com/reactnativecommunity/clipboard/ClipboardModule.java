@@ -24,6 +24,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
@@ -35,7 +36,7 @@ import java.nio.ByteBuffer;
  * A module that allows JS to get/set clipboard contents.
  */
 @ReactModule(name = ClipboardModule.NAME)
-public class ClipboardModule extends ReactContextBaseJavaModule {
+public class ClipboardModule extends NativeClipboardModuleSpec {
 
   public static final String CLIPBOARD_TEXT_CHANGED = "RNCClipboard_TEXT_CHANGED";
   private ReactApplicationContext reactContext;
@@ -79,6 +80,26 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
     }
   }
 
+  @Override
+  public void getStrings(Promise promise) {
+    promise.reject("Clipboard:getStrings", "getStrings is not supported on Android");
+  }
+
+  @Override
+  public void getImagePNG(Promise promise) {
+    promise.reject("Clipboard:getImagePNG", "getImagePNG is not supported on Android");
+  }
+
+  @Override
+  public void getImageJPG(Promise promise) {
+    promise.reject("Clipboard:getImageJPG", "getImageJPG is not supported on Android");
+  }
+
+  @Override
+  public void setImage(String content, Promise promise) {
+    promise.reject("Clipboard:setImage", "setImage is not supported on Android");
+  }
+
   @ReactMethod
   public void setString(String text) {
     try {
@@ -90,6 +111,11 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
     }
   }
 
+  @Override
+  public void setStrings(ReadableArray content) {
+
+  }
+
   @ReactMethod
   public void hasString(Promise promise) {
     try {
@@ -99,6 +125,26 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       promise.reject(e);
     }
+  }
+
+  @Override
+  public void hasImage(Promise promise) {
+    promise.reject("Clipboard:hasImage", "hasImage is not supported on Android");
+  }
+
+  @Override
+  public void hasURL(Promise promise) {
+    promise.reject("Clipboard:hasURL", "hasURL is not supported on Android");
+  }
+
+  @Override
+  public void hasNumber(Promise promise) {
+    promise.reject("Clipboard:hasNumber", "hasNumber is not supported on Android");
+  }
+
+  @Override
+  public void hasWebURL(Promise promise) {
+    promise.reject("Clipboard:hasWebURL", "hasWebURL is not supported on Android");
   }
 
   @ReactMethod
@@ -189,6 +235,11 @@ public class ClipboardModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void addListener(String eventName) {
     // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @Override
+  public void removeListeners(double count) {
+
   }
 
   @ReactMethod
