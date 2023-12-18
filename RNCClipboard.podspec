@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
 
     install_modules_dependencies(s)
   else
-    s.platforms = { :ios => "9.0", :tvos => "9.0" }
+    s.platforms = { :ios => "9.0", :tvos => "9.0", :osx => "10.14" }
 
     s.dependency "React-Core"
   end
