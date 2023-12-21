@@ -27,9 +27,10 @@ def resolveReactNativeDirectory() {
         return reactNativeFromProjectNodeModules
     }
 
-    def reactNativeFromNodeModulesWithLibrary = file("${projectDir}/../../react-native")
-    if (reactNativeFromNodeModulesWithLibrary.exists()) {
-        return reactNativeFromNodeModulesWithLibrary
+    // This code is taken from react-native-reanimated, but with an extra "../" due to @react-native-cliploard/clipboard being in a subdirectory
+    def reactNativeFromNodeModulesWithReactNativeClipboard = file("${projectDir}/../../../react-native")
+    if (reactNativeFromNodeModulesWithReactNativeClipboard.exists()) {
+        return reactNativeFromNodeModulesWithReactNativeClipboard
     }
 
     throw new Exception(
