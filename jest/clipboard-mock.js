@@ -14,6 +14,7 @@ const ClipboardMock = {
   hasURL: jest.fn().mockResolvedValue(true),
   addListener: jest.fn(),
   removeAllListeners: jest.fn(),
+  getEnforcing: jest.fn(),
 };
 
 const useClipboard = jest.fn(() => ['mockString', jest.fn()]);
