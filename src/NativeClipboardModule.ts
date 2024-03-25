@@ -6,8 +6,7 @@ import {
   EmitterSubscription,
   NativeEventEmitter,
 } from 'react-native';
-// @ts-ignore - remove this comment when RN in the repo & example app is upgraded
-import type {Int32} from 'react-native/Libraries/Types/CodegenTypes';
+import type {Double} from 'react-native/Libraries/Types/CodegenTypes';
 
 export interface Spec extends TurboModule {
   /**
@@ -147,7 +146,7 @@ export interface Spec extends TurboModule {
   setListener(): void;
   removeListener(): void;
   addListener(eventName: string): void;
-  removeListeners(count: Int32): void;
+  removeListeners(count: Double): void;
 }
 
 const ClipboardTurboModule =
