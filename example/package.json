@@ -1,5 +1,5 @@
 {
-  "name": "Example",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@callstack/react-native-visionos": "^0.73.0",
+    "@react-native-clipboard/clipboard": "../",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-macos": "^0.73.0",
