@@ -1073,6 +1073,8 @@ PODS:
   - ReactTestApp-DevSupport (3.5.3):
     - React-Core
     - React-jsi
+  - RNCClipboard (1.13.2):
+    - React-Core
   - SocketRocket (0.7.0.1)
   - Yoga (1.14.0)
 
@@ -1132,6 +1134,7 @@ DEPENDENCIES:
   - "ReactCommon/turbomodule/core (from `../node_modules/@callstack/react-native-visionos/ReactCommon`)"
   - "ReactNativeHost (from `../node_modules/@rnx-kit/react-native-host`)"
   - ReactTestApp-DevSupport (from `../node_modules/react-native-test-app`)
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - "SocketRocket (from `../node_modules/@callstack/react-native-visionos/third-party-podspecs/SocketRocket.podspec`)"
   - "Yoga (from `../node_modules/@callstack/react-native-visionos/ReactCommon/yoga`)"
 
@@ -1242,6 +1245,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@rnx-kit/react-native-host"
   ReactTestApp-DevSupport:
     :path: "../node_modules/react-native-test-app"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   SocketRocket:
     :podspec: "../node_modules/@callstack/react-native-visionos/third-party-podspecs/SocketRocket.podspec"
   Yoga:
@@ -1301,6 +1306,7 @@ SPEC CHECKSUMS:
   ReactCommon: efed44fdc02eddcef579b2de0c1e109604645210
   ReactNativeHost: 7d8d2bcfaa7c82797a4d652f8c591829728bfad1
   ReactTestApp-DevSupport: 1fe22a4a29414ec3227d20b3eb96217ba1ff13d0
+  RNCClipboard: cfbda7a6ee796842d989ce8c105a1beaa7a7f787
   SocketRocket: 0ba3e799f983d2dfa878777017659ef6c866e5c6
   Yoga: 500e2c9fc111319f47dcffec452de1218b968cb4
 

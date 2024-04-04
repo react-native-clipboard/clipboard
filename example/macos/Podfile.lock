@@ -1246,7 +1246,7 @@ SPEC CHECKSUMS:
   ReactNativeHost: 339df34d3c2050f37e8909ade6693465e8a947f7
   ReactTestApp-DevSupport: 1fe22a4a29414ec3227d20b3eb96217ba1ff13d0
   ReactTestApp-Resources: 9d83e280b173ba2ee053b8135730dff60f9ab674
-  RNCClipboard: 60fed4b71560d7bfe40e9d35dea9762b024da86d
+  RNCClipboard: cfbda7a6ee796842d989ce8c105a1beaa7a7f787
   SocketRocket: f6c6249082c011e6de2de60ed641ef8bbe0cfac9
   Yoga: ebb9d1d4cb060397d5f3e929c9a71f45f136264a
 
