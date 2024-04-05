@@ -9683,9 +9683,16 @@ __metadata:
   linkType: hard
 
 "node-fetch@npm:^2.2.0, node-fetch@npm:^2.6.0":
-  version: 2.6.1
-  resolution: "node-fetch@npm:2.6.1"
-  checksum: 10c0/c58586d121782df045681e29608f940be90c7d8c4cada29957c148cfcc5e2d81d74b690cf10ee6879ed055da7ea821450a74ff43f3bde651cf6c8a5f34a77e2a
+  version: 2.7.0
+  resolution: "node-fetch@npm:2.7.0"
+  dependencies:
+    whatwg-url: "npm:^5.0.0"
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 10c0/b55786b6028208e6fbe594ccccc213cab67a72899c9234eb59dba51062a299ea853210fcf526998eaa2867b0963ad72338824450905679ff0fa304b8c5093ae8
   languageName: node
   linkType: hard
 
@@ -12069,6 +12076,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tr46@npm:~0.0.3":
+  version: 0.0.3
+  resolution: "tr46@npm:0.0.3"
+  checksum: 10c0/047cb209a6b60c742f05c9d3ace8fa510bff609995c129a37ace03476a9b12db4dbf975e74600830ef0796e18882b2381fb5fb1f6b4f96b832c374de3ab91a11
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.8.1":
   version: 1.13.0
   resolution: "tslib@npm:1.13.0"
@@ -12474,10 +12488,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"webidl-conversions@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "webidl-conversions@npm:3.0.1"
+  checksum: 10c0/5612d5f3e54760a797052eb4927f0ddc01383550f542ccd33d5238cfd65aeed392a45ad38364970d0a0f4fea32e1f4d231b3d8dac4a3bdd385e5cf802ae097db
+  languageName: node
+  linkType: hard
+
 "whatwg-fetch@npm:^3.0.0":
   version: 3.4.1
   resolution: "whatwg-fetch@npm:3.4.1"
   checksum: 10c0/e3d267bf44f6a42621d3465fb2e549c993fe246b84fec20f014c0d3aef30030f41a1b5920a2abfac3b5becc0831116a762b10d6360dda5c3d503f34ba10d3ff0
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "whatwg-url@npm:5.0.0"
+  dependencies:
+    tr46: "npm:~0.0.3"
+    webidl-conversions: "npm:^3.0.0"
+  checksum: 10c0/1588bed84d10b72d5eec1d0faa0722ba1962f1821e7539c535558fb5398d223b0c50d8acab950b8c488b4ba69043fd833cc2697056b167d8ad46fac3995a55d5
   languageName: node
   linkType: hard
 
