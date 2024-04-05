@@ -189,7 +189,7 @@ export const Clipboard = {
    * await Clipboard.clearClip();
    * ```
    */
-  clearClip(){
+  clearClipboard(){
     if (Platform.OS == 'ios') {
       return;
     }
