@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/react-native-clipboard/clipboard", :tag => "v#{s.version}" }
   s.ios.source_files = "ios/**/*.{h,m,mm}"
   s.osx.source_files = "macos/**/*.{h,m,mm}"
+  s.visionos.source_files = "ios/**/*.{h,m,mm}"
 
   if fabric_enabled
     folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
@@ -24,12 +25,12 @@ Pod::Spec.new do |s|
       'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/boost" "$(PODS_ROOT)/boost-for-react-native" "$(PODS_ROOT)/RCT-Folly"',
       'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17',
     }
-    s.platforms       = { ios: '11.0', tvos: '11.0' }
+    s.platforms       = { ios: '11.0', tvos: '11.0', :osx => "10.14", :visionos => "1.0"  }
     s.compiler_flags  = folly_compiler_flags + ' -DRCT_NEW_ARCH_ENABLED'
 
     install_modules_dependencies(s)
   else
-    s.platforms = { :ios => "9.0", :tvos => "9.0", :osx => "10.14" }
+    s.platforms = { :ios => "9.0", :tvos => "9.0", :osx => "10.14", :visionos => "1.0" }
 
     s.dependency "React-Core"
   end

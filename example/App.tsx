@@ -10,7 +10,7 @@ import {
   Platform,
   Image,
 } from 'react-native';
-import Clipboard, {useClipboard} from '../src';
+import Clipboard, {useClipboard} from '@react-native-clipboard/clipboard';
 
 // Small icon of a plus for demo purposes
 const TEST_IMAGE =
@@ -20,7 +20,7 @@ const changeListener = () => {
   console.warn('Clipboard changed!');
 };
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   const [text, setText] = useState('');
   const [isURL, setIsURL] = useState(false);
   const [data, setString] = useClipboard();
@@ -86,7 +86,7 @@ export const App: React.FC = () => {
           style={
             Platform.OS === 'macos' ? styles.textInputMacOS : styles.textInput
           }
-          onChangeText={(input) => setText(input)}
+          onChangeText={input => setText(input)}
           value={text}
           placeholder="Type here..."
         />
@@ -167,3 +167,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+export default App;
