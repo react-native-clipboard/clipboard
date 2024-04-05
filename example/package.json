@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@callstack/react-native-visionos": "^0.73.0",
-    "@react-native-clipboard/clipboard": "../",
+    "@react-native-clipboard/clipboard": "workspace:*",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-macos": "^0.73.0",
@@ -47,5 +47,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }

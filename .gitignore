@@ -60,3 +60,6 @@ dist
 
 # eslint cache
 .eslintcache
+
+# yarn
+.yarn/install-state.gz
