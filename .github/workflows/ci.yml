@@ -90,7 +90,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Install Podfiles
-        run: cd example && npx pod-install
+        run: cd example && yarn pod
       - name: Build example app
         run: yarn ios --no-packager
   # windows:
