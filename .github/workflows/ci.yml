@@ -91,6 +91,8 @@ jobs:
         run: yarn
       - name: Install Podfiles
         run: cd example && yarn pod
+      - name: Set node binary
+        run: echo "export NODE_BINARY=$(which node)" > ./ios/.xcode.env
       - name: Build example app
         run: yarn ios
   # windows:
