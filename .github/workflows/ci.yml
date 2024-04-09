@@ -94,7 +94,7 @@ jobs:
       - name: Set node binary
         run: echo "export NODE_BINARY=$(which node)" > ./ios/.xcode.env
       - name: Build example app
-        run: yarn ios
+        run: cd example && yarn ios
   # windows:
   #   runs-on: windows-latest
   #   strategy:
