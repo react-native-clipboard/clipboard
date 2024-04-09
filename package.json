@@ -66,10 +66,10 @@
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-native": "^0.73.0",
-    "react-native-macos": "^0.73.0",
-    "react-native-windows": "^0.73.0"
+    "react": "16.9.0 || 16.11.0 || 16.13.1 || 17.0.1 || 17.0.2 || 18.0.0 || 18.1.0 || 18.2.0",
+    "react-native": "^0.61.5 || ^0.62.3 || ^0.63.2 || ^0.64.2 || ^0.65.0 || ^0.66.0 || ^0.67.0 || ^0.68.0 || ^0.69.0 || ^0.70.0 || ^0.71.0 || ^0.72.0 || ^0.73.0",
+    "react-native-macos": "^0.61.0 || ^0.62.0 || ^0.63.0 || ^0.64.0 || ^0.65.0 || ^0.66.0 || ^0.67.0 || ^0.68.0 || ^0.69.0 || ^0.70.0 || ^0.71.0 || ^0.72.0 || ^0.73.0",
+    "react-native-windows": "^0.61.0 || ^0.62.0 || ^0.63.0 || ^0.64.0 || ^0.65.0 || ^0.66.0 || ^0.67.0 || ^0.68.0 || ^0.69.0 || ^0.70.0 || ^0.71.0 || ^0.72.0 || ^0.73.0"
   },
   "publishConfig": {
     "access": "public"
@@ -80,30 +80,6 @@
     "jsSrcsDir": "./src",
     "android": {
       "javaPackageName": "com.reactnativecommunity.clipboard"
-    }
-  },
-  "rnx-kit": {
-    "kitType": "library",
-    "alignDeps": {
-      "requirements": {
-        "development": [
-          "react-native@0.73"
-        ],
-        "production": [
-          "react-native@>=0.73"
-        ]
-      },
-      "capabilities": [
-        "babel-preset-react-native",
-        "core",
-        "core-android",
-        "core-ios",
-        "core-macos",
-        "core-windows",
-        "jest",
-        "react",
-        "react-test-renderer"
-      ]
     }
   },
   "packageManager": "yarn@4.1.1",
