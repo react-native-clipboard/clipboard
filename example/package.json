@@ -9,6 +9,7 @@
     "build:macos": "npm run mkdist && react-native bundle --entry-file index.js --platform macos --dev true --bundle-output dist/main.macos.jsbundle --assets-dest dist",
     "build:visionos": "npm run mkdist && react-native bundle --entry-file index.js --platform ios --dev true --bundle-output dist/main.visionos.jsbundle --assets-dest dist",
     "build:windows": "npm run mkdist && react-native bundle --entry-file index.js --platform windows --dev true --bundle-output dist/main.windows.bundle --assets-dest dist",
+    "pod": "pod install --project-directory=ios",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "macos": "react-native run-macos --scheme Example",
