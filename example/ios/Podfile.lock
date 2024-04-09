@@ -1025,8 +1025,6 @@ PODS:
     - React-Core
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
-  - RNCClipboard (1.13.2):
-    - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -1082,7 +1080,6 @@ DEPENDENCIES:
   - "ReactNativeHost (from `../../node_modules/@rnx-kit/react-native-host`)"
   - ReactTestApp-DevSupport (from `../../node_modules/react-native-test-app`)
   - ReactTestApp-Resources (from `..`)
-  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - Yoga (from `../../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1189,8 +1186,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/react-native-test-app"
   ReactTestApp-Resources:
     :path: ".."
-  RNCClipboard:
-    :path: "../node_modules/@react-native-clipboard/clipboard"
   Yoga:
     :path: "../../node_modules/react-native/ReactCommon/yoga"
 
@@ -1245,10 +1240,9 @@ SPEC CHECKSUMS:
   ReactNativeHost: 339df34d3c2050f37e8909ade6693465e8a947f7
   ReactTestApp-DevSupport: 1fe22a4a29414ec3227d20b3eb96217ba1ff13d0
   ReactTestApp-Resources: 857244f3a23f2b3157b364fa06cf3e8866deff9c
-  RNCClipboard: 60fed4b71560d7bfe40e9d35dea9762b024da86d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 
 PODFILE CHECKSUM: 58b1b5d965384968b1dd12f033ef182aec4c1b6b
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
