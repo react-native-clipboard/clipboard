@@ -37,7 +37,7 @@ module.exports = {
         solutionFile: 'windows.sln',
         projects: [
           {
-            projectFile: 'ReactNativeWebView/Clipboard.vcxproj',
+            projectFile: 'Clipboard/Clipboard.vcxproj',
             directDependency: true,
           },
         ],
