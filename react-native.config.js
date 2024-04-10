@@ -1,47 +1,48 @@
-/**
- * This cli config is needed for the coexistance of react-native and other
- * out-of-tree implementations such react-native-macos.
- * The following issue is tracked by
- * https://github.com/react-native-community/discussions-and-proposals/issues/182
- *
- * The work-around involves having a metro.config.js for each out-of-tree
- * platform, i.e. metro.config.js for react-native and
- * metro.config.macos.js for react-native-macos.
- * This react-native.config.js looks for a --use-react-native-macos
- * switch and when present pushes --config=metro.config.macos.js
- * and specifies reactNativePath: 'node_modules/react-native-macos'.
- * The metro.config.js has to blacklist 'node_modules/react-native-macos',
- * and conversely metro.config.macos.js has to blacklist 'node_modules/react-native'.
- */
-'use strict';
+const project = (() => {
+  const fs = require('fs');
+  const path = require('path');
+  try {
+    const { configureProjects } = require('react-native-test-app');
 
-const macSwitch = '--use-react-native-macos';
-const windowsSwitch = '--use-react-native-windows';
+    return configureProjects({
+      android: {
+        sourceDir: path.join('example', 'android'),
+        manifestPath: path.join(__dirname, 'example', 'android'),
+      },
+      ios: {
+        sourceDir: 'example/ios',
+      },
+      windows: fs.existsSync('example/windows/Example.sln') && {
+        sourceDir: path.join('example', 'windows'),
+        solutionFile: path.join('example', 'windows', 'Example.sln'),
+        project: path.join(__dirname, 'example', 'windows'),
+      },
+    });
+  } catch (e) {
+    return undefined;
+  }
+})();
 
-if (process.argv.includes(macSwitch)) {
-  process.argv = process.argv.filter((arg) => arg !== macSwitch);
-  process.argv.push('--config=metro.config.macos.js');
-  module.exports = {
-    reactNativePath: 'node_modules/react-native-macos',
-  };
-} else if (process.argv.includes(windowsSwitch)) {
-  process.argv = process.argv.filter((arg) => arg !== windowsSwitch);
-  process.argv.push('--config=metro.config.windows.js');
-  module.exports = {
-    reactNativePath: 'node_modules/react-native-windows',
-  };
-} else {
-  module.exports = {
-    project: {
-      android: {sourceDir: './example/android'},
-      ios: {project: './example/ios/example.xcworkspace'},
+module.exports = {
+  dependencies: {
+    // Help rn-cli find and autolink this library
+    '@react-native-clipboard/clipboard': {
+      root: __dirname,
+    },
+  },
+  dependency: {
+    platforms: {
       windows: {
-        sourceDir: './example/windows',
-        solutionFile: 'ClipboardExample.sln',
-        project: {
-          projectFile: 'ClipboardExample/ClipboardExample.vcxproj',
-        },
+        sourceDir: 'windows',
+        solutionFile: 'windows.sln',
+        projects: [
+          {
+            projectFile: 'ReactNativeWebView/Clipboard.vcxproj',
+            directDependency: true,
+          },
+        ],
       },
     },
-  };
-}
+  },
+  ...(project ? { project } : undefined),
+};

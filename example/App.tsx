@@ -10,7 +10,7 @@ import {
   Platform,
   Image,
 } from 'react-native';
-import Clipboard, {useClipboard} from '@react-native-clipboard/clipboard';
+import Clipboard, {useClipboard} from '../src';
 
 // Small icon of a plus for demo purposes
 const TEST_IMAGE =

@@ -1,25 +1,22 @@
-/**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
- *
- * @format
- */
-const blacklist = require('metro-config/src/defaults/blacklist');
+const path = require('path');
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 
-module.exports = {
+const { makeMetroConfig } = require("@rnx-kit/metro-config");
+module.exports = mergeConfig(getDefaultConfig(__dirname), makeMetroConfig({
+  projectRoot: path.join(__dirname, 'example'),
+  watchFolders: [__dirname],
   resolver: {
-    blacklistRE: blacklist([
-      // This prevents "react-native run-windows" from hitting: EBUSY: resource busy or locked, open msbuild.ProjectImports.zip
-      // https://github.com/dotnet/msbuild/issues/5383
-      /.*\.ProjectImports\.zip/,
-    ]),
+    resolverMainFields: ['main-internal', 'browser', 'main'],
+    extraNodeModules: {
+      'react-native-webview': __dirname,
+    },
   },
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: true,
+        inlineRequires: false,
       },
     }),
   },
-};
+}));
