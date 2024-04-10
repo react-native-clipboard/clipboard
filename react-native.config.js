@@ -7,15 +7,13 @@ const project = (() => {
     return configureProjects({
       android: {
         sourceDir: path.join('example', 'android'),
-        manifestPath: path.join(__dirname, 'example', 'android'),
       },
       ios: {
         sourceDir: 'example/ios',
       },
-      windows: fs.existsSync('example/windows/Example.sln') && {
+      windows: {
         sourceDir: path.join('example', 'windows'),
         solutionFile: path.join('example', 'windows', 'Example.sln'),
-        project: path.join(__dirname, 'example', 'windows'),
       },
     });
   } catch (e) {
