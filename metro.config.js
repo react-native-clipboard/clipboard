@@ -6,9 +6,8 @@ module.exports = mergeConfig(getDefaultConfig(__dirname), makeMetroConfig({
   projectRoot: path.join(__dirname, 'example'),
   watchFolders: [__dirname],
   resolver: {
-    resolverMainFields: ['main-internal', 'browser', 'main'],
     extraNodeModules: {
-      'react-native-webview': __dirname,
+      '@react-native-clipboard/clipboard': __dirname,
     },
   },
   transformer: {
