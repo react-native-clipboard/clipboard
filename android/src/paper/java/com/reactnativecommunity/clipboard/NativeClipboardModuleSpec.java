@@ -17,11 +17,10 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReactModuleWithSpec;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.turbomodule.core.interfaces.TurboModule;
 
-public abstract class NativeClipboardModuleSpec extends ReactContextBaseJavaModule implements ReactModuleWithSpec, TurboModule {
+public abstract class NativeClipboardModuleSpec extends ReactContextBaseJavaModule implements TurboModule {
   public NativeClipboardModuleSpec(ReactApplicationContext reactContext) {
     super(reactContext);
   }
@@ -92,5 +91,5 @@ public abstract class NativeClipboardModuleSpec extends ReactContextBaseJavaModu
 
   @ReactMethod
   @DoNotStrip
-  public abstract void removeListeners(double count);
+  public abstract void removeListeners(int count);
 }
