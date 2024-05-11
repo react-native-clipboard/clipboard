@@ -76,6 +76,9 @@
   "peerDependenciesMeta": {
     "react-native-windows": {
       "optional": true
+    },
+    "react-native-macos": {
+      "optional": true
     }
   },
   "publishConfig": {
