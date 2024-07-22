@@ -215,7 +215,26 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
 
 RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject){
-  reject(@"Clipboard:getImage", @"getImage is not supported on iOS", nil);
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  UIImage *clipboardImage = clipboard.image;
+  if (!clipboardImage) {
+    resolve(NULL);
+  } else {
+    NSArray *clipboardTypes = [clipboard pasteboardTypes];
+    if ([clipboardTypes containsObject:@"public.png"]) {
+      NSString *pngPrefix = @"data:image/png;base64,";
+      NSString *imageDataBase64 = [UIImagePNGRepresentation(clipboardImage) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+      NSString *withPrefix = [pngPrefix stringByAppendingString:imageDataBase64];
+      resolve((withPrefix ? : NULL));
+    } else if ([clipboardTypes containsObject:@"public.jpeg"]) {
+      NSString *jpgPrefix = @"data:image/jpeg;base64,";
+      NSString *imageDataBase64 = [UIImageJPEGRepresentation(clipboardImage, 1.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+      NSString *withPrefix = [jpgPrefix stringByAppendingString:imageDataBase64];
+      resolve((withPrefix ? : NULL));
+    } else {
+      reject(@"Clipboard:getImage", @"Unsupported image type", nil);
+    }
+  }
 }
 
 RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {

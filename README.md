@@ -215,7 +215,6 @@ _setContent() {
 | ------- | -------- | -------- | ----------------------------------------- |
 | content | string[] | Yes      | The content to be stored in the clipboard |
 
-
 #### `hasString()`
 
 ```jsx
@@ -255,8 +254,6 @@ static hasWebURL()
 Returns whether the clipboard has a WebURL(UIPasteboardDetectionPatternProbableWebURL) content.
 Can check if there is a WebURL content in clipboard without triggering PasteBoard notification for iOS 14+
 
-
-
 ### useClipboard
 
 `useClipboard` is a utility hooks for the `Clipboard` module. `data` contains the content stored in the clipboard.
@@ -283,7 +280,7 @@ export const HooksSample = () => {
 static getImage()
 ```
 
-Get content of image in base64 string type, this method returns a `Promise`, so you can use following code to get clipboard content (ANDROID only)
+Get content of image in base64 string type, this method returns a `Promise`, so you can use following code to get clipboard content (iOS and Android Only)
 
 ```jsx
 async _getContent() {
