@@ -216,24 +216,44 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
 RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject){
   UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
-  UIImage *clipboardImage = clipboard.image;
-  if (!clipboardImage) {
-    resolve(NULL);
+  NSArray *clipboardTypes = [clipboard pasteboardTypes];
+  if ([clipboardTypes containsObject:@"com.compuserve.gif"]) {
+     NSString *uriPrefix = @"data:image/gif;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"com.compuserve.gif"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"public.png"]) {
+     NSString *uriPrefix = @"data:image/png;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"public.png"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"public.jpeg"]) {
+     NSString *uriPrefix = @"data:image/jpeg;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"public.jpeg"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"org.webmproject.webp"]) {
+     NSString *uriPrefix = @"data:image/webp;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"org.webmproject.webp"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"public.tiff"]) {
+     NSString *uriPrefix = @"data:image/tiff;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"public.tiff"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"com.microsoft.bmp"]) {
+     NSString *uriPrefix = @"data:image/bmp;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"com.microsoft.bmp"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
+  } else if ([clipboardTypes containsObject:@"public.svg-image"]) {
+     NSString *uriPrefix = @"data:image/svg+xml;base64,";
+     NSString *imageDataBase64 = [[clipboard dataForPasteboardType:@"public.svg-image"] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+     NSString *withPrefix = [uriPrefix stringByAppendingString:imageDataBase64];
+     resolve((withPrefix ? : NULL));
   } else {
-    NSArray *clipboardTypes = [clipboard pasteboardTypes];
-    if ([clipboardTypes containsObject:@"public.png"]) {
-      NSString *pngPrefix = @"data:image/png;base64,";
-      NSString *imageDataBase64 = [UIImagePNGRepresentation(clipboardImage) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-      NSString *withPrefix = [pngPrefix stringByAppendingString:imageDataBase64];
-      resolve((withPrefix ? : NULL));
-    } else if ([clipboardTypes containsObject:@"public.jpeg"]) {
-      NSString *jpgPrefix = @"data:image/jpeg;base64,";
-      NSString *imageDataBase64 = [UIImageJPEGRepresentation(clipboardImage, 1.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-      NSString *withPrefix = [jpgPrefix stringByAppendingString:imageDataBase64];
-      resolve((withPrefix ? : NULL));
-    } else {
-      reject(@"Clipboard:getImage", @"Unsupported image type", nil);
-    }
+    reject(@"Clipboard:getImage", @"Unsupported image type", nil);
   }
 }
 
