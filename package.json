@@ -74,10 +74,10 @@
     "react-native-windows": ">= 0.61.0"
   },
   "peerDependenciesMeta": {
-    "react-native-windows": {
+    "react-native-macos": {
       "optional": true
     },
-    "react-native-macos": {
+    "react-native-windows": {
       "optional": true
     }
   },
