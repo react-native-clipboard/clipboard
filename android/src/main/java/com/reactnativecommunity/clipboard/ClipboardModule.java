@@ -238,7 +238,7 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
   }
 
   @Override
-  public void removeListeners(int count) {
+  public void removeListeners(double count) {
 
   }
 
