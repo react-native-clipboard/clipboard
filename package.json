@@ -1,6 +1,6 @@
 {
   "name": "@react-native-clipboard/clipboard",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
   "keywords": [
     "Clipboard",
