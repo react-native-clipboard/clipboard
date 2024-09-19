@@ -59,7 +59,7 @@ export interface Spec extends TurboModule {
    */
   setImage(content: string): Promise<void>;
   /**
-   * (Android Only)
+   * (iOS and Android Only)
    * Get clipboard image in base64, this method returns a `Promise`, so you can use following code to get clipboard content
    * ```javascript
    * async _getContent() {

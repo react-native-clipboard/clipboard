@@ -1,6 +1,7 @@
 #import "RNCClipboard.h"
 
-
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MobileCoreServices/UTType.h>
 #import <UIKit/UIKit.h>
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
@@ -215,7 +216,22 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
 
 RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject){
-  reject(@"Clipboard:getImage", @"getImage is not supported on iOS", nil);
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  NSString *withPrefix;
+  for (NSItemProvider *itemProvider in clipboard.itemProviders) {
+    if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage]) {
+      for (NSString *identifier in itemProvider.registeredTypeIdentifiers) {
+        if (UTTypeConformsTo((__bridge CFStringRef)identifier, kUTTypeImage)) {
+          NSString *MIMEType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)identifier, kUTTagClassMIMEType);
+          NSString *imageDataBase64 = [[clipboard dataForPasteboardType:identifier] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+          withPrefix = [NSString stringWithFormat:@"data:%@;base64,%@", MIMEType, imageDataBase64];
+          break;
+        }
+      }
+      break;
+    }
+  }
+  resolve((withPrefix ? : NULL));
 }
 
 RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {
