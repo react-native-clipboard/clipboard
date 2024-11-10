@@ -2,7 +2,7 @@ const project = (() => {
   const fs = require('fs');
   const path = require('path');
   try {
-    const { configureProjects } = require('react-native-test-app');
+    const {configureProjects} = require('react-native-test-app');
 
     return configureProjects({
       android: {
@@ -42,5 +42,5 @@ module.exports = {
       },
     },
   },
-  ...(project ? { project } : undefined),
+  ...(project ? {project} : undefined),
 };
