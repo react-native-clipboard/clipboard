@@ -32,7 +32,7 @@
     "!android/**/build/*"
   ],
   "scripts": {
-    "ios": "react-native run-ios --project-path \"./example/ios\"",
+    "ios": "react-native run-ios",
     "android": "react-native run-android --root example",
     "windows": "cd example && react-native run-windows",
     "start": "react-native start",

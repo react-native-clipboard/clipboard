@@ -92,7 +92,7 @@ jobs:
       - name: Install Podfiles
         run: cd example && npx pod-install
       - name: Build example app
-        run: yarn ios
+        run: yarn ios --no-packager
   # windows:
   #   runs-on: windows-latest
   #   strategy:
