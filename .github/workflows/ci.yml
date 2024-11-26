@@ -90,9 +90,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Install Podfiles
-        run: cd example && yarn pod
-      - name: Set node binary
-        run: echo "export NODE_BINARY=$(which node)" > ./ios/.xcode.env
+        run: cd example && npx pod-install
       - name: Build example app
         run: yarn ios --no-packager
   # windows:
