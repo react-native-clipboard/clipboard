@@ -36,6 +36,7 @@
     "android": "react-native run-android --root example",
     "windows": "cd example && react-native run-windows",
     "start:windows": "install-windows-test-app -p example/windows && react-native run-windows --root example --logging",
+    "start:windows:fabric": "install-windows-test-app -p example/windows --use-fabric && react-native run-windows --root example --logging",
     "start": "react-native start",
     "build": "tsc",
     "format": "biome format --write .",
