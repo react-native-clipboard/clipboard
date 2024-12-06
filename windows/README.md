@@ -15,7 +15,7 @@ yarn upgrade react-native@^0.63
 yarn add react-native-windows@^0.63 --dev
 ```
 
-Now you should be able to open `windows.sln` in Visual Studio and build the project.
+Now you should be able to open `Clipboard.sln` in Visual Studio and build the project.
 
 ## RNW 0.62
 
@@ -24,4 +24,4 @@ yarn upgrade react-native@^0.62
 yarn add react-native-windows@^0.62 --dev
 ```
 
-Now you should be able to open `windows.sln` in Visual Studio and build the project.
+Now you should be able to open `Clipboard.sln` in Visual Studio and build the project.

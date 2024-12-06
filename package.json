@@ -1,99 +1,111 @@
 {
-	"name": "@react-native-clipboard/clipboard",
-	"version": "1.15.0",
-	"description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
-	"keywords": [
-		"Clipboard",
-		"getString",
-		"react-native",
-		"setString"
-	],
-	"homepage": "https://github.com/react-native-clipboard/clipboard#readme",
-	"bugs": {
-		"url": "https://github.com/react-native-clipboard/clipboard/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/react-native-clipboard/clipboard.git"
-	},
-	"license": "MIT",
-	"author": "M.Haris Baig <harisbaig100@gmail.com>",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"files": [
-		"dist",
-		"RNCClipboard.podspec",
-		"ios",
-		"macos",
-		"android",
-		"windows",
-		"jest",
-		"src",
-		"!android/**/build/*"
-	],
-	"scripts": {
-		"ios": "react-native run-ios",
-		"android": "react-native run-android --root example",
-		"windows": "cd example && react-native run-windows",
-		"start:windows": "install-windows-test-app -p example/windows && react-native run-windows --root example --logging",
-		"start": "react-native start",
-		"build": "tsc",
-		"format": "biome format --write .",
-		"lint": "biome lint --write .",
-		"prepare": "npm run build",
-		"test": "jest",
-		"type-check": "tsc --noEmit"
-	},
-	"jest": {
-		"preset": "react-native"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.12.9",
-		"@biomejs/biome": "1.9.4",
-		"@callstack/react-native-visionos": "^0.76.0",
-		"@react-native/babel-preset": "^0.76.0",
-		"@react-native/metro-config": "^0.76.0",
-		"@rnx-kit/align-deps": "^2.4.1",
-		"@rnx-kit/metro-config": "^2.0.0",
-		"@types/react": "^18.2.0",
-		"@typescript-eslint/eslint-plugin": "^8.16.0",
-		"babel-jest": "^26.1.0",
-		"jest": "^29.2.1",
-		"react": "18.2.0",
-		"react-native": "^0.76.0",
-		"react-native-macos": "0.76.0",
-		"react-native-test-app": "^4.0.1",
-		"react-native-windows": "^0.76.0",
-		"react-test-renderer": "^18.2.0",
-		"typescript": "^4.4.3"
-	},
-	"peerDependencies": {
-		"react": ">= 16.9.0",
-		"react-native": ">= 0.61.5",
-		"react-native-macos": ">= 0.61.0",
-		"react-native-windows": ">= 0.61.0"
-	},
-	"peerDependenciesMeta": {
-		"react-native-macos": {
-			"optional": true
-		},
-		"react-native-windows": {
-			"optional": true
-		}
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"codegenConfig": {
-		"name": "rnclipboard",
-		"type": "modules",
-		"jsSrcsDir": "./src",
-		"android": {
-			"javaPackageName": "com.reactnativecommunity.clipboard"
-		}
-	},
-	"packageManager": "yarn@4.1.1",
-	"workspaces": [
-		"example"
-	]
+  "name": "@react-native-clipboard/clipboard",
+  "version": "1.15.0",
+  "description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
+  "keywords": [
+    "Clipboard",
+    "getString",
+    "react-native",
+    "setString"
+  ],
+  "homepage": "https://github.com/react-native-clipboard/clipboard#readme",
+  "bugs": {
+    "url": "https://github.com/react-native-clipboard/clipboard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-clipboard/clipboard.git"
+  },
+  "license": "MIT",
+  "author": "M.Haris Baig <harisbaig100@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "RNCClipboard.podspec",
+    "ios",
+    "macos",
+    "android",
+    "windows",
+    "jest",
+    "src",
+    "!android/**/build/*"
+  ],
+  "scripts": {
+    "ios": "react-native run-ios",
+    "android": "react-native run-android --root example",
+    "windows": "cd example && react-native run-windows",
+    "start:windows": "install-windows-test-app -p example/windows && react-native run-windows --root example --logging",
+    "start": "react-native start",
+    "build": "tsc",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "prepare": "npm run build",
+    "test": "jest",
+    "type-check": "tsc --noEmit"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@biomejs/biome": "1.9.4",
+    "@callstack/react-native-visionos": "^0.76.0",
+    "@react-native/babel-preset": "^0.76.0",
+    "@react-native/metro-config": "^0.76.0",
+    "@rnx-kit/align-deps": "^2.4.1",
+    "@rnx-kit/metro-config": "^2.0.0",
+    "@types/react": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "babel-jest": "^26.1.0",
+    "jest": "^29.2.1",
+    "react": "18.2.0",
+    "react-native": "^0.76.0",
+    "react-native-macos": "0.76.0",
+    "react-native-test-app": "^4.0.1",
+    "react-native-windows": "^0.76.0",
+    "react-test-renderer": "^18.2.0",
+    "typescript": "^4.4.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.9.0",
+    "react-native": ">= 0.61.5",
+    "react-native-macos": ">= 0.61.0",
+    "react-native-windows": ">= 0.61.0"
+  },
+  "peerDependenciesMeta": {
+    "react-native-macos": {
+      "optional": true
+    },
+    "react-native-windows": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "codegenConfig": {
+    "name": "rnclipboard",
+    "type": "modules",
+    "jsSrcsDir": "./src",
+    "android": {
+      "javaPackageName": "com.reactnativecommunity.clipboard"
+    },
+    "windows": {
+      "namespace": "ClipboardCodegen",
+      "outputDirectory": "windows/Clipboard/codegen",
+      "separateDataTypes": true
+    }
+  },
+  "packageManager": "yarn@4.1.1",
+  "workspaces": [
+    "example"
+  ],
+  "react-native-windows": {
+    "init-windows": {
+      "name": "Clipboard",
+      "namespace": "Clipboard",
+      "template": "cpp-lib"
+    }
+  }
 }
