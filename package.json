@@ -47,6 +47,10 @@
 	"jest": {
 		"preset": "react-native"
 	},
+	"dependencies": {
+		"react-native": "^0.76.3",
+		"react-native-windows": "^0.76.0"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.12.9",
 		"@biomejs/biome": "1.9.4",
@@ -59,11 +63,9 @@
 		"@typescript-eslint/eslint-plugin": "^8.16.0",
 		"babel-jest": "^26.1.0",
 		"jest": "^29.2.1",
-		"react": "18.2.0",
-		"react-native": "^0.76.0",
+		"react": "^18.3.1",
 		"react-native-macos": "0.76.0",
-		"react-native-test-app": "^4.0.1",
-		"react-native-windows": "^0.76.0",
+		"react-native-test-app": "^4.0.5",
 		"react-test-renderer": "^18.2.0",
 		"typescript": "^4.4.3"
 	},
