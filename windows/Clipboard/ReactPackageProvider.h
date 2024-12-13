@@ -4,17 +4,21 @@
 
 using namespace winrt::Microsoft::ReactNative;
 
-namespace winrt::NativeClipboard::implementation
+namespace winrt::Clipboard::implementation
 {
-    struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider>
-    {
-        ReactPackageProvider() = default;
 
-        void CreatePackage(IReactPackageBuilder const& packageBuilder) noexcept;
-    };
-}
-
-namespace winrt::NativeClipboard::factory_implementation
+struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider>
 {
-    struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider, implementation::ReactPackageProvider> {};
-}
+  ReactPackageProvider() = default;
+
+  void CreatePackage(IReactPackageBuilder const &packageBuilder) noexcept;
+};
+
+} // namespace winrt::Clipboard::implementation
+
+namespace winrt::Clipboard::factory_implementation
+{
+
+struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider, implementation::ReactPackageProvider> {};
+
+} // namespace winrt::Clipboard::factory_implementation
