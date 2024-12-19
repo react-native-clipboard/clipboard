@@ -1,17 +1,24 @@
 #include "pch.h"
+
 #include "ReactPackageProvider.h"
+#if __has_include("ReactPackageProvider.g.cpp")
 #include "ReactPackageProvider.g.cpp"
+#endif
 
-#include <ModuleRegistration.h>
-
-// NOTE: You must include the headers of your native modules here in
-// order for the AddAttributedModules call below to find them.
 #include "Clipboard.h"
 
-namespace winrt::NativeClipboard::implementation
+using namespace winrt::Microsoft::ReactNative;
+
+namespace winrt::Clipboard::implementation
 {
-    void ReactPackageProvider::CreatePackage(IReactPackageBuilder const& packageBuilder) noexcept
-    {
-        AddAttributedModules(packageBuilder);
-    }
+
+void ReactPackageProvider::CreatePackage(IReactPackageBuilder const &packageBuilder) noexcept
+{
+  #ifdef USE_FABRIC    
+      AddAttributedModules(packageBuilder, true);
+  #else
+      AddAttributedModules(packageBuilder);
+  #endif
 }
+
+} // namespace winrt::Clipboard::implementation
