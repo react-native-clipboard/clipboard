@@ -2,7 +2,12 @@
 	"name": "@react-native-clipboard/clipboard",
 	"version": "1.15.0",
 	"description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
-	"keywords": ["Clipboard", "getString", "react-native", "setString"],
+	"keywords": [
+		"Clipboard",
+		"getString",
+		"react-native",
+		"setString"
+	],
 	"homepage": "https://github.com/react-native-clipboard/clipboard#readme",
 	"bugs": {
 		"url": "https://github.com/react-native-clipboard/clipboard/issues"
@@ -44,15 +49,15 @@
 		"preset": "react-native"
 	},
 	"dependencies": {
-		"react-native": "^0.75.3",
-		"react-native-windows": "^0.75.0"
+		"react-native": "^0.76.3",
+		"react-native-windows": "0.76.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.9",
 		"@biomejs/biome": "1.9.4",
 		"@callstack/react-native-visionos": "^0.76.0",
-		"@react-native/babel-preset": "^0.75.0",
-		"@react-native/metro-config": "^0.75.0",
+		"@react-native/babel-preset": "^0.76.0",
+		"@react-native/metro-config": "^0.76.0",
 		"@rnx-kit/align-deps": "^2.4.1",
 		"@rnx-kit/metro-config": "^2.0.0",
 		"@types/react": "^18.2.0",
@@ -96,12 +101,14 @@
 		}
 	},
 	"packageManager": "yarn@4.1.1",
-	"workspaces": ["example"],
+	"workspaces": [
+		"example"
+	],
 	"react-native-windows": {
 		"init-windows": {
 			"name": "Clipboard",
 			"namespace": "Clipboard",
-			"template": "cpp-lib"
+			"template": "cpp-app"
 		}
 	}
 }
