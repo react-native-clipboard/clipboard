@@ -1,14 +1,9 @@
 #include "pch.h"
-
 #include "Clipboard.h"
-#include "Unicode.h"
+#include <Unicode.h>
 
-namespace winrt::Clipboard
-{
-
-// See https://microsoft.github.io/react-native-windows/docs/native-modules for details on writing native modules
-
-void ClipboardModule::GetString(React::ReactPromise<std::string>&& promise) noexcept {
+namespace NativeClipboard {
+  void ClipboardModule::GetString(React::ReactPromise<std::string>&& promise) noexcept {
     auto dataPackageView = datatransfer::Clipboard::GetContent();
     if (dataPackageView.Contains(datatransfer::StandardDataFormats::Text())) {
       dataPackageView.GetTextAsync().Completed([promise, dataPackageView](IAsyncOperation<winrt::hstring> info, AsyncStatus status) {
@@ -27,7 +22,7 @@ void ClipboardModule::GetString(React::ReactPromise<std::string>&& promise) noex
 
   void ClipboardModule::SetString(std::string const& str) noexcept
   {
-    m_context.UIDispatcher().Post([str](){
+    _context.UIDispatcher().Post([str](){
       datatransfer::DataPackage dataPackage{};
       dataPackage.SetText(winrt::to_hstring(str));
       datatransfer::Clipboard::SetContent(dataPackage);
@@ -46,5 +41,4 @@ void ClipboardModule::GetString(React::ReactPromise<std::string>&& promise) noex
       // Disconnect any native eventing here
     }
   }
-
-} // namespace winrt::Clipboard
+}

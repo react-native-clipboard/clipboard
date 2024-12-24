@@ -1,9 +1,10 @@
-namespace Clipboard
+
+namespace NativeClipboard
 {
-  [webhosthidden]
-  [default_interface]
-  runtimeclass ReactPackageProvider : Microsoft.ReactNative.IReactPackageProvider
-  {
-    ReactPackageProvider();
-  };
+    [webhosthidden]
+    [default_interface]
+    runtimeclass ReactPackageProvider : Microsoft.ReactNative.IReactPackageProvider
+    {
+        ReactPackageProvider();
+    };
 }
