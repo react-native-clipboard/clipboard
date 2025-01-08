@@ -1,8 +1,13 @@
 {
 	"name": "@react-native-clipboard/clipboard",
-	"version": "1.15.0",
+	"version": "1.16.0",
 	"description": "React Native Clipboard API for macOS, iOS, Android, and Windows",
-	"keywords": ["Clipboard", "getString", "react-native", "setString"],
+	"keywords": [
+		"Clipboard",
+		"getString",
+		"react-native",
+		"setString"
+	],
 	"homepage": "https://github.com/react-native-clipboard/clipboard#readme",
 	"bugs": {
 		"url": "https://github.com/react-native-clipboard/clipboard/issues"
@@ -96,7 +101,9 @@
 		}
 	},
 	"packageManager": "yarn@4.1.1",
-	"workspaces": ["example"],
+	"workspaces": [
+		"example"
+	],
 	"react-native-windows": {
 		"init-windows": {
 			"name": "Clipboard",
