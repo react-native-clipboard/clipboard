@@ -2412,7 +2412,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-clipboard/clipboard@npm:1.15.0, @react-native-clipboard/clipboard@workspace:.":
+"@react-native-clipboard/clipboard@npm:1.15.0":
+  version: 1.15.0
+  resolution: "@react-native-clipboard/clipboard@npm:1.15.0"
+  peerDependencies:
+    react: ">= 16.9.0"
+    react-native: ">= 0.61.5"
+    react-native-macos: ">= 0.61.0"
+    react-native-windows: ">= 0.61.0"
+  peerDependenciesMeta:
+    react-native-macos:
+      optional: true
+    react-native-windows:
+      optional: true
+  checksum: 10c0/88322a11d5cadb23571e5ede444fd585649255d48b6fdd9e0932f077e597368a9daaf91b50eaed103104e0be37f51ce1e76461d183f80ab356bef410356bd391
+  languageName: node
+  linkType: hard
+
+"@react-native-clipboard/clipboard@workspace:.":
   version: 0.0.0-use.local
   resolution: "@react-native-clipboard/clipboard@workspace:."
   dependencies:
