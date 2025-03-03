@@ -179,7 +179,7 @@ RCT_EXPORT_METHOD(hasNumber:(RCTPromiseResolveBlock)resolve
   if (@available(iOS 14, *)) {
     UIPasteboard *board = [UIPasteboard generalPasteboard];
     [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
-                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, __unused NSError * _Nullable error) {
         BOOL numberPresent = NO;
         for (NSString *type in set) {
             if ([type isEqualToString:UIPasteboardDetectionPatternNumber]) {
@@ -199,7 +199,7 @@ RCT_EXPORT_METHOD(hasWebURL:(RCTPromiseResolveBlock)resolve
   if (@available(iOS 14, *)) {
     UIPasteboard *board = [UIPasteboard generalPasteboard];
     [board detectPatternsForPatterns:[NSSet setWithObjects:UIPasteboardDetectionPatternProbableWebURL, UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternProbableWebSearch, nil]
-                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, NSError * _Nullable error) {
+                    completionHandler:^(NSSet<UIPasteboardDetectionPattern> * _Nullable set, __unused NSError * _Nullable error) {
         BOOL webURLPresent = NO;
         for (NSString *type in set) {
             if ([type isEqualToString:UIPasteboardDetectionPatternProbableWebURL]) {
@@ -238,7 +238,7 @@ RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {
   // Keep: Required for RN built in Event Emitter Calls.
 }
 
-RCT_EXPORT_METHOD(removeListeners : (NSInteger)count) {
+RCT_EXPORT_METHOD(removeListeners : (double)count) {
   // Keep: Required for RN built in Event Emitter Calls.
 }
 
