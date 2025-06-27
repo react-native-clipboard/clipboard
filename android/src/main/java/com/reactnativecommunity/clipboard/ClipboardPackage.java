@@ -31,7 +31,7 @@ public class ClipboardPackage extends TurboReactPackage implements ViewManagerOn
   /** {@inheritDoc} */
   @Override
   public List<String> getViewManagerNames(ReactApplicationContext reactContext) {
-    return null;
+    return Collections.emptyList();
   }
 
   @Override
