@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.ios.source_files = "ios/**/*.{h,m,mm}"
   s.osx.source_files = "macos/**/*.{h,m,mm}"
   s.visionos.source_files = "ios/**/*.{h,m,mm}"
+  s.frameworks       = 'CoreServices'
 
   if fabric_enabled
     folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
