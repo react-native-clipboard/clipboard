@@ -235,11 +235,11 @@ RCT_EXPORT_METHOD(getImage:(RCTPromiseResolveBlock)resolve
 }
 
 RCT_EXPORT_METHOD(addListener : (NSString *)eventName) {
-  // Keep: Required for RN built in Event Emitter Calls.
+  [super addListener:eventName];
 }
 
 RCT_EXPORT_METHOD(removeListeners : (double)count) {
-  // Keep: Required for RN built in Event Emitter Calls.
+  [super removeListeners:count];
 }
 
 #if RCT_NEW_ARCH_ENABLED
