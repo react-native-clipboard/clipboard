@@ -95,6 +95,17 @@ export const Clipboard = {
 		NativeClipboard.setString(content);
 	},
 	/**
+	 * Set clipboard content with HTML and plain text fallback.
+	 * ```javascript
+	 * Clipboard.setHTMLString('<h1>hello</h1>', 'hello');
+	 * ```
+	 * @param htmlContent rich text to be stored in the clipboard.
+	 * @param plainText fallback text for targets without HTML paste support.
+	 */
+	setHTMLString(htmlContent: string, plainText: string) {
+		NativeClipboard.setHTMLString(htmlContent, plainText);
+	},
+	/**
 	 * Set content of string array type. You can use following code to set clipboard content
 	 * ```javascript
 	 * _setContent() {

@@ -23,16 +23,17 @@ struct ClipboardModuleSpec : winrt::Microsoft::ReactNative::TurboModuleSpec {
       Method<void(std::string, Promise<void>) noexcept>{4, L"setImage"},
       Method<void(Promise<std::string>) noexcept>{5, L"getImage"},
       Method<void(std::string) noexcept>{6, L"setString"},
-      Method<void(std::vector<std::string>) noexcept>{7, L"setStrings"},
-      Method<void(Promise<bool>) noexcept>{8, L"hasString"},
-      Method<void(Promise<bool>) noexcept>{9, L"hasImage"},
-      Method<void(Promise<bool>) noexcept>{10, L"hasURL"},
-      Method<void(Promise<bool>) noexcept>{11, L"hasNumber"},
-      Method<void(Promise<bool>) noexcept>{12, L"hasWebURL"},
-      Method<void() noexcept>{13, L"setListener"},
-      Method<void() noexcept>{14, L"removeListener"},
-      Method<void(std::string) noexcept>{15, L"addListener"},
-      Method<void(int) noexcept>{16, L"removeListeners"},
+      Method<void(std::string, std::string) noexcept>{7, L"setHTMLString"},
+      Method<void(std::vector<std::string>) noexcept>{8, L"setStrings"},
+      Method<void(Promise<bool>) noexcept>{9, L"hasString"},
+      Method<void(Promise<bool>) noexcept>{10, L"hasImage"},
+      Method<void(Promise<bool>) noexcept>{11, L"hasURL"},
+      Method<void(Promise<bool>) noexcept>{12, L"hasNumber"},
+      Method<void(Promise<bool>) noexcept>{13, L"hasWebURL"},
+      Method<void() noexcept>{14, L"setListener"},
+      Method<void() noexcept>{15, L"removeListener"},
+      Method<void(std::string) noexcept>{16, L"addListener"},
+      Method<void(int) noexcept>{17, L"removeListeners"},
   };
 
   template <class TModule>
@@ -76,51 +77,56 @@ struct ClipboardModuleSpec : winrt::Microsoft::ReactNative::TurboModuleSpec {
           "    REACT_METHOD(setString) static void setString(std::string content) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
           7,
+          "setHTMLString",
+          "    REACT_METHOD(setHTMLString) void setHTMLString(std::string htmlContent, std::string plainText) noexcept { /* implementation */ }\n"
+          "    REACT_METHOD(setHTMLString) static void setHTMLString(std::string htmlContent, std::string plainText) noexcept { /* implementation */ }\n");
+    REACT_SHOW_METHOD_SPEC_ERRORS(
+          8,
           "setStrings",
           "    REACT_METHOD(setStrings) void setStrings(std::vector<std::string> const & content) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(setStrings) static void setStrings(std::vector<std::string> const & content) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          8,
+          9,
           "hasString",
           "    REACT_METHOD(hasString) void hasString(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(hasString) static void hasString(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          9,
+          10,
           "hasImage",
           "    REACT_METHOD(hasImage) void hasImage(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(hasImage) static void hasImage(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          10,
+          11,
           "hasURL",
           "    REACT_METHOD(hasURL) void hasURL(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(hasURL) static void hasURL(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          11,
+          12,
           "hasNumber",
           "    REACT_METHOD(hasNumber) void hasNumber(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(hasNumber) static void hasNumber(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          12,
+          13,
           "hasWebURL",
           "    REACT_METHOD(hasWebURL) void hasWebURL(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(hasWebURL) static void hasWebURL(::React::ReactPromise<bool> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          13,
+          14,
           "setListener",
           "    REACT_METHOD(setListener) void setListener() noexcept { /* implementation */ }\n"
           "    REACT_METHOD(setListener) static void setListener() noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          14,
+          15,
           "removeListener",
           "    REACT_METHOD(removeListener) void removeListener() noexcept { /* implementation */ }\n"
           "    REACT_METHOD(removeListener) static void removeListener() noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          15,
+          16,
           "addListener",
           "    REACT_METHOD(addListener) void addListener(std::string eventName) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(addListener) static void addListener(std::string eventName) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
-          16,
+          17,
           "removeListeners",
           "    REACT_METHOD(removeListeners) void removeListeners(int count) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(removeListeners) static void removeListeners(int count) noexcept { /* implementation */ }\n");

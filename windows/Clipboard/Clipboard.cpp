@@ -34,6 +34,17 @@ void ClipboardModule::GetString(React::ReactPromise<std::string>&& promise) noex
     });
   }
 
+  void ClipboardModule::SetHTMLString(std::string const& htmlContent, std::string const& plainText) noexcept
+  {
+    m_context.UIDispatcher().Post([htmlContent, plainText](){
+      datatransfer::DataPackage dataPackage{};
+      dataPackage.SetText(winrt::to_hstring(plainText));
+      auto htmlFormat = datatransfer::HtmlFormatHelper::CreateHtmlFormat(winrt::to_hstring(htmlContent));
+      dataPackage.SetHtmlFormat(htmlFormat);
+      datatransfer::Clipboard::SetContent(dataPackage);
+    });
+  }
+
   void ClipboardModule::AddListener(std::string const& event) noexcept
   {
     _listenerCount++;
