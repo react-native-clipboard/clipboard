@@ -67,6 +67,20 @@ RCT_EXPORT_METHOD(setString:(NSString *)content)
   clipboard.string = (content ? : @"");
 }
 
+RCT_EXPORT_METHOD(setHTMLString:(NSString *)htmlContent plainText:(NSString *)plainText)
+{
+  UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+  NSString *safeHtmlContent = (htmlContent ? : @"");
+  NSString *safePlainText = (plainText ? : @"");
+  NSData *htmlData = [safeHtmlContent dataUsingEncoding:NSUTF8StringEncoding];
+  clipboard.items = @[
+    @{
+      @"public.utf8-plain-text": safePlainText,
+      @"public.html": (htmlData ? : [NSData data]),
+    }
+  ];
+}
+
 RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
@@ -128,8 +142,8 @@ RCT_EXPORT_METHOD(getImageJPG:(RCTPromiseResolveBlock)resolve
     resolve(NULL);
   } else {
     NSString *imageDataBase64 = [UIImageJPEGRepresentation(clipboardImage, 1.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSString *withPrefix = [jpgPrefix stringByAppendingString:imageDataBase64];
-    resolve((withPrefix ? : NULL));
+    // NSString *withPrefix = [jpgPrefix stringByAppendingString:imageDataBase64];
+    resolve((imageDataBase64 ? : NULL));
   }
 }
 

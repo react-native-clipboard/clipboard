@@ -31,4 +31,17 @@ export const Clipboard = {
 			document.body.removeChild(el);
 		}
 	},
+
+	setHTMLString(htmlContent: string, plainText: string) {
+		if (navigator?.clipboard?.write) {
+			const clipboardItem = new ClipboardItem({
+				["text/plain"]: plainText,
+				["text/html"]: htmlContent,
+			});
+			navigator.clipboard.write([clipboardItem]);
+		} else {
+			const textToCopy = plainText || htmlContent;
+			this.setString(textToCopy);
+		}
+	},
 };
