@@ -23,6 +23,8 @@
   "files": [
     "dist",
     "RNCClipboard.podspec",
+    "Package.swift",
+    "include",
     "ios",
     "macos",
     "android",
@@ -108,5 +110,8 @@
       "namespace": "Clipboard",
       "template": "cpp-lib"
     }
+  },
+  "swiftpmConfig": {
+    "name": "RNCClipboard"
   }
 }
