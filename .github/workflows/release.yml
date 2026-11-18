@@ -1,0 +1,181 @@
+name: Release
+
+# Publishes to npm automatically once `Build` has passed on master.
+#
+# The version and changelog come from release-it + @release-it/conventional-changelog
+# (see the "release-it" block in package.json), so they are derived from the
+# conventional commit messages since the previous tag.
+#
+# Authentication is npm Trusted Publishing (OIDC): npm mints a short-lived
+# credential from this workflow's GitHub identity, so there is no NPM_TOKEN secret
+# to rotate and the published tarball carries a provenance attestation.
+#
+# That binding is configured npm-side, on the package's Settings -> Trusted
+# publisher: organization/repository `react-native-clipboard/clipboard`, workflow
+# `release.yml`. Renaming this file or moving the publish to another workflow
+# breaks publishing until that entry is updated to match.
+#
+# `npm.skipChecks` in the package.json release-it config belongs to the same
+# switch: release-it otherwise gates publishing on `npm whoami` and
+# `npm access list collaborators`, which need a long-lived token. Under OIDC
+# there is none -- `npm publish` mints the credential itself -- so those checks
+# fail with ENEEDAUTH and abort the release before it starts.
+on:
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
+    branches:
+      - master
+  # Manual escape hatch, e.g. to retry a release that failed partway through, or
+  # to force a release when the commits since the last tag bump nothing (such as
+  # `build:` or `ci:` commits that still change what ships).
+  # Note this path does not check Build, so only run it on a commit you know is green.
+  workflow_dispatch:
+    inputs:
+      increment:
+        description: "Version bump. `auto` derives it from the commit messages."
+        type: choice
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+        default: auto
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    # Never react to the `chore: release` commit release-it pushes itself,
+    # and never publish off a red Build.
+    # `branches: master` filters the *triggering* run's head branch. Requiring
+    # event == 'push' keeps this to real pushes to our own master.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       !startsWith(github.event.workflow_run.head_commit.message, 'chore: release'))
+    permissions:
+      # release-it pushes the release commit and tag, and creates the GitHub release.
+      contents: write
+      # Lets npm exchange this run's OIDC token for publish rights (Trusted Publishing).
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: master
+          # Full history and tags, so conventional-changelog can see the commits
+          # since the previous release.
+          fetch-depth: 0
+
+      - name: Decide whether to release
+        id: guard
+        env:
+          INCREMENT: ${{ inputs.increment }}
+        run: |
+          set -euo pipefail
+
+          # An explicit bump chosen by hand is always released.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${INCREMENT:-auto}" != "auto" ]; then
+            echo "Manual $INCREMENT release requested."
+            echo "release=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # `Build` validated a specific commit. If master has moved on since then,
+          # publishing now would ship code CI never checked.
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            expected='${{ github.event.workflow_run.head_sha }}'
+            actual="$(git rev-parse HEAD)"
+            if [ "$expected" != "$actual" ]; then
+              echo "master moved past the commit Build validated ($expected -> $actual)."
+              echo "Skipping; the next green Build will pick this up."
+              echo "release=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+
+          last_tag="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+          if [ -n "$last_tag" ]; then
+            range="$last_tag..HEAD"
+          else
+            range="HEAD"
+          fi
+
+          # What the `conventionalcommits` preset will actually bump on:
+          #   - `!` after any type                 -> major
+          #   - a BREAKING CHANGE: / BREAKING-CHANGE: footer -> major
+          #   - feat:                              -> minor
+          #   - fix: / perf:                       -> patch
+          # Anything else (chore/docs/test/refactor/build/ci) bumps nothing, so
+          # release-it has no work to do. Keep these in step with the preset.
+          subject_re='^[a-zA-Z]+(\([^)]*\))?!: |^(feat|fix|perf)(\([^)]*\))?: '
+          footer_re='^BREAKING[ -]CHANGE:'
+
+          # Walk commits one at a time, checking the subject and the body against
+          # their own patterns. Matching both at once against the whole message
+          # would let a body line that merely starts with "fix: " count as a fix.
+          # Via a file rather than a pipe, so a failing `git log` fails the step
+          # instead of silently counting zero.
+          shas="$(mktemp)"
+          git rev-list "$range" > "$shas"
+
+          releasable=0
+          while IFS= read -r sha; do
+            [ -n "$sha" ] || continue
+            if git log -1 --format='%s' "$sha" | grep -qE "$subject_re" \
+              || git log -1 --format='%b' "$sha" | grep -qE "$footer_re"; then
+              releasable=$((releasable + 1))
+            fi
+          done < "$shas"
+
+          echo "Releasable commits since ${last_tag:-the start of history}: $releasable"
+          if [ "$releasable" -eq 0 ]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v6
+        if: steps.guard.outputs.release == 'true'
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      # Node 22 ships npm 10, which has no OIDC support and would fall back to
+      # looking for a token. Trusted Publishing needs npm >= 11.5.1.
+      - name: Upgrade npm for Trusted Publishing
+        if: steps.guard.outputs.release == 'true'
+        run: |
+          npm install -g npm@^11.5.1
+          npm --version
+
+      - name: Enable Corepack
+        if: steps.guard.outputs.release == 'true'
+        run: corepack enable
+
+      - name: Install dependencies
+        if: steps.guard.outputs.release == 'true'
+        run: yarn install --immutable
+
+      - name: Configure git identity
+        if: steps.guard.outputs.release == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Release
+        if: steps.guard.outputs.release == 'true'
+        # An empty INCREMENT lets the conventional-changelog plugin pick the bump.
+        run: yarn release --ci ${INCREMENT:+"$INCREMENT"}
+        env:
+          INCREMENT: ${{ inputs.increment != 'auto' && inputs.increment || '' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No npm credential here on purpose: `npm publish` picks up the OIDC
+          # token from the id-token permission above. Setting NODE_AUTH_TOKEN
+          # would take precedence and put us back on a 2FA-gated token.
