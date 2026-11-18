@@ -7,6 +7,9 @@ const project = (() => {
 		return configureProjects({
 			android: {
 				sourceDir: path.join("example", "android"),
+				// `app.json` lives in `example/`, so react-native-test-app cannot
+				// discover the package name on its own.
+				packageName: "com.microsoft.reacttestapp",
 			},
 			ios: {
 				sourceDir: "example/ios",
