@@ -43,7 +43,8 @@
     "lint": "biome lint --write .",
     "prepare": "npm run build",
     "test": "jest",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "release": "release-it"
   },
   "jest": {
     "preset": "react-native"
@@ -54,6 +55,7 @@
     "@callstack/react-native-visionos": "^0.76.0",
     "@react-native/babel-preset": "^0.75.0",
     "@react-native/metro-config": "^0.75.0",
+    "@release-it/conventional-changelog": "^12.0.2",
     "@rnx-kit/align-deps": "^2.4.1",
     "@rnx-kit/metro-config": "^2.0.0",
     "@types/react": "^18.2.0",
@@ -66,6 +68,7 @@
     "react-native-test-app": "^4.0.5",
     "react-native-windows": "^0.75.0",
     "react-test-renderer": "^18.2.0",
+    "release-it": "^21.1.2",
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
@@ -84,6 +87,24 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true,
+      "skipChecks": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "conventionalcommits"
+      }
+    }
   },
   "codegenConfig": {
     "name": "rnclipboard",
