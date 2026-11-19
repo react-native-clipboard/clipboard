@@ -24,6 +24,15 @@ RCT_EXPORT_METHOD(setString:(NSString *)content)
   [pasteboard setString:(content ? : @"") forType:NSPasteboardTypeString];
 }
 
+RCT_EXPORT_METHOD(setHTMLString:(NSString *)htmlContent plainText:(NSString *)plainText)
+{
+  NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+  [pasteboard clearContents];
+  [pasteboard setString:plainText forType:NSPasteboardTypeString];
+  NSData *htmlData = [htmlContent dataUsingEncoding:NSUTF8StringEncoding];
+  [pasteboard setData:htmlData forType:NSPasteboardTypeHTML];
+}
+
 RCT_EXPORT_METHOD(getString:(RCTPromiseResolveBlock)resolve
                   rejecter:(__unused RCTPromiseRejectBlock)reject)
 {

@@ -79,6 +79,12 @@ export interface Spec extends TurboModule {
 	 */
 	setString(content: string): void;
 	/**
+	 * Set clipboard content with HTML and plain text fallback.
+	 * @param htmlContent rich text to be stored in the clipboard.
+	 * @param plainText fallback text for targets without HTML paste support.
+	 */
+	setHTMLString(htmlContent: string, plainText: string): void;
+	/**
 	 * Set content of string array type. You can use following code to set clipboard content
 	 * ```javascript
 	 * _setContent() {

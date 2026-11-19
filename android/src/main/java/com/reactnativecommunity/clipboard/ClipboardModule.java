@@ -112,6 +112,27 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
   }
 
   @Override
+  public void setHTMLString(String htmlContent, String plainText) {
+    try {
+      String safeHtmlContent = htmlContent != null ? htmlContent : "";
+      String safePlainText = plainText != null ? plainText : "";
+      if (safePlainText.trim().isEmpty() && !safeHtmlContent.isEmpty()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+          safePlainText = android.text.Html.fromHtml(safeHtmlContent, android.text.Html.FROM_HTML_MODE_LEGACY).toString();
+        } else {
+          safePlainText = android.text.Html.fromHtml(safeHtmlContent).toString();
+        }
+      }
+      ClipData clipdata = ClipData.newHtmlText(null, safePlainText, safeHtmlContent);
+      ClipboardManager clipboard = getClipboardService();
+      clipboard.setPrimaryClip(clipdata);
+    } catch (Exception e) {
+      e.printStackTrace();
+      setString(plainText != null ? plainText : "");
+    }
+  }
+
+  @Override
   public void setStrings(ReadableArray content) {
 
   }

@@ -55,6 +55,10 @@ public abstract class NativeClipboardModuleSpec extends ReactContextBaseJavaModu
 
   @ReactMethod
   @DoNotStrip
+  public abstract void setHTMLString(String htmlContent, String plainText);
+
+  @ReactMethod
+  @DoNotStrip
   public abstract void setStrings(ReadableArray content);
 
   @ReactMethod

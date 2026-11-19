@@ -36,6 +36,9 @@ namespace winrt::Clipboard
     REACT_METHOD(SetString, L"setString");
     void SetString(std::string const& str) noexcept;
 
+    REACT_METHOD(SetHTMLString, L"setHTMLString");
+    void SetHTMLString(std::string const& htmlContent, std::string const& plainText) noexcept;
+
     REACT_METHOD(AddListener, L"addListener");
     void AddListener(std::string const& event) noexcept;
 
