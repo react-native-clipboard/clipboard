@@ -29,6 +29,9 @@ export const Clipboard = {
 	 * ```
 	 */
 	getStrings(): Promise<string[]> {
+		if (Platform.OS !== "ios") {
+			return Promise.resolve([]);
+		}
 		return NativeClipboard.getStrings();
 	},
 	/**
@@ -104,6 +107,9 @@ export const Clipboard = {
 	 * @param the content to be stored in the clipboard.
 	 */
 	setStrings(content: string[]) {
+		if (Platform.OS !== "ios") {
+			return;
+		}
 		NativeClipboard.setStrings(content);
 	},
 	/**
