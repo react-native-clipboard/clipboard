@@ -13,6 +13,9 @@ const project = (() => {
 			},
 			ios: {
 				sourceDir: "example/ios",
+				// Pods are installed with `pod install` in example/ios. Without a
+				// Gemfile, the CLI's automatic installation fails.
+				automaticPodsInstallation: false,
 			},
 			windows: {
 				sourceDir: path.join("example", "windows"),
