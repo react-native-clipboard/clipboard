@@ -33,6 +33,13 @@ def resolveReactNativeDirectory() {
         return reactNativeFromNodeModulesWithReactNativeClipboard
     }
 
+    // When building the example app in this repository, react-native is
+    // installed in the library's own node_modules
+    def reactNativeFromLibraryNodeModules = file("${projectDir}/../node_modules/react-native")
+    if (reactNativeFromLibraryNodeModules.exists()) {
+        return reactNativeFromLibraryNodeModules
+    }
+
     throw new Exception(
             "[react-native-clipboard] Unable to resolve react-native location in " +
                     "node_modules. You should add project extension property (in app/build.gradle) " +
