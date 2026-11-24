@@ -77,7 +77,9 @@ jobs:
       - name: Build Android Example App and Library
         run: cd example/android && ./gradlew clean assembleDebug
   ios:
-    runs-on: macos-latest
+    # React Native 0.81 bundles fmt 11, which fails to compile with Xcode 26
+    # (macos-latest). macos-15 ships Xcode 16.
+    runs-on: macos-15
     strategy:
       matrix:
         node-version: [22, 24]
